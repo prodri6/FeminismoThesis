@@ -4,44 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>#Feminismo: An Exploration of Hispanic Cyberfeminism</title>
+    <title>#Feminismo | Thesis Supplementary Materials</title>
 
     <style>
 
         /* ============================================================
-           GLOBAL VARIABLES
-           ------------------------------------------------------------
-           Keeping the main colours here makes the visual identity
-           easy to modify later without having to search through the
-           entire stylesheet.
-           ============================================================ */
-
-        :root {
-            --navy: #263746;
-            --navy-dark: #1c2934;
-            --navy-light: #344c5f;
-
-            --chapter-3: #587b8c;
-            --chapter-4: #806b8a;
-            --chapter-5: #8b7460;
-
-            --background: #f4f5f6;
-            --panel: #ffffff;
-            --border: #dfe3e6;
-
-            --text: #263238;
-            --muted: #6d777d;
-            --light-text: #f5f7f8;
-
-            --accent: #587b8c;
-
-            --shadow: 0 8px 25px rgba(25, 38, 48, 0.08);
-            --shadow-small: 0 3px 10px rgba(25, 38, 48, 0.08);
-        }
-
-
-        /* ============================================================
-           RESET / BASIC PAGE SETTINGS
+           GLOBAL
            ============================================================ */
 
         * {
@@ -54,174 +22,158 @@
             padding: 0;
             width: 100%;
             height: 100%;
-            font-family:
-                "Segoe UI",
-                "Helvetica Neue",
-                Arial,
-                sans-serif;
-            color: var(--text);
-            background: var(--background);
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            background: #f4f4f9;
+            color: #2c3e50;
         }
 
-        button {
-            font-family: inherit;
+        body {
+            overflow: hidden;
         }
 
 
         /* ============================================================
            LANDING PAGE
-           ------------------------------------------------------------
-           This is what visitors see when they first open the site.
-           It deliberately does not open directly on Figure 1.
            ============================================================ */
 
         #landing-page {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            background:
-                linear-gradient(
-                    135deg,
-                    #eef1f3 0%,
-                    #f8f9fa 48%,
-                    #e9edef 100%
-                );
-        }
-
-        .landing-accent {
-            height: 7px;
             width: 100%;
-            background:
-                linear-gradient(
-                    90deg,
-                    var(--chapter-3),
-                    var(--chapter-4),
-                    var(--chapter-5)
-                );
-        }
+            height: 100vh;
+            overflow-y: auto;
 
-        .landing-inner {
-            width: min(1050px, calc(100% - 60px));
-            margin: 0 auto;
-            padding: 55px 0 45px;
             display: flex;
-            flex-direction: column;
-            min-height: calc(100vh - 7px);
+            align-items: center;
+            justify-content: center;
+
+            background:
+                radial-gradient(
+                    circle at top right,
+                    rgba(52, 152, 219, 0.10),
+                    transparent 35%
+                ),
+                radial-gradient(
+                    circle at bottom left,
+                    rgba(155, 89, 182, 0.08),
+                    transparent 35%
+                ),
+                #f7f7fa;
+
+            padding: 40px;
         }
 
-        .landing-kicker {
-            color: var(--muted);
-            font-size: 0.78rem;
-            letter-spacing: 0.18em;
+        .landing-card {
+            width: min(900px, 100%);
+            background: white;
+
+            padding: 65px 75px;
+
+            border-radius: 18px;
+
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, 0.08),
+                0 2px 8px rgba(0, 0, 0, 0.04);
+
+            text-align: center;
+
+            border: 1px solid rgba(44, 62, 80, 0.08);
+        }
+
+        .landing-label {
             text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.72rem;
+            color: #7f8c8d;
+            margin-bottom: 25px;
             font-weight: 600;
-            margin-bottom: 28px;
         }
 
         .landing-title {
-            max-width: 900px;
+            margin: 0 auto 22px auto;
+
+            max-width: 750px;
+
             font-family: Georgia, "Times New Roman", serif;
-            font-size: clamp(2.1rem, 4.5vw, 4rem);
-            line-height: 1.08;
-            font-weight: 400;
-            color: var(--navy);
-            margin: 0 0 28px;
+
+            font-size: clamp(2rem, 4vw, 3.1rem);
+
+            line-height: 1.15;
+
+            font-weight: 500;
+
+            color: #243746;
         }
 
         .landing-author {
-            font-family: Georgia, "Times New Roman", serif;
-            font-size: 1.25rem;
-            color: var(--navy-light);
+            font-size: 1.15rem;
             margin-bottom: 35px;
+            color: #34495e;
         }
 
-        .landing-rule {
+        .landing-divider {
             width: 70px;
-            height: 3px;
-            background: var(--chapter-4);
-            margin-bottom: 35px;
+            height: 2px;
+            margin: 0 auto 35px auto;
+            background: #3498db;
+            border: none;
         }
 
         .landing-details {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 25px 70px;
-            max-width: 900px;
-            font-size: 0.93rem;
-            line-height: 1.65;
-            color: #58636a;
+            color: #66727c;
+            font-size: 0.92rem;
+            line-height: 1.8;
         }
 
         .landing-details strong {
-            display: block;
-            color: var(--navy);
+            color: #34495e;
+        }
+
+        .copyright {
+            margin-top: 30px;
             font-size: 0.75rem;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            margin-bottom: 3px;
-        }
-
-        .landing-description {
-            margin-top: 40px;
-            max-width: 780px;
-            color: #606a70;
-            font-size: 0.92rem;
-            line-height: 1.7;
-        }
-
-        .landing-button-row {
-            margin-top: auto;
-            padding-top: 45px;
+            color: #9aa3a8;
         }
 
         .enter-button {
+            margin-top: 40px;
+
+            padding: 13px 30px;
+
             border: none;
-            background: var(--navy);
+            border-radius: 7px;
+
+            background: #2c3e50;
             color: white;
-            padding: 15px 25px;
-            border-radius: 5px;
+
             font-size: 0.9rem;
             font-weight: 600;
+
             cursor: pointer;
-            box-shadow: var(--shadow-small);
+
             transition:
-                transform 0.2s ease,
                 background 0.2s ease,
+                transform 0.2s ease,
                 box-shadow 0.2s ease;
         }
 
         .enter-button:hover {
-            background: var(--navy-light);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow);
-        }
+            background: #3498db;
 
-        .landing-footer {
-            margin-top: 35px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(38, 55, 70, 0.12);
-            display: flex;
-            justify-content: space-between;
-            gap: 20px;
-            color: #7a8388;
-            font-size: 0.75rem;
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 7px 18px rgba(52, 152, 219, 0.25);
         }
 
 
         /* ============================================================
-           FIGURE APPLICATION
+           MAIN APPLICATION
            ============================================================ */
 
-        #figure-app {
+        #app {
             display: none;
+
             width: 100%;
             height: 100vh;
-            overflow: hidden;
-            background: var(--background);
-        }
-
-        #figure-app.visible {
-            display: flex;
         }
 
 
@@ -231,312 +183,305 @@
 
         #sidebar {
             width: 315px;
-            min-width: 315px;
             height: 100vh;
-            background: var(--navy);
+
+            background: #263746;
             color: white;
+
+            overflow-y: auto;
+
             display: flex;
             flex-direction: column;
-            overflow: hidden;
-            box-shadow: 4px 0 16px rgba(0, 0, 0, 0.08);
-            z-index: 10;
+
+            flex-shrink: 0;
+
+            border-right: 1px solid rgba(255,255,255,0.08);
         }
 
-        .sidebar-header {
-            padding: 23px 22px 20px;
-            background: var(--navy-dark);
+        #sidebar-header {
+            padding: 22px 20px;
+
+            background: #1d2a35;
+
+            position: sticky;
+            top: 0;
+
+            z-index: 10;
+
             border-bottom: 1px solid rgba(255,255,255,0.08);
         }
 
-        .sidebar-header-label {
-            font-size: 0.65rem;
-            letter-spacing: 0.16em;
-            text-transform: uppercase;
-            color: #aebac2;
-            margin-bottom: 5px;
-        }
-
-        .sidebar-header h2 {
+        #sidebar-header h2 {
             margin: 0;
+
             font-family: Georgia, "Times New Roman", serif;
-            font-weight: 400;
-            font-size: 1.3rem;
-            color: white;
+
+            font-size: 1.35rem;
+            font-weight: 500;
+
+            letter-spacing: 0.2px;
         }
 
-        .sidebar-scroll {
-            overflow-y: auto;
-            flex: 1;
-            padding-bottom: 20px;
-        }
+        #sidebar-header p {
+            margin: 7px 0 0 0;
 
-        .sidebar-scroll::-webkit-scrollbar {
-            width: 6px;
-        }
+            font-size: 0.7rem;
 
-        .sidebar-scroll::-webkit-scrollbar-track {
-            background: rgba(255,255,255,0.03);
-        }
+            color: #9eabb4;
 
-        .sidebar-scroll::-webkit-scrollbar-thumb {
-            background: rgba(255,255,255,0.18);
-            border-radius: 10px;
-        }
-
-        .chapter-label {
-            position: sticky;
-            top: 0;
-            z-index: 3;
-            padding: 12px 18px 9px;
-            font-size: 0.68rem;
-            font-weight: 700;
-            letter-spacing: 0.13em;
             text-transform: uppercase;
-            color: rgba(255,255,255,0.82);
-            background: var(--navy);
-            border-bottom: 1px solid rgba(255,255,255,0.07);
-        }
 
-        .chapter-label.chapter-3 {
-            border-left: 4px solid var(--chapter-3);
-        }
-
-        .chapter-label.chapter-4 {
-            border-left: 4px solid var(--chapter-4);
-        }
-
-        .chapter-label.chapter-5 {
-            border-left: 4px solid var(--chapter-5);
-        }
-
-        .nav-btn {
-            width: 100%;
-            border: none;
-            border-left: 4px solid transparent;
-            background: transparent;
-            color: #dbe2e6;
-            padding: 10px 17px 10px 18px;
-            text-align: left;
-            cursor: pointer;
-            font-size: 0.78rem;
-            line-height: 1.35;
-            transition:
-                background 0.18s ease,
-                border-color 0.18s ease,
-                color 0.18s ease;
-        }
-
-        .nav-btn:hover {
-            background: rgba(255,255,255,0.06);
-            color: white;
-        }
-
-        .nav-btn.active {
-            background: rgba(255,255,255,0.11);
-            color: white;
-            font-weight: 600;
-        }
-
-        .nav-btn.chapter-3 {
-            border-left-color: transparent;
-        }
-
-        .nav-btn.chapter-3.active {
-            border-left-color: var(--chapter-3);
-        }
-
-        .nav-btn.chapter-4.active {
-            border-left-color: var(--chapter-4);
-        }
-
-        .nav-btn.chapter-5.active {
-            border-left-color: var(--chapter-5);
-        }
-
-        .figure-number {
-            display: inline-block;
-            min-width: 31px;
-            color: #9eabb2;
-            font-weight: 700;
-            font-size: 0.68rem;
-        }
-
-        .nav-btn.active .figure-number {
-            color: white;
-        }
-
-        .sidebar-bottom {
-            border-top: 1px solid rgba(255,255,255,0.08);
-            padding: 12px;
-            background: var(--navy-dark);
-        }
-
-        .home-button {
-            width: 100%;
-            border: 1px solid rgba(255,255,255,0.14);
-            background: transparent;
-            color: #cfd7dc;
-            padding: 9px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 0.75rem;
-            transition: background 0.2s ease;
-        }
-
-        .home-button:hover {
-            background: rgba(255,255,255,0.08);
-            color: white;
+            letter-spacing: 1.5px;
         }
 
 
         /* ============================================================
-           MAIN CONTENT AREA
+           CHAPTER SEPARATORS
+           These are intentionally NOT clickable.
+           ============================================================ */
+
+        .chapter-header {
+            padding: 14px 18px 10px 18px;
+
+            font-size: 0.68rem;
+
+            font-weight: 700;
+
+            text-transform: uppercase;
+
+            letter-spacing: 2px;
+
+            color: white;
+
+            cursor: default;
+        }
+
+        .chapter-header.chapter-3 {
+            background: #3478a8;
+        }
+
+        .chapter-header.chapter-4 {
+            background: #7d5aa6;
+        }
+
+        .chapter-header.chapter-5 {
+            background: #4e8767;
+        }
+
+
+        /* ============================================================
+           FIGURE NAVIGATION BUTTONS
+           ============================================================ */
+
+        .nav-btn {
+            width: 100%;
+
+            border: none;
+
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+
+            background: transparent;
+
+            color: #e5eaed;
+
+            padding: 11px 17px;
+
+            text-align: left;
+
+            cursor: pointer;
+
+            font-family: inherit;
+
+            font-size: 0.82rem;
+
+            line-height: 1.35;
+
+            transition:
+                background 0.15s ease,
+                padding-left 0.15s ease;
+        }
+
+        .nav-btn:hover {
+            background: rgba(255,255,255,0.07);
+
+            padding-left: 21px;
+        }
+
+        .nav-btn.active {
+            color: white;
+
+            font-weight: 600;
+
+            padding-left: 21px;
+        }
+
+        /* Chapter-specific active colours */
+
+        .nav-btn.chapter-3.active {
+            background: #3478a8;
+        }
+
+        .nav-btn.chapter-4.active {
+            background: #7d5aa6;
+        }
+
+        .nav-btn.chapter-5.active {
+            background: #4e8767;
+        }
+
+
+        /* ============================================================
+           MAIN CONTENT
            ============================================================ */
 
         #main-content {
             flex: 1;
-            min-width: 0;
+
             height: 100vh;
+
+            min-width: 0;
+
             display: flex;
+
             flex-direction: column;
-            padding: 20px 22px 0;
+
+            background: #f4f4f9;
         }
 
 
         /* ============================================================
-           FIGURE INFORMATION PANEL
+           FIGURE INFORMATION
            ============================================================ */
 
         #figure-info {
-            background: var(--panel);
-            border: 1px solid var(--border);
-            border-radius: 7px;
-            box-shadow: var(--shadow-small);
-            padding: 15px 20px 14px;
-            margin-bottom: 12px;
+            background: white;
+
+            margin: 18px 18px 12px 18px;
+
+            padding: 17px 21px;
+
+            border-radius: 10px;
+
+            box-shadow:
+                0 2px 8px rgba(0,0,0,0.045);
+
+            border: 1px solid rgba(44,62,80,0.06);
+
             flex-shrink: 0;
         }
 
-        .info-topline {
+        #figure-meta {
             display: flex;
-            justify-content: space-between;
+
             align-items: center;
-            gap: 20px;
-            margin-bottom: 5px;
-        }
 
-        .chapter-indicator {
-            font-size: 0.66rem;
+            gap: 10px;
+
+            margin-bottom: 7px;
+
+            font-size: 0.72rem;
+
             text-transform: uppercase;
-            letter-spacing: 0.12em;
+
+            letter-spacing: 1.2px;
+
             font-weight: 700;
-            color: var(--accent);
         }
 
-        .page-indicator {
-            font-size: 0.7rem;
-            color: var(--muted);
-            white-space: nowrap;
+        #chapter-label {
+            padding: 4px 9px;
+
+            border-radius: 4px;
+
+            color: white;
+        }
+
+        #chapter-label.chapter-3 {
+            background: #3478a8;
+        }
+
+        #chapter-label.chapter-4 {
+            background: #7d5aa6;
+        }
+
+        #chapter-label.chapter-5 {
+            background: #4e8767;
+        }
+
+        #page-label {
+            color: #8a969e;
         }
 
         #fig-title {
-            margin: 0 0 6px;
+            margin: 0 0 7px 0;
+
             font-family: Georgia, "Times New Roman", serif;
-            font-size: 1.22rem;
+
+            font-size: 1.25rem;
+
             line-height: 1.3;
-            font-weight: 500;
-            color: var(--navy);
+
+            color: #263746;
         }
 
         #fig-caption {
             margin: 0;
-            color: #657078;
-            font-size: 0.78rem;
-            line-height: 1.5;
+
+            color: #69757d;
+
+            font-size: 0.87rem;
+
+            line-height: 1.55;
         }
 
 
         /* ============================================================
            VARIANT TABS
-           ------------------------------------------------------------
-           These appear only for Figures 10 and 11.
+           Used only by Figures 10 and 11.
            ============================================================ */
 
         #variant-tabs {
+            margin-top: 12px;
+
             display: none;
+
             gap: 7px;
-            margin-top: 11px;
+
+            flex-wrap: wrap;
         }
 
         .variant-btn {
-            border: 1px solid var(--border);
-            background: #f4f5f6;
-            color: #59656c;
+            background: #edf0f2;
+
+            border: 1px solid #d5dade;
+
+            color: #46545e;
+
             padding: 6px 13px;
-            border-radius: 4px;
+
+            border-radius: 5px;
+
             cursor: pointer;
-            font-size: 0.7rem;
-            transition: all 0.18s ease;
+
+            font-family: inherit;
+
+            font-size: 0.78rem;
+
+            transition:
+                background 0.15s ease,
+                color 0.15s ease;
         }
 
         .variant-btn:hover {
-            background: #e9edef;
+            background: #dfe4e7;
         }
 
         .variant-btn.active-variant {
-            background: var(--navy);
+            background: #2c3e50;
+
             color: white;
-            border-color: var(--navy);
-        }
 
-
-        /* ============================================================
-           VIEWER TOOLBAR
-           ============================================================ */
-
-        #viewer-toolbar {
-            display: none;
-            height: 40px;
-            flex-shrink: 0;
-            align-items: center;
-            justify-content: space-between;
-            background: var(--navy-dark);
-            border-radius: 6px 6px 0 0;
-            padding: 0 9px;
-            color: white;
-        }
-
-        #viewer-toolbar.visible {
-            display: flex;
-        }
-
-        .toolbar-group {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        .toolbar-button {
-            min-width: 30px;
-            height: 27px;
-            border: 1px solid rgba(255,255,255,0.15);
-            border-radius: 3px;
-            background: rgba(255,255,255,0.06);
-            color: white;
-            cursor: pointer;
-            font-size: 0.8rem;
-            transition: background 0.15s ease;
-        }
-
-        .toolbar-button:hover {
-            background: rgba(255,255,255,0.16);
-        }
-
-        #zoom-level {
-            min-width: 52px;
-            text-align: center;
-            font-size: 0.68rem;
-            color: #c9d1d5;
+            border-color: #2c3e50;
         }
 
 
@@ -546,201 +491,248 @@
 
         #viewer-container {
             flex: 1;
+
             min-height: 0;
+
+            margin: 0 18px 18px 18px;
+
             background: white;
-            border: 1px solid var(--border);
-            border-radius: 7px 7px 0 0;
+
+            border: 1px solid #e1e4e7;
+
+            border-radius: 10px;
+
             overflow: hidden;
-            box-shadow: var(--shadow);
+
+            box-shadow:
+                0 3px 10px rgba(0,0,0,0.04);
+
             position: relative;
         }
 
-        #viewer-container.with-toolbar {
-            border-radius: 0 0 7px 7px;
-        }
-
-        #viewer {
+        iframe {
             width: 100%;
             height: 100%;
+
             border: none;
+
             display: block;
+
             background: white;
         }
 
 
         /* ============================================================
            IMAGE VIEWER
-           ------------------------------------------------------------
-           Images are placed inside this container so that zooming can
-           be handled independently from the iframe used for HTML
-           visualizations.
            ============================================================ */
 
         #image-viewer {
-            display: none;
             width: 100%;
             height: 100%;
-            overflow: auto;
-            background:
-                linear-gradient(
-                    45deg,
-                    #f4f4f4 25%,
-                    transparent 25%
-                ),
-                linear-gradient(
-                    -45deg,
-                    #f4f4f4 25%,
-                    transparent 25%
-                ),
-                linear-gradient(
-                    45deg,
-                    transparent 75%,
-                    #f4f4f4 75%
-                ),
-                linear-gradient(
-                    -45deg,
-                    transparent 75%,
-                    #f4f4f4 75%
-                );
-            background-size: 24px 24px;
-            background-position:
-                0 0,
-                0 12px,
-                12px -12px,
-                -12px 0;
+
+            background: white;
+
+            display: none;
+
+            position: relative;
+
+            overflow: hidden;
         }
 
         #image-stage {
-            min-width: 100%;
-            min-height: 100%;
+            width: 100%;
+            height: 100%;
+
             display: flex;
-            justify-content: center;
+
             align-items: center;
-            padding: 25px;
+            justify-content: center;
+
+            overflow: hidden;
+
+            background: white;
         }
 
-        #image-stage img {
-            display: block;
-            max-width: none;
-            max-height: none;
+        #figure-image {
+            max-width: 94%;
+            max-height: 90%;
+
             width: auto;
             height: auto;
+
             object-fit: contain;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+
             transform-origin: center center;
+
             user-select: none;
+
+            transition: transform 0.18s ease;
         }
 
 
         /* ============================================================
-           PREVIOUS / NEXT NAVIGATION
+           ZOOM CONTROLS
            ============================================================ */
 
-        #figure-navigation {
-            height: 44px;
-            flex-shrink: 0;
-            display: flex;
-            justify-content: space-between;
+        #zoom-controls {
+            position: absolute;
+
+            bottom: 16px;
+            right: 16px;
+
+            display: none;
+
             align-items: center;
-            gap: 10px;
-            padding: 0 2px;
+
+            gap: 5px;
+
+            background: rgba(255,255,255,0.96);
+
+            border: 1px solid #d9dee2;
+
+            border-radius: 7px;
+
+            padding: 5px;
+
+            box-shadow:
+                0 3px 12px rgba(0,0,0,0.10);
+
+            z-index: 20;
         }
 
-        .figure-nav-button {
+        .zoom-btn {
+            width: 31px;
+            height: 31px;
+
             border: none;
-            background: transparent;
-            color: #647078;
+
+            border-radius: 4px;
+
+            background: #eef1f3;
+
+            color: #34495e;
+
+            font-size: 1rem;
+
             cursor: pointer;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            transition:
+                background 0.15s ease,
+                color 0.15s ease;
+        }
+
+        .zoom-btn:hover {
+            background: #2c3e50;
+            color: white;
+        }
+
+        #zoom-level {
+            min-width: 48px;
+
+            text-align: center;
+
             font-size: 0.72rem;
-            padding: 7px 5px;
-        }
 
-        .figure-nav-button:hover {
-            color: var(--navy);
-        }
+            color: #5e6b74;
 
-        .figure-nav-button:disabled {
-            visibility: hidden;
+            font-weight: 600;
         }
 
 
         /* ============================================================
-           FOOTER
+           SMALL FOOTER
            ============================================================ */
 
         #site-footer {
-            height: 29px;
+            height: 34px;
+
             flex-shrink: 0;
+
             display: flex;
-            justify-content: space-between;
+
             align-items: center;
-            color: #879097;
-            font-size: 0.64rem;
-            border-top: 1px solid var(--border);
+
+            justify-content: center;
+
+            gap: 7px;
+
+            color: #8b969d;
+
+            font-size: 0.68rem;
+
+            letter-spacing: 0.3px;
+        }
+
+        #site-footer strong {
+            color: #68747b;
+
+            font-weight: 600;
         }
 
 
         /* ============================================================
-           RESPONSIVE DESIGN
+           BACK BUTTON
            ============================================================ */
 
-        @media (max-width: 850px) {
+        #back-button {
+            position: fixed;
 
-            #sidebar {
-                width: 250px;
-                min-width: 250px;
-            }
+            left: 16px;
+            bottom: 14px;
 
-            #main-content {
-                padding: 13px 14px 0;
-            }
+            z-index: 100;
 
-            .landing-inner {
-                width: min(100% - 40px, 900px);
-                padding-top: 40px;
-            }
+            border: none;
 
-            .landing-details {
-                grid-template-columns: 1fr;
-                gap: 15px;
-            }
+            background: rgba(255,255,255,0.9);
+
+            color: #61707a;
+
+            padding: 7px 11px;
+
+            border-radius: 5px;
+
+            font-size: 0.7rem;
+
+            cursor: pointer;
+
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+
+            display: none;
         }
 
-        @media (max-width: 650px) {
+        #back-button:hover {
+            background: white;
+            color: #2c3e50;
+        }
 
-            #figure-app.visible {
-                display: block;
-                overflow: auto;
-            }
+
+        /* ============================================================
+           MOBILE
+           ============================================================ */
+
+        @media (max-width: 800px) {
 
             #sidebar {
-                width: 100%;
-                min-width: 0;
-                height: auto;
-                max-height: 38vh;
+                width: 245px;
             }
 
-            .sidebar-scroll {
-                max-height: 27vh;
+            #figure-info {
+                margin: 10px 10px 8px 10px;
+                padding: 13px 15px;
             }
 
-            #main-content {
-                height: 62vh;
-                padding: 10px 10px 0;
+            #viewer-container {
+                margin: 0 10px 10px 10px;
             }
 
-            .landing-inner {
-                width: calc(100% - 30px);
-                padding: 35px 0 25px;
-            }
-
-            .landing-title {
-                font-size: 2.1rem;
-            }
-
-            .landing-footer {
-                flex-direction: column;
-                gap: 5px;
+            .landing-card {
+                padding: 45px 30px;
             }
         }
 
@@ -755,96 +747,62 @@
      LANDING PAGE
      ================================================================ -->
 
-<section id="landing-page">
+<div id="landing-page">
 
-    <div class="landing-accent"></div>
+    <div class="landing-card">
 
-    <div class="landing-inner">
-
-        <div class="landing-kicker">
+        <div class="landing-label">
             Doctoral Thesis · Supplementary Materials
         </div>
 
         <h1 class="landing-title">
-            #Feminismo: An exploration of Hispanic Cyberfeminism
-            from 2009 to 2022
+            #Feminismo: An exploration of Hispanic Cyberfeminism from 2009 to 2022
         </h1>
 
         <div class="landing-author">
             Pilar del Carmen Rodríguez Mata
         </div>
 
-        <div class="landing-rule"></div>
+        <hr class="landing-divider">
 
         <div class="landing-details">
 
-            <div>
-                <strong>Supervisor</strong>
-                Juan Luis Suárez
-            </div>
+            <strong>Supervisor:</strong> Juan Luis Suárez<br>
 
-            <div>
-                <strong>Graduate Program</strong>
-                Hispanic Studies
-            </div>
+            <strong>Graduate Program in Hispanic Studies</strong><br>
 
-            <div>
-                <strong>Degree</strong>
-                Doctor of Philosophy
-            </div>
+            A thesis submitted in partial fulfillment of the requirements
+            for the degree of Doctor of Philosophy<br>
 
-            <div>
-                <strong>Institution</strong>
-                The University of Western Ontario
-            </div>
+            The School of Graduate and Postdoctoral Studies<br>
 
-            <div>
-                <strong>School</strong>
-                The School of Graduate and Postdoctoral Studies
-            </div>
+            The University of Western Ontario<br>
 
-            <div>
-                <strong>Location and Date</strong>
-                London, Ontario, Canada · August 2026
-            </div>
+            London, Ontario, Canada<br>
+
+            August 2026
 
         </div>
 
-        <p class="landing-description">
-            Interactive visualizations, figures, and supplementary materials
-            accompanying the dissertation. The materials presented here
-            correspond to the figures included throughout the thesis and
-            provide access to interactive versions of selected analyses.
-        </p>
-
-        <div class="landing-button-row">
-            <button class="enter-button" onclick="enterFigures()">
-                Explore thesis figures
-                <span style="margin-left: 8px;">→</span>
-            </button>
+        <div class="copyright">
+            © Pilar Rodríguez Mata 2026
         </div>
 
-        <div class="landing-footer">
-            <span>
-                © Pilar Rodríguez Mata 2026
-            </span>
-
-            <span>
-                University of Western Ontario
-            </span>
-        </div>
+        <button class="enter-button" onclick="openIndex()">
+            Explore Figures
+        </button>
 
     </div>
 
-</section>
+</div>
 
 
 
 <!-- ================================================================
-     FIGURE APPLICATION
+     MAIN APPLICATION
      ================================================================ -->
 
-<section id="figure-app">
+<div id="app">
 
 
     <!-- ============================================================
@@ -853,34 +811,15 @@
 
     <aside id="sidebar">
 
-        <div class="sidebar-header">
-
-            <div class="sidebar-header-label">
-                Supplementary Materials
-            </div>
+        <div id="sidebar-header">
 
             <h2>Figure Index</h2>
 
-        </div>
-
-
-        <div class="sidebar-scroll">
-
-            <div id="buttons-container"></div>
+            <p>Thesis Supplementary Materials</p>
 
         </div>
 
-
-        <div class="sidebar-bottom">
-
-            <button
-                class="home-button"
-                onclick="returnHome()"
-            >
-                ← Thesis information
-            </button>
-
-        </div>
+        <div id="buttons-container"></div>
 
     </aside>
 
@@ -893,126 +832,95 @@
     <main id="main-content">
 
 
-        <!-- Figure information -->
+        <!-- ========================================================
+             FIGURE INFORMATION
+             ======================================================== -->
 
-        <div id="figure-info">
+        <section id="figure-info">
 
-            <div class="info-topline">
+            <div id="figure-meta">
 
-                <div
-                    id="chapter-indicator"
-                    class="chapter-indicator"
-                >
+                <span id="chapter-label">
                     Chapter
-                </div>
+                </span>
 
-                <div
-                    id="page-indicator"
-                    class="page-indicator"
-                >
-                    p. --
-                </div>
+                <span id="page-label">
+                    Page
+                </span>
 
             </div>
-
 
             <h3 id="fig-title">
                 Select a Figure
             </h3>
 
-
             <p id="fig-caption">
-                Click on a figure in the sidebar to view the corresponding
-                figure or interactive visualization.
+                Select a figure from the index to explore the supplementary materials.
             </p>
-
 
             <div id="variant-tabs"></div>
 
-        </div>
+        </section>
 
 
 
-        <!-- Image toolbar -->
-
-        <div id="viewer-toolbar">
-
-            <div class="toolbar-group">
-
-                <button
-                    class="toolbar-button"
-                    onclick="changeZoom(-1)"
-                    title="Zoom out"
-                >
-                    −
-                </button>
-
-                <span id="zoom-level">
-                    100%
-                </span>
-
-                <button
-                    class="toolbar-button"
-                    onclick="changeZoom(1)"
-                    title="Zoom in"
-                >
-                    +
-                </button>
-
-                <button
-                    class="toolbar-button"
-                    onclick="resetZoom()"
-                    title="Reset zoom"
-                >
-                    ↺
-                </button>
-
-            </div>
-
-
-            <div class="toolbar-group">
-
-                <button
-                    class="toolbar-button"
-                    onclick="fitImage()"
-                    title="Fit image to viewer"
-                >
-                    Fit
-                </button>
-
-                <button
-                    class="toolbar-button"
-                    onclick="toggleFullscreen()"
-                    title="Fullscreen"
-                >
-                    ⛶
-                </button>
-
-            </div>
-
-        </div>
-
-
-
-        <!-- Viewer -->
+        <!-- ========================================================
+             VIEWER
+             ======================================================== -->
 
         <div id="viewer-container">
 
+
+            <!-- HTML FILE VIEWER -->
+
             <iframe
                 id="viewer"
-                src="about:blank"
-            ></iframe>
+                src="about:blank">
+            </iframe>
 
+
+            <!-- IMAGE VIEWER -->
 
             <div id="image-viewer">
 
                 <div id="image-stage">
 
                     <img
-                        id="displayed-image"
+                        id="figure-image"
                         src=""
-                        alt=""
-                    >
+                        alt="Thesis figure">
+
+                </div>
+
+
+                <!-- ZOOM CONTROLS -->
+
+                <div id="zoom-controls">
+
+                    <button
+                        class="zoom-btn"
+                        onclick="zoomOut()"
+                        title="Zoom out">
+                        −
+                    </button>
+
+                    <span id="zoom-level">
+                        100%
+                    </span>
+
+                    <button
+                        class="zoom-btn"
+                        onclick="zoomIn()"
+                        title="Zoom in">
+                        +
+                    </button>
+
+                    <button
+                        class="zoom-btn"
+                        onclick="resetZoom()"
+                        title="Reset zoom">
+                        ↺
+                    </button>
 
                 </div>
 
@@ -1021,49 +929,40 @@
         </div>
 
 
-
-        <!-- Previous / next -->
-
-        <div id="figure-navigation">
-
-            <button
-                id="previous-button"
-                class="figure-nav-button"
-                onclick="navigateFigure(-1)"
-            >
-                ← Previous
-            </button>
-
-            <button
-                id="next-button"
-                class="figure-nav-button"
-                onclick="navigateFigure(1)"
-            >
-                Next →
-            </button>
-
-        </div>
-
-
-
-        <!-- Footer -->
+        <!-- ========================================================
+             SMALL FOOTER
+             ======================================================== -->
 
         <footer id="site-footer">
 
-            <span>
-                #Feminismo: An exploration of Hispanic Cyberfeminism
-            </span>
+            <strong>#Feminismo</strong>
 
-            <span>
-                Pilar Rodríguez Mata · 2026
-            </span>
+            <span>·</span>
+
+            <span>Pilar del Carmen Rodríguez Mata</span>
+
+            <span>·</span>
+
+            <span>2026</span>
 
         </footer>
 
-
     </main>
 
-</section>
+</div>
+
+
+<!-- ================================================================
+     BACK TO THESIS INFORMATION
+     ================================================================ -->
+
+<button
+    id="back-button"
+    onclick="returnToLanding()">
+
+    ← Thesis information
+
+</button>
 
 
 
@@ -1072,103 +971,100 @@
 
 /* =================================================================
    FIGURE DATA
-   -----------------------------------------------------------------
+
+   Chapter divisions are based on the actual thesis pagination:
+
+   Chapter 3:
+       Figures 1-29
+       Chapter ends at approximately page 123.
+
+   Chapter 4:
+       Figures 30-39
+       Chapter ends at approximately page 195.
+
+   Chapter 5:
+       Figures 40-50
+       Continues through the end of the thesis.
+
    IMPORTANT:
-
-   The filenames below correspond to the files already uploaded to
-   the GitHub repository.
-
-   The data structure is intentionally kept separate from the user
-   interface so that figure metadata can be changed later without
-   having to rewrite the rest of the application.
+   The filenames below exactly match the files uploaded to GitHub.
+   Existing HTML files are NOT altered.
    ================================================================= */
 
 
 const figures = [
 
-    /* =============================================================
+    /* ============================================================
        CHAPTER 3
-       Figures 1-18
-       ============================================================= */
+       ============================================================ */
 
     {
-        group: "1",
-        numbers: "1",
-        chapter: "Chapter 3",
-        chapterClass: "chapter-3",
-        page: "51",
+        id: 1,
+        chapter: 3,
+        page: 51,
         file: "Figure 1.png",
         title: "Figure 1",
-        caption:
-            "Daily share of yearly tweet volume (%) in the original #Feminismo dataset, highlighting event peaks across time."
+        caption: "Daily share of yearly tweet volume (%) in the original #Feminismo dataset, highlighting event peaks across time."
     },
 
     {
-        group: "2",
-        numbers: "2",
-        chapter: "Chapter 3",
-        chapterClass: "chapter-3",
-        page: "51",
+        id: 2,
+        chapter: 3,
+        page: 51,
         file: "Figure 2.png",
         title: "Figure 2",
-        caption:
-            "Daily share of yearly tweet volume (%) in the full corpus dataset, highlighting event peaks across time."
+        caption: "Daily share of yearly tweet volume (%) in the full corpus dataset, highlighting event peaks across time."
     },
 
     {
-        group: "3",
-        numbers: "3",
-        chapter: "Chapter 3",
-        chapterClass: "chapter-3",
-        page: "61",
+        id: 3,
+        chapter: 3,
+        page: 61,
         file: "Figure 3.png",
         title: "Figure 3",
-        caption:
-            "Comparison of the most frequent n-grams in the March 8th (8M) (left) and November 25th (25N) (right) datasets."
+        caption: "Comparison of the most frequent n-grams in the March 8th (8M) (left) and November 25th (25N) (right) datasets."
     },
 
     {
-        group: "4-5",
-        numbers: "4 and 5",
-        chapter: "Chapter 3",
-        chapterClass: "chapter-3",
-        page: "62-63",
+        id: 4,
+        chapter: 3,
+        page: 62,
         file: "Figure 4.png",
-        title: "Figures 4 and 5",
-        caption:
-            "Figure 4: Temporal evolution of the top 10 verified unigrams in the March 8th (8M) dataset from 2010 to 2022. Figure 5: Temporal evolution of the top 10 verified unigrams in the November 25th (25N) dataset from 2010 to 2022."
+        title: "Figure 4",
+        caption: "Temporal evolution of the top 10 verified unigrams in the March 8th (8M) dataset from 2010 to 2022."
     },
 
     {
-        group: "6-7",
-        numbers: "6 and 7",
-        chapter: "Chapter 3",
-        chapterClass: "chapter-3",
+        id: 5,
+        chapter: 3,
+        page: 63,
+        file: "Figure 5.png",
+        title: "Figure 5",
+        caption: "Temporal evolution of the top 10 verified unigrams in the November 25th (25N) dataset from 2010 to 2022."
+    },
+
+    {
+        id: "6-7",
+        chapter: 3,
         page: "64-65",
         file: "Figure 6 and 7.html",
-        title: "Figures 6 and 7",
-        caption:
-            "Figure 6: Example screenshot from the interactive HTML visualization tool showing the evolution of the normalized frequency (per 10,000 tokens) of the lemma \"feliz\" (happy) in tweets published on March 8 (8M) and November 25 (25N) between 2010 and 2022. Figure 7: Example screenshot from the interactive HTML visualization tool showing the evolution of the normalized frequency (per 10,000 tokens) of the lemma \"libre\" (free) over the same period."
+        title: "Figures 6-7",
+        caption: "Interactive visualization showing the evolution of normalized frequency (per 10,000 tokens) of the lemmas \"feliz\" (happy) and \"libre\" (free) in tweets published on March 8 (8M) and November 25 (25N) between 2010 and 2022."
     },
 
     {
-        group: "8-9",
-        numbers: "8 and 9",
-        chapter: "Chapter 3",
-        chapterClass: "chapter-3",
-        page: "67",
+        id: "8-9-18",
+        chapter: 3,
+        page: "67-79",
         file: "Figure 8 and 9 and 17.html",
-        title: "Figures 8 and 9",
-        caption:
-            "Figure 8: Example screenshot from the interactive HTML visualization tool showing the evolution of the normalized hashtags (per 1000 tweets) of #Feminismo in tweets published on March 8 (8M) and November 25 (25N) between 2010 and 2022. Figure 9: Example screenshot from the interactive HTML visualization tool showing the evolution of the normalized hashtags (per 1000 tweets) of #NiUnaMenos over the same period."
+        title: "Figures 8, 9 and 18",
+        caption: "Interactive visualization showing the evolution of normalized hashtag frequency (per 1,000 tweets) for selected hashtags, including #Feminismo, #NiUnaMenos and #NosotrasParamos, in tweets published on March 8 (8M) and November 25 (25N) between 2010 and 2022."
     },
 
     {
-        group: "10",
-        numbers: "10",
-        chapter: "Chapter 3",
-        chapterClass: "chapter-3",
-        page: "69",
+        id: 10,
+        chapter: 3,
+        page: 69,
         variants: [
             {
                 name: "8M",
@@ -1180,16 +1076,13 @@ const figures = [
             }
         ],
         title: "Figure 10",
-        caption:
-            "Screenshots of the time-series visualization of the most prominent topics, as generated by BERTopic and manually annotated by the author, within the #Feminismo discourse on March 8th (8M) and November 25th (25N) for the years 2013 and 2018. Bubble size indicates the relative share of voice for each topic within the top 20 identified themes, excluding Topic -1, for that specific year."
+        caption: "Screenshots of the time-series visualization of the most prominent topics, as generated by BERTopic and manually annotated by the author, within the #Feminismo discourse on March 8th (8M) and November 25th (25N) for the years 2013 and 2018. Bubble size indicates the relative share of voice for each topic within the top 20 identified themes, excluding Topic -1, for that specific year."
     },
 
     {
-        group: "11",
-        numbers: "11",
-        chapter: "Chapter 3",
-        chapterClass: "chapter-3",
-        page: "70",
+        id: 11,
+        chapter: 3,
+        page: 70,
         variants: [
             {
                 name: "8M",
@@ -1201,1187 +1094,474 @@ const figures = [
             }
         ],
         title: "Figure 11",
-        caption:
-            "Screenshot of the HTML topic explorer that presents sample tweets catalogued by BERTopic automatically."
+        caption: "Screenshot of the HTML topic explorer that presents sample tweets catalogued by BERTopic automatically."
     },
 
     {
-        group: "12",
-        numbers: "12",
-        chapter: "Chapter 3",
-        chapterClass: "chapter-3",
-        page: "71",
+        id: 12,
+        chapter: 3,
+        page: 71,
         file: "Figure 12.png",
         title: "Figure 12",
-        caption:
-            "Temporal evolution of discourse similarity (2010–2022). A cosine similarity matrix comparing text content from March 8 (8M) and November 25 (25N) across twelve years. Values represent the percentage of similarity based on normalized TF-IDF representations of the textual data."
+        caption: "Temporal evolution of discourse similarity (2010-2022). A cosine similarity matrix comparing text content from March 8 (8M) and November 25 (25N) across twelve years. Values represent the percentage of similarity based on normalized TF-IDF representations of the textual data."
     },
 
     {
-        group: "13-14",
-        numbers: "13 and 14",
-        chapter: "Chapter 3",
-        chapterClass: "chapter-3",
-        page: "72",
+        id: 13,
+        chapter: 3,
+        page: 72,
         file: "Figure 13.png",
-        title: "Figures 13 and 14",
-        caption:
-            "Figure 13: Rolling Cohesion Analysis for the March 8th (8M) Dataset (± 2 Years). Figure 14: Rolling Cohesion Analysis for the November 25th (25N) Dataset (± 2 Years). Both plots contrast Local Similarity, calculated within a five-year rolling window, against Global Similarity across the remaining dataset."
+        title: "Figure 13",
+        caption: "Rolling Cohesion Analysis for the March 8th (8M) Dataset (± 2 Years). The plot contrasts Local Similarity, calculated within a five-year rolling window, against Global Similarity across the remaining dataset. The green shaded region indicates the \"High Cohesion Zone\" where local consistency exceeds the global baseline."
     },
 
     {
-        group: "15",
-        numbers: "15",
-        chapter: "Chapter 3",
-        chapterClass: "chapter-3",
-        page: "73",
+        id: 14,
+        chapter: 3,
+        page: 72,
+        file: "Figure 14.png",
+        title: "Figure 14",
+        caption: "Rolling Cohesion Analysis for the November 25th (25N) Dataset (± 2 Years). The plot contrasts Local Similarity, calculated within a five-year rolling window, against Global Similarity across the remaining dataset. The green shaded region indicates the \"High Cohesion Zone\" where local consistency exceeds the global baseline."
+    },
+
+    {
+        id: 15,
+        chapter: 3,
+        page: 73,
         file: "Figure 15.png",
         title: "Figure 15",
-        caption:
-            "Temporal evolution of Weighted Average Topic Similarity (2010–2022). The plot compares the internal semantic cohesion of 25N and 8M topics, as regenerated by BERTopic, over time."
+        caption: "Temporal evolution of Weighted Average Topic Similarity (2010-2022). The plot compares the internal semantic cohesion of 25N and 8M topics, as regenerated by BERTopic, over time. Values represent the weighted average cosine similarity, where higher scores indicate greater vocabulary overlap within the event's topics for that year."
     },
 
     {
-        group: "16",
-        numbers: "16",
-        chapter: "Chapter 3",
-        chapterClass: "chapter-3",
-        page: "74",
+        id: 16,
+        chapter: 3,
+        page: 74,
         file: "Figure 16.png",
         title: "Figure 16",
-        caption:
-            "Trend of Positive Sentiment Over Years (2010–2022). Temporal evolution of Positive Sentiment for March 8th (8M) and November 25th (25N). Solid lines represent linear regression trends."
+        caption: "Trend of Positive Sentiment Over Years (2010-2022). Temporal evolution of Positive Sentiment for March 8th (8M) and November 25th (25N). Solid lines represent linear regression trends, indicating the direction of change over the twelve-year period."
     },
 
     {
-        group: "17",
-        numbers: "17",
-        chapter: "Chapter 3",
-        chapterClass: "chapter-3",
-        page: "75",
+        id: 17,
+        chapter: 3,
+        page: 75,
         file: "Figure 17.png",
         title: "Figure 17",
-        caption:
-            "Trend of Net Sentiment Over Years (2010–2022). Net sentiment is calculated as the difference between positive and negative sentiment scores. Solid lines represent linear regression trends."
+        caption: "Trend of Net Sentiment Over Years (2010-2022). Net sentiment is calculated as the difference between positive and negative sentiment scores. Solid lines represent linear regression trends, indicating the direction of change over the twelve-year period."
     },
 
     {
-        group: "18",
-        numbers: "18",
-        chapter: "Chapter 3",
-        chapterClass: "chapter-3",
-        page: "79",
-        file: "Figure 8 and 9 and 17.html",
-        title: "Figure 18",
-        caption:
-            "Example screenshot from the interactive HTML visualization tool showing the evolution of the normalized hashtags (per 1000 tweets) of #NosotrasParamos in tweets published on March 8 (8M) and November 25 (25N) between 2010 and 2022."
-    },
-
-
-    /* =============================================================
-       CHAPTER 4
-       Figures 19-29
-       ============================================================= */
-
-    {
-        group: "19",
-        numbers: "19",
-        chapter: "Chapter 4",
-        chapterClass: "chapter-4",
-        page: "97",
+        id: 19,
+        chapter: 3,
+        page: 97,
         file: "Figure 19.html",
         title: "Figure 19",
-        caption:
-            "Screenshot of HTML tool that displays the top ten hashtags and their use during the peak connected to the hashtag #niunomenos, which coincides with Eileen Moreno’s denunciation of intimate partner violence in her relationship."
+        caption: "Screenshot of HTML tool displaying the top ten hashtags and their use during the peak connected to the hashtag #niunomenos, which coincides with Eileen Moreno's denunciation of intimate partner violence in her relationship."
     },
 
     {
-        group: "20",
-        numbers: "20",
-        chapter: "Chapter 4",
-        chapterClass: "chapter-4",
-        page: "99",
+        id: 20,
+        chapter: 3,
+        page: 99,
         file: "Figure 20.html",
         title: "Figure 20",
-        caption:
-            "Screenshot of interactive tool that displays 2D UMAP projection of high-dimensional embeddings, where distances reflect cosine similarity. The interactive tool lists all events that are in each cluster."
+        caption: "Screenshot of interactive tool displaying a 2D UMAP projection of high-dimensional embeddings, where distances reflect cosine similarity. The interactive tool lists all events that are in each cluster."
     },
 
     {
-        group: "21",
-        numbers: "21",
-        chapter: "Chapter 4",
-        chapterClass: "chapter-4",
-        page: "99",
+        id: 21,
+        chapter: 3,
+        page: 99,
         file: "Figure 21.html",
         title: "Figure 21",
-        caption:
-            "Screenshot of interactive tool that displays 2D UMAP projection of high-dimensional embeddings that were not March 8th or November 25th events. Distances reflect cosine similarity. The interactive tool lists all events that are in each cluster."
+        caption: "Screenshot of interactive tool displaying a 2D UMAP projection of high-dimensional embeddings that were not March 8th or November 25th events. Distances reflect cosine similarity. The interactive tool lists all events that are in each cluster."
     },
 
     {
-        group: "22",
-        numbers: "22",
-        chapter: "Chapter 4",
-        chapterClass: "chapter-4",
-        page: "100",
+        id: 22,
+        chapter: 3,
+        page: 100,
         file: "Figure 22.png",
         title: "Figure 22",
-        caption:
-            "Distribution of sentiment (negative, neutral, positive) across activist-related categories, ordered by decreasing proportion of negative discourse."
+        caption: "Distribution of sentiment, negative, neutral, and positive, across activist-related categories, ordered by decreasing proportion of negative discourse."
     },
 
     {
-        group: "23",
-        numbers: "23",
-        chapter: "Chapter 4",
-        chapterClass: "chapter-4",
-        page: "101",
+        id: 23,
+        chapter: 3,
+        page: 101,
         file: "Figure 23a.html",
         title: "Figure 23",
-        caption:
-            "Distribution of net sentiment scores (positive minus negative) for individual events across categories, with the dashed line marking neutrality (0)."
+        caption: "Distribution of net sentiment scores, positive minus negative, for individual events across categories, with the dashed line marking neutrality at 0."
     },
 
     {
-        group: "24",
-        numbers: "24",
-        chapter: "Chapter 4",
-        chapterClass: "chapter-4",
-        page: "101",
+        id: 24,
+        chapter: 3,
+        page: 101,
         file: "Figure 24.png",
         title: "Figure 24",
-        caption:
-            "Net sentiment over time (2010–2023), distinguishing between ritual events and sporadic events. The horizontal line at zero marks the neutral threshold, allowing direct assessment of shifts in tone."
+        caption: "Net sentiment over time (2010-2023), distinguishing between ritual events and sporadic events. The horizontal line at zero marks the neutral threshold, allowing direct assessment of shifts in tone."
     },
 
     {
-        group: "25",
-        numbers: "25",
-        chapter: "Chapter 4",
-        chapterClass: "chapter-4",
-        page: "102",
+        id: 25,
+        chapter: 3,
+        page: 102,
         file: "Figure 25.png",
         title: "Figure 25",
-        caption:
-            "Box plots comparing temporal activity patterns between ritual and sporadic events, showing anticipation, peak concentration, and post-peak discussion."
+        caption: "Box plots comparing temporal activity patterns between ritual and sporadic events, showing anticipation, peak concentration, and post-peak discussion."
     },
 
     {
-        group: "26",
-        numbers: "26",
-        chapter: "Chapter 4",
-        chapterClass: "chapter-4",
-        page: "103",
+        id: 26,
+        chapter: 3,
+        page: 103,
         file: "Figure 26.html",
         title: "Figure 26",
-        caption:
-            "Scatter plot of connected participation across events, showing the share of participants engaged in mention interactions over time for ritual and sporadic events."
+        caption: "Scatter plot of connected participation across events, showing the share of participants engaged in mention interactions over time for ritual and sporadic events."
     },
 
     {
-        group: "27-28",
-        numbers: "27 and 28",
-        chapter: "Chapter 4",
-        chapterClass: "chapter-4",
+        id: "27-28",
+        chapter: 3,
         page: "105-106",
         file: "Figure 27 and 28.html",
-        title: "Figures 27 and 28",
-        caption:
-            "Figure 27: Screenshots from network mapping tool of April 2nd, 2019, concerning anti-feminist sentiment following the suicide of Armando Vega Gil after being accused of sexual abuse, and December 30th, 2020, when abortion law was approved in Argentina. Figure 28: Screenshots from the network mapping tool of March 8th, 2020, International Women’s Day, and December 30th, 2020, concerning the abortion movement in Spain."
+        title: "Figures 27-28",
+        caption: "Screenshots from the network mapping tool showing April 2nd, 2019, an anti-feminist sentiment event following the suicide of Armando Vega Gil after allegations of sexual abuse, December 30th, 2020, when abortion law was approved in Argentina, March 8th, 2020, International Women's Day, and December 30th, 2020, an abortion movement in Spain."
     },
 
     {
-        group: "29",
-        numbers: "29",
-        chapter: "Chapter 4",
-        chapterClass: "chapter-4",
-        page: "120",
+        id: 29,
+        chapter: 3,
+        page: 120,
         file: "Figure 29.png",
         title: "Figure 29",
-        caption:
-            "Distribution of country mentions across event categories, showing the proportion of references to each country within the discourse."
+        caption: "Distribution of country mentions across event categories, showing the proportion of references to each country within the discourse."
     },
 
 
-    /* =============================================================
-       CHAPTER 5
-       Figures 30-50
-       ============================================================= */
+    /* ============================================================
+       CHAPTER 4
+       ============================================================ */
 
     {
-        group: "30",
-        numbers: "30",
-        chapter: "Chapter 5",
-        chapterClass: "chapter-5",
-        page: "147",
+        id: 30,
+        chapter: 4,
+        page: 147,
         file: "Figure 30.html",
         title: "Figure 30",
-        caption:
-            "Screenshot from HTML tool showing the normalized frequency of the word Marido from 2010 to 2022."
+        caption: "Screenshot of HTML tool showing the normalized frequency of the word \"Marido\" from 2010 to 2022."
     },
 
     {
-        group: "31",
-        numbers: "31",
-        chapter: "Chapter 5",
-        chapterClass: "chapter-5",
-        page: "148",
+        id: 31,
+        chapter: 4,
+        page: 148,
         file: "Figure 31.html",
         title: "Figure 31",
-        caption:
-            "Screenshot from HTML tool showing the normalized frequency of the word Sororidad from 2010 to 2022."
+        caption: "Screenshot of HTML tool showing the normalized frequency of the word \"Sororidad\" from 2010 to 2022."
     },
 
     {
-        group: "32",
-        numbers: "32",
-        chapter: "Chapter 5",
-        chapterClass: "chapter-5",
-        page: "153",
+        id: 32,
+        chapter: 4,
+        page: 153,
         file: "Figure 32.html",
         title: "Figure 32",
-        caption:
-            "Normalized usage of each form of inclusive language from 2009 to 2022."
+        caption: "Normalized usage of each form of inclusive language from 2009 to 2022."
     },
 
     {
-        group: "33",
-        numbers: "33",
-        chapter: "Chapter 5",
-        chapterClass: "chapter-5",
-        page: "168",
+        id: 33,
+        chapter: 4,
+        page: 168,
         file: "Figure 33.png",
         title: "Figure 33",
-        caption:
-            "Examples of images that were uploaded by over 80 users."
+        caption: "Examples of images that were uploaded by over 80 users."
     },
 
     {
-        group: "34",
-        numbers: "34",
-        chapter: "Chapter 5",
-        chapterClass: "chapter-5",
-        page: "171",
+        id: 34,
+        chapter: 4,
+        page: 171,
         file: "Figure 34.png",
         title: "Figure 34",
-        caption:
-            "Image uploaded with the hashtag #abortolegal."
+        caption: "Image uploaded with the hashtag #abortolegal."
     },
 
     {
-        group: "35",
-        numbers: "35",
-        chapter: "Chapter 5",
-        chapterClass: "chapter-5",
-        page: "182",
+        id: 35,
+        chapter: 4,
+        page: 182,
         file: "Figure 35.png",
         title: "Figure 35",
-        caption:
-            "Evolution of textual emoticons over time."
+        caption: "Evolution of textual emoticons over time."
     },
 
     {
-        group: "36",
-        numbers: "36",
-        chapter: "Chapter 5",
-        chapterClass: "chapter-5",
-        page: "184",
+        id: 36,
+        chapter: 4,
+        page: 184,
         file: "Figure 36.png",
         title: "Figure 36",
-        caption:
-            "Normalized frequency of tweets that included media throughout the dataset."
+        caption: "Normalized frequency of tweets that included media throughout the dataset."
     },
 
     {
-        group: "37",
-        numbers: "37",
-        chapter: "Chapter 5",
-        chapterClass: "chapter-5",
-        page: "185",
+        id: 37,
+        chapter: 4,
+        page: 185,
         file: "Figure 37.png",
         title: "Figure 37",
-        caption:
-            "Evolution of images catalogued under the top 10 image description labels."
+        caption: "Evolution of images catalogued under the top 10 image description labels."
     },
 
     {
-        group: "38-39",
-        numbers: "38 and 39",
-        chapter: "Chapter 5",
-        chapterClass: "chapter-5",
+        id: "38-39",
+        chapter: 4,
         page: "188-189",
         file: "Figure 38 and 39.png",
-        title: "Figures 38 and 39",
-        caption:
-            "Figure 38: Colour Analysis Timeline which displays a pixel per image in the dataset with the most representative colour of each image. Figure 39: Zoom in to the Colour Analysis Timeline."
+        title: "Figures 38-39",
+        caption: "Colour Analysis Timeline displaying a pixel per image in the dataset with the most representative colour of each image, followed by a zoomed-in view of the timeline."
     },
 
+
+    /* ============================================================
+       CHAPTER 5
+       ============================================================ */
+
     {
-        group: "40",
-        numbers: "40",
-        chapter: "Chapter 5",
-        chapterClass: "chapter-5",
-        page: "208",
+        id: 40,
+        chapter: 5,
+        page: 208,
         file: "Figure 40.png",
         title: "Figure 40",
-        caption:
-            "Cultural Network of users and the domains they added to their tweets throughout the entire dataset."
+        caption: "Cultural Network of users and the domains they added to their tweets throughout the entire dataset."
     },
 
     {
-        group: "41",
-        numbers: "41",
-        chapter: "Chapter 5",
-        chapterClass: "chapter-5",
-        page: "209",
+        id: 41,
+        chapter: 5,
+        page: 209,
         file: "Figure 41.png",
         title: "Figure 41",
-        caption:
-            "Zoom in on green cluster where Spanish news domains are found."
+        caption: "Zoom in on the green cluster where Spanish news domains are found."
     },
 
     {
-        group: "42",
-        numbers: "42",
-        chapter: "Chapter 5",
-        chapterClass: "chapter-5",
-        page: "209",
+        id: 42,
+        chapter: 5,
+        page: 209,
         file: "Figure 42.png",
         title: "Figure 42",
-        caption:
-            "Zoom in on light pink cluster where Argentinian news domains are found. A group of users from the YouTube cluster, connecting to the Instagram cluster, is visible."
+        caption: "Zoom in on the light pink cluster where Argentinian news domains are found. A group of users from the YouTube cluster, connecting to the Instagram cluster, is visible."
     },
 
     {
-        group: "43-45",
-        numbers: "43, 44 and 45",
-        chapter: "Chapter 5",
-        chapterClass: "chapter-5",
+        id: "43-45",
+        chapter: 5,
         page: "225-229",
         file: "Figure 43, 44 an 45.html",
-        title: "Figures 43, 44 and 45",
-        caption:
-            "Figure 43: Screenshot of interactive News-Hashtag Network where nodes are news sites and edges indicate the hashtags they were tweeted with. Figure 44: Labelled zoom in on center of Hashtag News Network from Figure 43. Figure 45: Hashtag News Networks for Argentinian, Mexican and Spanish news domains."
+        title: "Figures 43-45",
+        caption: "Interactive News-Hashtag Network. Figure 43 shows the network where nodes are news sites and edges indicate the hashtags they were tweeted with. Figure 44 provides a labelled zoom in on the centre of the network. Figure 45 shows hashtag news networks for Argentinian, Mexican, and Spanish news domains."
     },
 
     {
-        group: "46",
-        numbers: "46",
-        chapter: "Chapter 5",
-        chapterClass: "chapter-5",
-        page: "230",
+        id: 46,
+        chapter: 5,
+        page: 230,
         file: "Figure 46.html",
         title: "Figure 46",
-        caption:
-            "Snapshots of the News-Hashtag Network in 2012, 2016 and 2022."
+        caption: "Snapshots of the News-Hashtag Network in 2012, 2016, and 2022."
     },
 
     {
-        group: "47",
-        numbers: "47",
-        chapter: "Chapter 5",
-        chapterClass: "chapter-5",
-        page: "231",
+        id: 47,
+        chapter: 5,
+        page: 231,
         file: "Figure 47.html",
         title: "Figure 47",
-        caption:
-            "User-News Network where the nodes are news domains and the edges represent a unique user tweeting two different domains."
+        caption: "User-News Network where the nodes are news domains and the edges represent a unique user tweeting two different domains."
     },
 
     {
-        group: "48",
-        numbers: "48",
-        chapter: "Chapter 5",
-        chapterClass: "chapter-5",
-        page: "233",
+        id: 48,
+        chapter: 5,
+        page: 233,
         file: "Figure 48.html",
         title: "Figure 48",
-        caption:
-            "UMAP visualization of news domains by textual similarity of tweets that include them."
+        caption: "UMAP visualization of news domains by textual similarity of tweets that include them."
     },
 
     {
-        group: "49",
-        numbers: "49",
-        chapter: "Chapter 5",
-        chapterClass: "chapter-5",
-        page: "245",
+        id: 49,
+        chapter: 5,
+        page: 245,
         file: "Figure 49.png",
         title: "Figure 49",
-        caption:
-            "Bipartite cultural network where nodes in pink represent channels that appear in various years after 2015, and nodes in green represent channels that have appeared in various years before and after 2015. User nodes are black."
+        caption: "Bipartite cultural network where nodes in pink represent channels that appear in various years after 2015, and nodes in green represent channels that have appeared in various years before and after 2015. User nodes are black."
     },
 
     {
-        group: "50",
-        numbers: "50",
-        chapter: "Chapter 5",
-        chapterClass: "chapter-5",
-        page: "246",
+        id: 50,
+        chapter: 5,
+        page: 246,
         file: "Figure 50.png",
         title: "Figure 50",
-        caption:
-            "Zoom in of bottom-right corner of Figure 48 where anti-feminist channels can be found."
+        caption: "Zoom in of the bottom-right corner of Figure 48 where anti-feminist channels can be found."
     }
 
 ];
 
 
-
 /* =================================================================
-   DOM ELEMENTS
+   UI ELEMENT REFERENCES
    ================================================================= */
 
-const landingPage =
-    document.getElementById("landing-page");
+const landingPage = document.getElementById("landing-page");
+const app = document.getElementById("app");
 
-const figureApp =
-    document.getElementById("figure-app");
+const container = document.getElementById("buttons-container");
 
-const buttonsContainer =
-    document.getElementById("buttons-container");
+const viewer = document.getElementById("viewer");
 
-const viewer =
-    document.getElementById("viewer");
+const imageViewer = document.getElementById("image-viewer");
+const figureImage = document.getElementById("figure-image");
 
-const imageViewer =
-    document.getElementById("image-viewer");
+const zoomControls = document.getElementById("zoom-controls");
+const zoomLevel = document.getElementById("zoom-level");
 
-const imageStage =
-    document.getElementById("image-stage");
+const titleLabel = document.getElementById("fig-title");
+const captionLabel = document.getElementById("fig-caption");
 
-const displayedImage =
-    document.getElementById("displayed-image");
+const chapterLabel = document.getElementById("chapter-label");
+const pageLabel = document.getElementById("page-label");
 
-const viewerToolbar =
-    document.getElementById("viewer-toolbar");
+const tabsContainer = document.getElementById("variant-tabs");
 
-const viewerContainer =
-    document.getElementById("viewer-container");
-
-const zoomLevel =
-    document.getElementById("zoom-level");
-
-const titleLabel =
-    document.getElementById("fig-title");
-
-const captionLabel =
-    document.getElementById("fig-caption");
-
-const chapterIndicator =
-    document.getElementById("chapter-indicator");
-
-const pageIndicator =
-    document.getElementById("page-indicator");
-
-const tabsContainer =
-    document.getElementById("variant-tabs");
-
-const previousButton =
-    document.getElementById("previous-button");
-
-const nextButton =
-    document.getElementById("next-button");
-
+const backButton = document.getElementById("back-button");
 
 
 /* =================================================================
    ZOOM STATE
-   -----------------------------------------------------------------
-   IMPORTANT:
 
-   Zoom is now represented as a percentage.
+   The image begins at 100%.
 
-   100 means the image's natural displayed size.
+   Unlike the previous implementation, zooming OUT can actually
+   decrease below 100%.
 
-   Values BELOW 100 are therefore genuine zoom-out states.
+   We allow:
+       50%
+       60%
+       70%
+       80%
+       90%
+       100%
+       110%
+       ...
+       300%
 
-   Values ABOVE 100 enlarge the image.
-
-   This avoids the previous bug where the minimum was effectively
-   locked at 100%.
+   The image's natural fit-to-viewer size is controlled separately
+   by CSS. The zoom percentage applies on top of that fitted size.
    ================================================================= */
 
 let currentZoom = 100;
 
-const MIN_ZOOM = 25;
-const MAX_ZOOM = 400;
-
-const ZOOM_STEPS = [
-    25,
-    50,
-    75,
-    100,
-    125,
-    150,
-    200,
-    250,
-    300,
-    400
-];
-
+const MIN_ZOOM = 50;
+const MAX_ZOOM = 300;
+const ZOOM_STEP = 10;
 
 
 /* =================================================================
-   BUILD SIDEBAR
-   -----------------------------------------------------------------
-   Chapter labels are inserted automatically whenever the chapter
-   changes.
-
-   Figures remain in numerical order.
+   OPEN THE INDEX
    ================================================================= */
 
-let previousChapter = null;
-
-figures.forEach((fig, index) => {
-
-    if (fig.chapter !== previousChapter) {
-
-        const chapterLabel =
-            document.createElement("div");
-
-        chapterLabel.className =
-            `chapter-label ${fig.chapterClass}`;
-
-        chapterLabel.innerText =
-            fig.chapter;
-
-        buttonsContainer.appendChild(
-            chapterLabel
-        );
-
-        previousChapter = fig.chapter;
-    }
-
-
-    const button =
-        document.createElement("button");
-
-    button.className =
-        `nav-btn ${fig.chapterClass}`;
-
-    button.innerHTML =
-        `<span class="figure-number">
-            Fig. ${fig.numbers}
-         </span>
-         ${fig.title.replace(/^Figures? /, "")}`;
-
-
-    button.onclick = function () {
-
-        loadFigure(index, button);
-
-    };
-
-
-    button.dataset.index = index;
-
-    buttonsContainer.appendChild(button);
-
-});
-
-
-
-/* =================================================================
-   ENTER FIGURE VIEW
-   ================================================================= */
-
-function enterFigures() {
+function openIndex() {
 
     landingPage.style.display = "none";
 
-    figureApp.classList.add("visible");
+    app.style.display = "flex";
 
-    /*
-     * We intentionally do NOT automatically open Figure 1 here.
-     * The user should see the figure interface first and choose
-     * whichever figure they want.
-     */
+    backButton.style.display = "block";
+
 }
-
 
 
 /* =================================================================
    RETURN TO LANDING PAGE
    ================================================================= */
 
-function returnHome() {
+function returnToLanding() {
 
-    figureApp.classList.remove("visible");
+    app.style.display = "none";
 
     landingPage.style.display = "flex";
 
-    /*
-     * Reset the viewer to a blank state so that returning to the
-     * figure section later starts cleanly.
-     */
-
-    viewer.src = "about:blank";
+    backButton.style.display = "none";
 
 }
 
 
-
 /* =================================================================
-   LOAD FIGURE
+   GET CHAPTER CLASS
    ================================================================= */
 
-function loadFigure(index, buttonElement) {
+function getChapterClass(chapter) {
 
-    const data = figures[index];
-
-
-    /* -------------------------------------------------------------
-       Update metadata
-       ------------------------------------------------------------- */
-
-    titleLabel.innerText =
-        data.title;
-
-    captionLabel.innerText =
-        data.caption;
-
-    chapterIndicator.innerText =
-        data.chapter;
-
-    pageIndicator.innerText =
-        `p. ${data.page}`;
-
-
-    /*
-     * Change the chapter indicator colour according to the chapter.
-     */
-
-    if (data.chapterClass === "chapter-3") {
-        chapterIndicator.style.color =
-            "var(--chapter-3)";
-    }
-
-    if (data.chapterClass === "chapter-4") {
-        chapterIndicator.style.color =
-            "var(--chapter-4)";
-    }
-
-    if (data.chapterClass === "chapter-5") {
-        chapterIndicator.style.color =
-            "var(--chapter-5)";
-    }
-
-
-
-    /* -------------------------------------------------------------
-       Clear variant tabs
-       ------------------------------------------------------------- */
-
-    tabsContainer.innerHTML = "";
-
-    tabsContainer.style.display = "none";
-
-
-
-    /* -------------------------------------------------------------
-       Determine whether this is an image or HTML visualization.
-       ------------------------------------------------------------- */
-
-    if (data.variants) {
-
-        /*
-         * Figures 10 and 11 have separate 8M and 25N HTML files.
-         */
-
-        tabsContainer.style.display = "flex";
-
-        data.variants.forEach(
-            (variant, variantIndex) => {
-
-                const tab =
-                    document.createElement("button");
-
-                tab.className =
-                    "variant-btn";
-
-                tab.innerText =
-                    variant.name;
-
-
-                tab.onclick = function () {
-
-                    setViewerContent(
-                        variant.url
-                    );
-
-
-                    document
-                        .querySelectorAll(
-                            ".variant-btn"
-                        )
-                        .forEach(
-                            btn =>
-                                btn.classList.remove(
-                                    "active-variant"
-                                )
-                        );
-
-
-                    tab.classList.add(
-                        "active-variant"
-                    );
-
-                };
-
-
-                tabsContainer.appendChild(tab);
-
-
-                /*
-                 * Automatically display the first variant.
-                 */
-
-                if (variantIndex === 0) {
-                    tab.click();
-                }
-
-            }
-        );
-
-    } else {
-
-        setViewerContent(data.file);
-
-    }
-
-
-
-    /* -------------------------------------------------------------
-       Active sidebar button
-       ------------------------------------------------------------- */
-
-    document
-        .querySelectorAll(".nav-btn")
-        .forEach(
-            button =>
-                button.classList.remove("active")
-        );
-
-
-    buttonElement.classList.add("active");
-
-
-
-    /* -------------------------------------------------------------
-       Previous / next buttons
-       ------------------------------------------------------------- */
-
-    previousButton.disabled =
-        index === 0;
-
-    nextButton.disabled =
-        index === figures.length - 1;
-
-
-    /*
-     * Store the currently selected figure.
-     */
-
-    window.currentFigureIndex =
-        index;
+    return `chapter-${chapter}`;
 
 }
 
 
-
 /* =================================================================
-   DISPLAY FILE
-   ================================================================= */
-
-function setViewerContent(url) {
-
-    /*
-     * Determine whether the file is an image.
-     */
-
-    const isImage =
-        /\.(jpeg|jpg|gif|png|webp|svg)$/i
-            .test(url);
-
-
-    if (isImage) {
-
-        /*
-         * Hide iframe.
-         */
-
-        viewer.style.display =
-            "none";
-
-
-        /*
-         * Show image viewer.
-         */
-
-        imageViewer.style.display =
-            "block";
-
-
-        viewerToolbar.classList.add(
-            "visible"
-        );
-
-
-        viewerContainer.classList.add(
-            "with-toolbar"
-        );
-
-
-        /*
-         * Load image.
-         */
-
-        displayedImage.src =
-            encodeURI(url);
-
-
-        /*
-         * Reset zoom whenever a new image is loaded.
-         */
-
-        displayedImage.onload =
-            function () {
-
-                fitImage();
-
-            };
-
-
-    } else {
-
-        /*
-         * Hide image viewer.
-         */
-
-        imageViewer.style.display =
-            "none";
-
-
-        /*
-         * Hide image controls.
-         */
-
-        viewerToolbar.classList.remove(
-            "visible"
-        );
-
-
-        viewerContainer.classList.remove(
-            "with-toolbar"
-        );
-
-
-        /*
-         * Show HTML iframe.
-         */
-
-        viewer.style.display =
-            "block";
-
-
-        viewer.src =
-            encodeURI(url);
-
-    }
-
-}
-
-
-
-/* =================================================================
-   ZOOM CONTROL
-   ================================================================= */
-
-/*
- * Change zoom by moving one step through the predefined zoom scale.
- *
- * direction:
- *     -1 = zoom out
- *     +1 = zoom in
- */
-
-function changeZoom(direction) {
-
-    let currentIndex =
-        ZOOM_STEPS.indexOf(
-            currentZoom
-        );
-
-
-    /*
-     * If the current zoom is somehow not exactly one of the standard
-     * steps, find the closest step instead of failing.
-     */
-
-    if (currentIndex === -1) {
-
-        let closestIndex = 0;
-
-        let smallestDifference =
-            Infinity;
-
-        ZOOM_STEPS.forEach(
-            (value, index) => {
-
-                const difference =
-                    Math.abs(
-                        value - currentZoom
-                    );
-
-                if (
-                    difference <
-                    smallestDifference
-                ) {
-
-                    smallestDifference =
-                        difference;
-
-                    closestIndex =
-                        index;
-                }
-
-            }
-        );
-
-        currentIndex =
-            closestIndex;
-    }
-
-
-    let newIndex =
-        currentIndex + direction;
-
-
-    /*
-     * Keep the zoom inside the allowed range.
-     */
-
-    newIndex =
-        Math.max(
-            0,
-            Math.min(
-                ZOOM_STEPS.length - 1,
-                newIndex
-            )
-        );
-
-
-    currentZoom =
-        ZOOM_STEPS[newIndex];
-
-
-    applyZoom();
-
-}
-
-
-
-/* =================================================================
-   APPLY ZOOM
+   SET IMAGE ZOOM
    ================================================================= */
 
 function applyZoom() {
 
-    /*
-     * The image's natural dimensions are multiplied by the zoom
-     * percentage.
-     *
-     * This is the critical difference from the previous version.
-     *
-     * 50% really means half-size.
-     * 100% means natural size.
-     * 200% means double size.
-     */
-
-    displayedImage.style.width =
-        `${displayedImage.naturalWidth *
-          currentZoom / 100}px`;
-
-
-    displayedImage.style.height =
-        `${displayedImage.naturalHeight *
-          currentZoom / 100}px`;
-
+    figureImage.style.transform =
+        `scale(${currentZoom / 100})`;
 
     zoomLevel.innerText =
         `${currentZoom}%`;
 
-
-    /*
-     * The stage is allowed to grow with the image so that the image
-     * can be scrolled when it becomes larger than the viewer.
-     */
-
-    imageStage.style.minWidth =
-        `${Math.max(
-            imageViewer.clientWidth - 50,
-            displayedImage.naturalWidth *
-                currentZoom / 100 +
-                50
-        )}px`;
-
-
-    imageStage.style.minHeight =
-        `${Math.max(
-            imageViewer.clientHeight - 50,
-            displayedImage.naturalHeight *
-                currentZoom / 100 +
-                50
-        )}px`;
-
 }
-
 
 
 /* =================================================================
-   FIT IMAGE
-   -----------------------------------------------------------------
-   Fits the entire image into the available viewer space.
-
-   Importantly, this can result in a zoom level below 100%.
+   ZOOM IN
    ================================================================= */
 
-function fitImage() {
-
-    if (
-        !displayedImage.naturalWidth ||
-        !displayedImage.naturalHeight
-    ) {
-        return;
-    }
-
-
-    const availableWidth =
-        imageViewer.clientWidth - 60;
-
-    const availableHeight =
-        imageViewer.clientHeight - 60;
-
-
-    const widthRatio =
-        availableWidth /
-        displayedImage.naturalWidth;
-
-    const heightRatio =
-        availableHeight /
-        displayedImage.naturalHeight;
-
-
-    const fittingScale =
-        Math.min(
-            widthRatio,
-            heightRatio
-        );
-
-
-    /*
-     * Convert the scale into a percentage.
-     */
-
-    let targetZoom =
-        Math.round(
-            fittingScale * 100
-        );
-
-
-    /*
-     * Clamp the result to our allowed range.
-     */
-
-    targetZoom =
-        Math.max(
-            MIN_ZOOM,
-            Math.min(
-                MAX_ZOOM,
-                targetZoom
-            )
-        );
-
-
-    /*
-     * Find the closest predefined zoom level.
-     */
-
-    let closest =
-        ZOOM_STEPS[0];
-
-    let smallestDifference =
-        Math.abs(
-            targetZoom -
-            closest
-        );
-
-
-    ZOOM_STEPS.forEach(
-        value => {
-
-            const difference =
-                Math.abs(
-                    targetZoom -
-                    value
-                );
-
-            if (
-                difference <
-                smallestDifference
-            ) {
-
-                closest =
-                    value;
-
-                smallestDifference =
-                    difference;
-            }
-
-        }
-    );
-
+function zoomIn() {
 
     currentZoom =
-        closest;
-
+        Math.min(
+            MAX_ZOOM,
+            currentZoom + ZOOM_STEP
+        );
 
     applyZoom();
 
-
-
-    /*
-     * Scroll back to the centre after fitting.
-     */
-
-    requestAnimationFrame(
-        () => {
-
-            imageViewer.scrollLeft =
-                Math.max(
-                    0,
-                    (
-                        imageViewer.scrollWidth -
-                        imageViewer.clientWidth
-                    ) / 2
-                );
-
-            imageViewer.scrollTop =
-                Math.max(
-                    0,
-                    (
-                        imageViewer.scrollHeight -
-                        imageViewer.clientHeight
-                    ) / 2
-                );
-
-        }
-    );
-
 }
 
+
+/* =================================================================
+   ZOOM OUT
+   ================================================================= */
+
+function zoomOut() {
+
+    currentZoom =
+        Math.max(
+            MIN_ZOOM,
+            currentZoom - ZOOM_STEP
+        );
+
+    applyZoom();
+
+}
 
 
 /* =================================================================
@@ -2397,265 +1577,306 @@ function resetZoom() {
 }
 
 
-
 /* =================================================================
-   FULLSCREEN
+   LOAD IMAGE
+
+   Images use the dedicated image viewer rather than an iframe.
+
+   This gives us:
+   - clean white background
+   - proper contain behaviour
+   - button-controlled zoom
+   - no grey iframe appearance
    ================================================================= */
 
-function toggleFullscreen() {
+function loadImage(url) {
 
-    const element =
-        document.getElementById(
-            "viewer-container"
-        );
+    viewer.style.display = "none";
+
+    imageViewer.style.display = "block";
+
+    zoomControls.style.display = "flex";
+
+    figureImage.src = url;
+
+    currentZoom = 100;
+
+    applyZoom();
+
+}
 
 
-    if (
-        !document.fullscreenElement
-    ) {
+/* =================================================================
+   LOAD HTML
 
-        if (
-            element.requestFullscreen
-        ) {
+   HTML files continue to load exactly as before, using the iframe.
 
-            element.requestFullscreen();
+   No changes are made to the uploaded HTML files themselves.
+   ================================================================= */
 
-        }
+function loadHTML(url) {
+
+    imageViewer.style.display = "none";
+
+    zoomControls.style.display = "none";
+
+    viewer.style.display = "block";
+
+    viewer.srcdoc = "";
+
+    viewer.src = url;
+
+}
+
+
+/* =================================================================
+   SMART VIEWER
+
+   Automatically determines whether the file is an image or HTML.
+   ================================================================= */
+
+function setViewerContent(url) {
+
+    const isImage =
+        /\.(jpeg|jpg|gif|png|webp|svg)$/i.test(url);
+
+    if (isImage) {
+
+        loadImage(url);
 
     } else {
 
-        if (
-            document.exitFullscreen
-        ) {
-
-            document.exitFullscreen();
-
-        }
+        loadHTML(url);
 
     }
 
 }
 
 
-
 /* =================================================================
-   PREVIOUS / NEXT FIGURE
+   BUILD SIDEBAR
+
+   The sidebar is generated from the figure data.
+
+   Chapter headers are inserted automatically when the chapter
+   changes.
+
+   IMPORTANT:
+   Chapter membership is explicitly stored in each figure object,
+   so it cannot accidentally be inferred from the figure number.
    ================================================================= */
 
-function navigateFigure(direction) {
+let currentChapter = null;
 
-    if (
-        typeof window.currentFigureIndex !==
-        "number"
-    ) {
-        return;
-    }
+figures.forEach((fig, index) => {
 
+    /* ------------------------------------------------------------
+       Add chapter separator whenever the chapter changes.
+       ------------------------------------------------------------ */
 
-    const newIndex =
-        window.currentFigureIndex +
-        direction;
+    if (fig.chapter !== currentChapter) {
 
+        currentChapter = fig.chapter;
 
-    if (
-        newIndex < 0 ||
-        newIndex >= figures.length
-    ) {
-        return;
-    }
+        const chapterHeader =
+            document.createElement("div");
 
+        chapterHeader.className =
+            `chapter-header ${getChapterClass(fig.chapter)}`;
 
-    const buttons =
-        document.querySelectorAll(
-            ".nav-btn"
-        );
+        chapterHeader.innerText =
+            `Chapter ${fig.chapter}`;
 
-
-    /*
-     * There are chapter labels among the sidebar children, so use the
-     * data-index attribute rather than relying on child positions.
-     */
-
-    const targetButton =
-        Array.from(buttons)
-            .find(
-                button =>
-                    Number(
-                        button.dataset.index
-                    ) === newIndex
-            );
-
-
-    if (targetButton) {
-
-        targetButton.click();
-
-        /*
-         * Scroll the selected sidebar item into view.
-         */
-
-        targetButton.scrollIntoView({
-            behavior: "smooth",
-            block: "nearest"
-        });
+        container.appendChild(chapterHeader);
 
     }
 
-}
 
+    /* ------------------------------------------------------------
+       Create figure button.
+       ------------------------------------------------------------ */
+
+    const btn =
+        document.createElement("button");
+
+    btn.className =
+        `nav-btn ${getChapterClass(fig.chapter)}`;
+
+    btn.innerText =
+        fig.title;
+
+    btn.onclick = () =>
+        loadFigure(index, btn);
+
+    container.appendChild(btn);
+
+});
 
 
 /* =================================================================
-   KEYBOARD SHORTCUTS
-   -----------------------------------------------------------------
-   These are deliberately limited to useful navigation commands.
-   No mouse-wheel zoom is implemented.
+   LOAD FIGURE
    ================================================================= */
 
-document.addEventListener(
-    "keydown",
-    function(event) {
+function loadFigure(index, btnElement) {
 
-        /*
-         * Do not intercept keyboard commands when the user is typing
-         * inside another element.
-         */
-
-        if (
-            event.target.tagName === "INPUT" ||
-            event.target.tagName === "TEXTAREA"
-        ) {
-            return;
-        }
+    const data = figures[index];
 
 
-        /*
-         * Escape returns from fullscreen naturally.
-         */
+    /* ------------------------------------------------------------
+       Update chapter information.
+       ------------------------------------------------------------ */
 
-        if (
-            event.key === "Escape"
-        ) {
-            return;
-        }
+    chapterLabel.innerText =
+        `Chapter ${data.chapter}`;
 
-
-        /*
-         * Arrow keys navigate figures.
-         */
-
-        if (
-            event.key === "ArrowLeft"
-        ) {
-
-            navigateFigure(-1);
-
-        }
-
-        if (
-            event.key === "ArrowRight"
-        ) {
-
-            navigateFigure(1);
-
-        }
+    chapterLabel.className =
+        getChapterClass(data.chapter);
 
 
-        /*
-         * + and - control image zoom.
-         */
+    /* ------------------------------------------------------------
+       Update page information.
+       ------------------------------------------------------------ */
 
-        if (
-            event.key === "+" ||
-            event.key === "="
-        ) {
-
-            changeZoom(1);
-
-        }
-
-        if (
-            event.key === "-" ||
-            event.key === "_"
-        ) {
-
-            changeZoom(-1);
-
-        }
-
-    }
-);
+    pageLabel.innerText =
+        `Page ${data.page}`;
 
 
+    /* ------------------------------------------------------------
+       Update title and description.
+       ------------------------------------------------------------ */
 
-/* =================================================================
-   WINDOW RESIZE
-   -----------------------------------------------------------------
-   When the browser is resized, the image should continue to behave
-   sensibly. We only refit automatically when the image is currently
-   at a fitted zoom level.
-   ================================================================= */
+    titleLabel.innerText =
+        data.title;
 
-let previousWindowWidth =
-    window.innerWidth;
-
-let previousWindowHeight =
-    window.innerHeight;
+    captionLabel.innerText =
+        data.caption;
 
 
-window.addEventListener(
-    "resize",
-    function() {
+    /* ------------------------------------------------------------
+       Reset variant tabs.
+       ------------------------------------------------------------ */
 
-        /*
-         * Do not automatically change the user's zoom after they
-         * have manually zoomed.
-         */
+    tabsContainer.innerHTML = "";
 
-        if (
-            imageViewer.style.display ===
-            "block" &&
-            displayedImage.src
-        ) {
+    tabsContainer.style.display = "none";
 
-            /*
-             * Only refit if the viewer was already being displayed at
-             * a small/fitted scale.
-             */
 
-            if (
-                currentZoom <= 75
-            ) {
+    /* ------------------------------------------------------------
+       Handle figures with A/B HTML variants.
 
-                fitImage();
+       At present, only Figures 10 and 11 use this mechanism.
+       ------------------------------------------------------------ */
+
+    if (data.variants) {
+
+        tabsContainer.style.display = "flex";
+
+        data.variants.forEach((variant, vIndex) => {
+
+            const tabBtn =
+                document.createElement("button");
+
+            tabBtn.className =
+                "variant-btn";
+
+            tabBtn.innerText =
+                variant.name;
+
+            tabBtn.onclick = () => {
+
+                setViewerContent(
+                    variant.url
+                );
+
+                document
+                    .querySelectorAll(".variant-btn")
+                    .forEach(button =>
+                        button.classList.remove(
+                            "active-variant"
+                        )
+                    );
+
+                tabBtn.classList.add(
+                    "active-variant"
+                );
+
+            };
+
+            tabsContainer.appendChild(tabBtn);
+
+
+            /* Automatically display first variant. */
+
+            if (vIndex === 0) {
+
+                tabBtn.click();
 
             }
 
-        }
+        });
 
+    } else {
 
-        previousWindowWidth =
-            window.innerWidth;
+        /* --------------------------------------------------------
+           Standard single-file figure.
+           -------------------------------------------------------- */
 
-        previousWindowHeight =
-            window.innerHeight;
+        setViewerContent(data.file);
 
     }
-);
 
+
+    /* ------------------------------------------------------------
+       Update active sidebar button.
+       ------------------------------------------------------------ */
+
+    document
+        .querySelectorAll(".nav-btn")
+        .forEach(button =>
+            button.classList.remove("active")
+        );
+
+    btnElement.classList.add("active");
+
+}
 
 
 /* =================================================================
-   INITIAL STATE
+   KEYBOARD ACCESSIBILITY
+
+   Zoom can also be controlled with:
+       +  Zoom in
+       -  Zoom out
+       0  Reset zoom
+
+   This does NOT use mouse-wheel zoom, as requested.
    ================================================================= */
 
-/*
- * The site deliberately opens on the landing page.
- *
- * No figure is automatically selected.
- */
+document.addEventListener("keydown", function(event) {
 
-window.currentFigureIndex = null;
+    if (app.style.display !== "flex") {
+        return;
+    }
+
+    if (event.key === "+" || event.key === "=") {
+
+        zoomIn();
+
+    }
+
+    else if (event.key === "-" || event.key === "_") {
+
+        zoomOut();
+
+    }
+
+    else if (event.key === "0") {
+
+        resetZoom();
+
+    }
+
+});
 
 
 </script>
