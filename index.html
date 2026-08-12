@@ -1,1 +1,2097 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+    <!-- ============================================================
+         BASIC DOCUMENT INFORMATION
+         ============================================================ -->
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        #Feminismo: An Exploration of Hispanic Cyberfeminism
+    </title>
+
+
+    <style>
+
+        /* ============================================================
+           GLOBAL PAGE STYLING
+           ============================================================ */
+
+        body {
+
+            font-family:
+                'Segoe UI',
+                Tahoma,
+                Geneva,
+                Verdana,
+                sans-serif;
+
+            margin: 0;
+
+            display: flex;
+
+            height: 100vh;
+
+            background-color: #f4f4f9;
+        }
+
+
+        /* ============================================================
+           LEFT SIDEBAR
+           ============================================================ */
+
+        #sidebar {
+
+            width: 310px;
+
+            background-color: #2c3e50;
+
+            color: white;
+
+            overflow-y: auto;
+
+            display: flex;
+
+            flex-direction: column;
+
+            border-right: 1px solid #ddd;
+
+            flex-shrink: 0;
+        }
+
+
+        /* Main title in sidebar */
+
+        #sidebar h2 {
+
+            text-align: center;
+
+            padding: 20px 15px 10px 15px;
+
+            margin: 0;
+
+            background-color: #1a252f;
+
+            font-size: 1.15rem;
+
+            line-height: 1.35;
+        }
+
+
+        /* Subtitle underneath sidebar title */
+
+        .sidebar-subtitle {
+
+            text-align: center;
+
+            padding: 0 15px 18px 15px;
+
+            background-color: #1a252f;
+
+            color: #bdc3c7;
+
+            font-size: 0.78rem;
+
+            line-height: 1.4;
+        }
+
+
+        /* ============================================================
+           CHAPTER HEADERS
+
+           These are intentionally NOT clickable.
+
+           They simply divide the figure list into chapters.
+           ============================================================ */
+
+        .chapter-header {
+
+            padding: 12px 18px 10px 18px;
+
+            margin: 0;
+
+            font-size: 0.78rem;
+
+            font-weight: bold;
+
+            letter-spacing: 0.08em;
+
+            text-transform: uppercase;
+
+            color: white;
+
+            border-top: 1px solid rgba(255,255,255,0.12);
+        }
+
+
+        /* Chapter 3 */
+
+        .chapter-header.chapter-3 {
+
+            background-color: #486581;
+        }
+
+
+        /* Chapter 4 */
+
+        .chapter-header.chapter-4 {
+
+            background-color: #625777;
+        }
+
+
+        /* Chapter 5 */
+
+        .chapter-header.chapter-5 {
+
+            background-color: #5d7055;
+        }
+
+
+        /* ============================================================
+           FIGURE NAVIGATION BUTTONS
+           ============================================================ */
+
+        .nav-btn {
+
+            background: none;
+
+            border: none;
+
+            color: #ecf0f1;
+
+            padding: 11px 16px;
+
+            text-align: left;
+
+            cursor: pointer;
+
+            border-bottom: 1px solid #34495e;
+
+            transition:
+                background-color 0.2s,
+                border-left-color 0.2s;
+
+            font-size: 0.86rem;
+
+            line-height: 1.35;
+
+            border-left: 5px solid transparent;
+        }
+
+
+        .nav-btn:hover {
+
+            background-color: #34495e;
+        }
+
+
+        /* ------------------------------------------------------------
+           Chapter 3 figure accent
+           ------------------------------------------------------------ */
+
+        .nav-btn.chapter3 {
+
+            border-left-color: #75aadb;
+        }
+
+
+        .nav-btn.active.chapter3 {
+
+            background-color: #3f79a8;
+
+            color: white;
+
+            font-weight: bold;
+        }
+
+
+        /* ------------------------------------------------------------
+           Chapter 4 figure accent
+           ------------------------------------------------------------ */
+
+        .nav-btn.chapter4 {
+
+            border-left-color: #b59bd1;
+        }
+
+
+        .nav-btn.active.chapter4 {
+
+            background-color: #706287;
+
+            color: white;
+
+            font-weight: bold;
+        }
+
+
+        /* ------------------------------------------------------------
+           Chapter 5 figure accent
+           ------------------------------------------------------------ */
+
+        .nav-btn.chapter5 {
+
+            border-left-color: #9ab68b;
+        }
+
+
+        .nav-btn.active.chapter5 {
+
+            background-color: #667c5d;
+
+            color: white;
+
+            font-weight: bold;
+        }
+
+
+        /* ============================================================
+           RIGHT-HAND MAIN CONTENT
+           ============================================================ */
+
+        #main-content {
+
+            flex-grow: 1;
+
+            display: flex;
+
+            flex-direction: column;
+
+            padding: 20px;
+
+            box-sizing: border-box;
+
+            height: 100vh;
+
+            min-width: 0;
+
+            overflow: hidden;
+        }
+
+
+        /* ============================================================
+           THESIS INFORMATION HEADER
+           ============================================================ */
+
+        #thesis-info {
+
+            background-color: white;
+
+            padding: 18px 22px;
+
+            margin-bottom: 15px;
+
+            border-radius: 8px;
+
+            box-shadow:
+                0 2px 5px rgba(0,0,0,0.05);
+
+            flex-shrink: 0;
+
+            text-align: center;
+        }
+
+
+        /* Thesis title */
+
+        #thesis-title {
+
+            margin: 0 0 10px 0;
+
+            color: #2c3e50;
+
+            font-size: 1.25rem;
+
+            line-height: 1.35;
+        }
+
+
+        /* Author */
+
+        #thesis-author {
+
+            margin: 4px 0;
+
+            color: #34495e;
+
+            font-size: 0.95rem;
+
+            font-weight: 600;
+        }
+
+
+        /* Supervisor */
+
+        #thesis-supervisor {
+
+            margin: 3px 0 10px 0;
+
+            color: #555;
+
+            font-size: 0.86rem;
+        }
+
+
+        /* Program and degree information */
+
+        #thesis-details {
+
+            margin: 0;
+
+            color: #666;
+
+            font-size: 0.80rem;
+
+            line-height: 1.45;
+        }
+
+
+        /* Copyright */
+
+        #thesis-copyright {
+
+            margin: 8px 0 0 0;
+
+            color: #888;
+
+            font-size: 0.72rem;
+        }
+
+
+        /* ============================================================
+           FIGURE INFORMATION PANEL
+           ============================================================ */
+
+        #figure-info {
+
+            margin-bottom: 15px;
+
+            background-color: white;
+
+            padding: 15px 20px;
+
+            border-radius: 8px;
+
+            box-shadow:
+                0 2px 5px rgba(0,0,0,0.05);
+
+            flex-shrink: 0;
+        }
+
+
+        /* Figure title */
+
+        #fig-title {
+
+            margin: 0 0 6px 0;
+
+            color: #2c3e50;
+
+            font-size: 1.12rem;
+
+            line-height: 1.35;
+        }
+
+
+        /* Chapter and page metadata */
+
+        #fig-meta {
+
+            margin: 0 0 8px 0;
+
+            color: #7f8c8d;
+
+            font-size: 0.80rem;
+
+            font-weight: 600;
+        }
+
+
+        /* Figure description */
+
+        #fig-caption {
+
+            margin: 0;
+
+            color: #666;
+
+            font-size: 0.91rem;
+
+            line-height: 1.5;
+        }
+
+
+        /* ============================================================
+           VARIANT TABS
+
+           These appear when a figure has multiple associated
+           versions, such as:
+
+               8M
+               25N
+
+           or:
+
+               Figure 27
+               Figure 28
+           ============================================================ */
+
+        #variant-tabs {
+
+            margin-top: 12px;
+
+            display: none;
+
+            gap: 8px;
+
+            flex-wrap: wrap;
+        }
+
+
+        .variant-btn {
+
+            background-color: #ecf0f1;
+
+            border: 1px solid #bdc3c7;
+
+            padding: 6px 14px;
+
+            border-radius: 4px;
+
+            cursor: pointer;
+
+            font-size: 0.82rem;
+
+            color: #2c3e50;
+
+            transition:
+                background-color 0.2s;
+        }
+
+
+        .variant-btn:hover {
+
+            background-color: #dfe6e9;
+        }
+
+
+        .variant-btn.active-variant {
+
+            background-color: #2c3e50;
+
+            color: white;
+
+            border-color: #2c3e50;
+        }
+
+
+        /* ============================================================
+           FIGURE VIEWER
+           ============================================================ */
+
+        #viewer-container {
+
+            flex-grow: 1;
+
+            background-color: white;
+
+            border: 1px solid #ddd;
+
+            border-radius: 8px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 4px 6px rgba(0,0,0,0.05);
+
+            position: relative;
+
+            min-height: 0;
+        }
+
+
+        /* The iframe fills the entire viewer */
+
+        iframe {
+
+            width: 100%;
+
+            height: 100%;
+
+            border: none;
+
+            display: block;
+        }
+
+
+        /* ============================================================
+           RESPONSIVE DESIGN
+           ============================================================ */
+
+        @media (max-width: 900px) {
+
+            #sidebar {
+
+                width: 260px;
+            }
+
+
+            #main-content {
+
+                padding: 12px;
+            }
+
+
+            #thesis-info {
+
+                padding: 14px 16px;
+            }
+
+
+            #thesis-title {
+
+                font-size: 1.05rem;
+            }
+
+
+            #fig-title {
+
+                font-size: 1rem;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+
+<body>
+
+
+    <!-- ============================================================
+         SIDEBAR
+         ============================================================ -->
+
+    <div id="sidebar">
+
+
+        <!-- Main sidebar heading -->
+
+        <h2>
+            Thesis Supplementary Materials
+        </h2>
+
+
+        <!-- Sidebar description -->
+
+        <div class="sidebar-subtitle">
+            Interactive figures and visualizations
+        </div>
+
+
+        <!-- JavaScript will insert chapters and figures here -->
+
+        <div id="buttons-container"></div>
+
+
+    </div>
+
+
+
+    <!-- ============================================================
+         MAIN CONTENT
+         ============================================================ -->
+
+    <div id="main-content">
+
+
+        <!-- ========================================================
+             THESIS INFORMATION
+             ======================================================== -->
+
+        <div id="thesis-info">
+
+
+            <h1 id="thesis-title">
+                #Feminismo: An exploration of Hispanic Cyberfeminism
+                from 2009 to 2022
+            </h1>
+
+
+            <p id="thesis-author">
+                Pilar del Carmen Rodríguez Mata
+            </p>
+
+
+            <p id="thesis-supervisor">
+                Supervisor: Juan Luis Suárez
+            </p>
+
+
+            <p id="thesis-details">
+
+                Graduate Program in Hispanic Studies<br>
+
+                A thesis submitted in partial fulfillment of the
+                requirements for the degree of Doctor of Philosophy<br>
+
+                The School of Graduate and Postdoctoral Studies<br>
+
+                The University of Western Ontario<br>
+
+                London, Ontario, Canada<br>
+
+                August 2026
+
+            </p>
+
+
+            <p id="thesis-copyright">
+                © Pilar Rodríguez Mata 2026
+            </p>
+
+
+        </div>
+
+
+
+        <!-- ========================================================
+             CURRENT FIGURE INFORMATION
+             ======================================================== -->
+
+        <div id="figure-info">
+
+
+            <h3 id="fig-title">
+                Select a Figure
+            </h3>
+
+
+            <div id="fig-meta">
+                Select a figure from the sidebar
+            </div>
+
+
+            <p id="fig-caption">
+                Click on a figure in the sidebar to view the
+                supplementary material.
+            </p>
+
+
+            <!--
+                Multiple-file figure tabs will be inserted here.
+            -->
+
+            <div id="variant-tabs"></div>
+
+
+        </div>
+
+
+
+        <!-- ========================================================
+             FIGURE VIEWER
+             ======================================================== -->
+
+        <div id="viewer-container">
+
+
+            <iframe
+                id="viewer"
+                src="about:blank">
+            </iframe>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <script>
+
+
+        /* ============================================================
+           FIGURE DATA
+
+           Each object contains:
+
+               id
+                   The figure number in the thesis.
+
+               chapter
+                   The chapter containing the figure.
+
+               page
+                   The thesis page.
+
+               file
+                   The filename for a single-file figure.
+
+               variants
+                   Used when a figure has multiple files.
+
+               title
+                   Figure title shown in the sidebar and information
+                   panel.
+
+               caption
+                   Full figure description from the thesis.
+           ============================================================ */
+
+
+        const figures = [
+
+
+            /* ========================================================
+               CHAPTER 3
+               ======================================================== */
+
+
+            {
+                id: 1,
+                chapter: 3,
+                page: 51,
+                file: "Figure 1.png",
+
+                title:
+                    "Figure 1: Daily Share of Yearly Tweet Volume",
+
+                caption:
+                    "Daily share of yearly tweet volume (%) in the original #Feminismo dataset, highlighting event peaks across time."
+            },
+
+
+            {
+                id: 2,
+                chapter: 3,
+                page: 51,
+                file: "Figure 2.png",
+
+                title:
+                    "Figure 2: Daily Share of Yearly Tweet Volume",
+
+                caption:
+                    "Daily share of yearly tweet volume (%) in the full corpus dataset, highlighting event peaks across time."
+            },
+
+
+            {
+                id: 3,
+                chapter: 3,
+                page: 61,
+                file: "Figure 3.png",
+
+                title:
+                    "Figure 3: Frequent N-Grams",
+
+                caption:
+                    "Comparison of the most frequent n-grams in the March 8th (8M) (left) and November 25th (25N) (right) datasets."
+            },
+
+
+            {
+                id: 4,
+                chapter: 3,
+                page: 62,
+                file: "Figure 4.png",
+
+                title:
+                    "Figure 4: Top 10 Unigrams (8M)",
+
+                caption:
+                    "Temporal evolution of the top 10 verified unigrams in the March 8th (8M) dataset from 2010 to 2022."
+            },
+
+
+            {
+                id: 5,
+                chapter: 3,
+                page: 63,
+                file: "Figure 5.png",
+
+                title:
+                    "Figure 5: Top 10 Unigrams (25N)",
+
+                caption:
+                    "Temporal evolution of the top 10 verified unigrams in the November 25th (25N) dataset from 2010 to 2022."
+            },
+
+
+            /* --------------------------------------------------------
+               FIGURES 6 AND 7
+               -------------------------------------------------------- */
+
+            {
+                id: 6,
+                chapter: 3,
+                page: 64,
+
+                variants: [
+                    {
+                        name: "Figure 6",
+                        url: "Figure 6 and 7.html"
+                    },
+                    {
+                        name: "Figure 7",
+                        url: "Figure 6 and 7.html"
+                    }
+                ],
+
+                title:
+                    "Figure 6: Frequency of “Feliz” (Happy)",
+
+                caption:
+                    "Example screenshot from the interactive HTML visualization tool showing the evolution of the normalized frequency (per 10,000 tokens) of the lemma “feliz” (happy) in tweets published on March 8 (8M) and November 25 (25N) between 2010 and 2022."
+            },
+
+
+            {
+                id: 7,
+                chapter: 3,
+                page: 65,
+
+                variants: [
+                    {
+                        name: "Figure 6",
+                        url: "Figure 6 and 7.html"
+                    },
+                    {
+                        name: "Figure 7",
+                        url: "Figure 6 and 7.html"
+                    }
+                ],
+
+                title:
+                    "Figure 7: Frequency of “Libre” (Free)",
+
+                caption:
+                    "Example screenshot from the interactive HTML visualization tool showing the evolution of the normalized frequency (per 10,000 tokens) of the lemma “libre” (free) in tweets published on March 8 (8M) and November 25 (25N) between 2010 and 2022."
+            },
+
+
+            /* --------------------------------------------------------
+               FIGURES 8, 9 AND 18
+               -------------------------------------------------------- */
+
+            {
+                id: 8,
+                chapter: 3,
+                page: 67,
+
+                variants: [
+                    {
+                        name: "Figure 8",
+                        url: "Figure 8 and 9 and 18.html"
+                    },
+                    {
+                        name: "Figure 9",
+                        url: "Figure 8 and 9 and 18.html"
+                    },
+                    {
+                        name: "Figure 18",
+                        url: "Figure 8 and 9 and 18.html"
+                    }
+                ],
+
+                title:
+                    "Figure 8: #Feminismo Evolution",
+
+                caption:
+                    "Example screenshot from the interactive HTML visualization tool showing the evolution of the normalized hashtags (per 1000 tweets) of #Feminismo in tweets published on March 8 (8M) and November 25 (25N) between 2010 and 2022."
+            },
+
+
+            {
+                id: 9,
+                chapter: 3,
+                page: 67,
+
+                variants: [
+                    {
+                        name: "Figure 8",
+                        url: "Figure 8 and 9 and 18.html"
+                    },
+                    {
+                        name: "Figure 9",
+                        url: "Figure 8 and 9 and 18.html"
+                    },
+                    {
+                        name: "Figure 18",
+                        url: "Figure 8 and 9 and 18.html"
+                    }
+                ],
+
+                title:
+                    "Figure 9: #NiUnaMenos Evolution",
+
+                caption:
+                    "Example screenshot from the interactive HTML visualization tool showing the evolution of the normalized hashtags (per 1000 tweets) in tweets published on March 8 (8M) and November 25 (25N) between 2010 and 2022."
+            },
+
+
+            {
+                id: 10,
+                chapter: 3,
+                page: 69,
+
+                variants: [
+                    {
+                        name: "8M",
+                        url: "Figure 10a.html"
+                    },
+                    {
+                        name: "25N",
+                        url: "Figure 10b.html"
+                    }
+                ],
+
+                title:
+                    "Figure 10: Prominent Topics Time-Series",
+
+                caption:
+                    "Screenshots of the time-series visualization of the most prominent topics, as generated by BERTopic and manually annotated by the author, within the #Feminismo discourse on March 8th (8M) and November 25th (25N) for the years 2013 and 2018. Bubble size indicates the relative share of voice for each topic within the top 20 identified themes, excluding Topic -1, for that specific year."
+            },
+
+
+            {
+                id: 11,
+                chapter: 3,
+                page: 70,
+
+                variants: [
+                    {
+                        name: "8M",
+                        url: "Figure 11a.html"
+                    },
+                    {
+                        name: "25N",
+                        url: "Figure 11b.html"
+                    }
+                ],
+
+                title:
+                    "Figure 11: Topic Explorer",
+
+                caption:
+                    "Screenshot of HTML topic explorer that presents sample tweets catalogued by BERTopic automatically."
+            },
+
+
+            {
+                id: 12,
+                chapter: 3,
+                page: 71,
+                file: "Figure 12.png",
+
+                title:
+                    "Figure 12: Discourse Similarity Matrix",
+
+                caption:
+                    "Temporal evolution of discourse similarity (2010–2022). A cosine similarity matrix comparing text content from March 8 (8M) and November 25 (25N) across twelve years. Values represent the percentage of similarity based on normalized TF-IDF representations of the textual data."
+            },
+
+
+            {
+                id: 13,
+                chapter: 3,
+                page: 72,
+                file: "Figure 13.png",
+
+                title:
+                    "Figure 13: Rolling Cohesion (8M)",
+
+                caption:
+                    "Rolling Cohesion Analysis for the March 8th (8M) Dataset (± 2 Years). The plot contrasts Local Similarity, calculated within a five-year rolling window, against Global Similarity across the remaining dataset. The green shaded region indicates the “High Cohesion Zone” where local consistency exceeds the global baseline."
+            },
+
+
+            {
+                id: 14,
+                chapter: 3,
+                page: 72,
+                file: "Figure 14.png",
+
+                title:
+                    "Figure 14: Rolling Cohesion (25N)",
+
+                caption:
+                    "Rolling Cohesion Analysis for the November 25th (25N) Dataset (± 2 Years). The plot contrasts Local Similarity, calculated within a five-year rolling window, against Global Similarity across the remaining dataset. The green shaded region indicates the “High Cohesion Zone” where local consistency exceeds the global baseline."
+            },
+
+
+            {
+                id: 15,
+                chapter: 3,
+                page: 73,
+                file: "Figure 15.png",
+
+                title:
+                    "Figure 15: Weighted Topic Similarity",
+
+                caption:
+                    "Temporal evolution of Weighted Average Topic Similarity (2010–2022). The plot compares the internal semantic cohesion of 25N and 8M topics, as regenerated by BERTopic, over time. Values represent the weighted average cosine similarity, where higher scores indicate greater vocabulary overlap within the event's topics for that year."
+            },
+
+
+            {
+                id: 16,
+                chapter: 3,
+                page: 74,
+                file: "Figure 16.png",
+
+                title:
+                    "Figure 16: Positive Sentiment Trend",
+
+                caption:
+                    "Trend of Positive Sentiment Over Years (2010–2022). Temporal evolution of Positive Sentiment for March 8th (8M) and November 25th (25N). Solid lines represent linear regression trends, indicating the direction of change over the twelve-year period."
+            },
+
+
+            {
+                id: 17,
+                chapter: 3,
+                page: 75,
+                file: "Figure 17.png",
+
+                title:
+                    "Figure 17: Net Sentiment Trend",
+
+                caption:
+                    "Trend of Net Sentiment Over Years (2010–2022). Net sentiment is calculated as the difference between positive and negative sentiment scores. Solid lines represent linear regression trends, indicating the direction of change over the twelve-year period."
+            },
+
+
+            {
+                id: 18,
+                chapter: 3,
+                page: 79,
+
+                variants: [
+                    {
+                        name: "Figure 8",
+                        url: "Figure 8 and 9 and 18.html"
+                    },
+                    {
+                        name: "Figure 9",
+                        url: "Figure 8 and 9 and 18.html"
+                    },
+                    {
+                        name: "Figure 18",
+                        url: "Figure 8 and 9 and 18.html"
+                    }
+                ],
+
+                title:
+                    "Figure 18: #NosotrasParamos Evolution",
+
+                caption:
+                    "Example screenshot from the interactive HTML visualization tool showing the evolution of the normalized hashtags (per 1000 tweets) of #NosotrasParamos in tweets published on March 8 (8M) and November 25 (25N) between 2010 and 2022."
+            },
+
+
+            {
+                id: 19,
+                chapter: 3,
+                page: 97,
+                file: "Figure 19.html",
+
+                title:
+                    "Figure 19: #NiUnaMenos Peak Hashtags",
+
+                caption:
+                    "Screenshot of HTML tool that displays the top ten hashtags and their use during the peak connected to the hashtag #niunomenos, which coincides with Eileen Moreno’s denunciation of intimate partner violence in her relationship."
+            },
+
+
+            {
+                id: 20,
+                chapter: 3,
+                page: 99,
+                file: "Figure 20.html",
+
+                title:
+                    "Figure 20: Event UMAP",
+
+                caption:
+                    "Screenshot of interactive tool that displays a 2D UMAP projection of high-dimensional embeddings, where distances reflect cosine similarity. The interactive tool lists all events that are in each cluster."
+            },
+
+
+            {
+                id: 21,
+                chapter: 3,
+                page: 99,
+                file: "Figure 21.html",
+
+                title:
+                    "Figure 21: Non-Ritual Event UMAP",
+
+                caption:
+                    "Screenshot of interactive tool that displays a 2D UMAP projection of high-dimensional embeddings that were not March 8th or November 25th events. Distances reflect cosine similarity. The interactive tool lists all events that are in each cluster."
+            },
+
+
+            {
+                id: 22,
+                chapter: 3,
+                page: 100,
+                file: "Figure 22.png",
+
+                title:
+                    "Figure 22: Sentiment by Activist Category",
+
+                caption:
+                    "Distribution of sentiment, negative, neutral, and positive, across activist-related categories, ordered by decreasing proportion of negative discourse."
+            },
+
+
+            {
+                id: 23,
+                chapter: 3,
+                page: 101,
+                file: "Figure 23a.png",
+
+                title:
+                    "Figure 23: Net Sentiment Distribution",
+
+                caption:
+                    "Distribution of net sentiment scores, positive minus negative, for individual events across categories, with the dashed line marking neutrality (0)."
+            },
+
+
+            {
+                id: 24,
+                chapter: 3,
+                page: 101,
+                file: "Figure 24.png",
+
+                title:
+                    "Figure 24: Net Sentiment Over Time",
+
+                caption:
+                    "Net sentiment over time (2010–2023), distinguishing between ritual events and sporadic events. The horizontal line at zero marks the neutral threshold, allowing direct assessment of shifts in tone."
+            },
+
+
+            {
+                id: 25,
+                chapter: 3,
+                page: 102,
+                file: "Figure 25.png",
+
+                title:
+                    "Figure 25: Temporal Activity Patterns",
+
+                caption:
+                    "Box plots comparing temporal activity patterns between ritual and sporadic events, showing anticipation, peak concentration, and post-peak discussion."
+            },
+
+
+            {
+                id: 26,
+                chapter: 3,
+                page: 103,
+                file: "Figure 26.png",
+
+                title:
+                    "Figure 26: Connected Participation",
+
+                caption:
+                    "Scatter plot of connected participation across events, showing the share of participants engaged in mention interactions over time for ritual and sporadic events."
+            },
+
+
+            {
+                id: 27,
+                chapter: 3,
+                page: 105,
+
+                variants: [
+                    {
+                        name: "Figure 27",
+                        url: "Figure 27 and 28.html"
+                    },
+                    {
+                        name: "Figure 28",
+                        url: "Figure 27 and 28.html"
+                    }
+                ],
+
+                title:
+                    "Figure 27: Network Mapping",
+
+                caption:
+                    "Screenshots from the network mapping tool of April 2nd, 2019, representing anti-feminist sentiment due to the suicide of Armando Vega Gil after being accused of sexual abuse, and December 30th, 2020, when abortion law was approved in Argentina."
+            },
+
+
+            {
+                id: 28,
+                chapter: 3,
+                page: 106,
+
+                variants: [
+                    {
+                        name: "Figure 27",
+                        url: "Figure 27 and 28.html"
+                    },
+                    {
+                        name: "Figure 28",
+                        url: "Figure 27 and 28.html"
+                    }
+                ],
+
+                title:
+                    "Figure 28: Network Mapping",
+
+                caption:
+                    "Screenshots from the network mapping tool of March 8th, 2020, International Women’s Day, and December 30th, 2020, representing the abortion movement in Spain where the vice-president and an NGO were both co-mentioned throughout the event to try to stop the abortion law being proposed."
+            },
+
+
+            {
+                id: 29,
+                chapter: 3,
+                page: 120,
+                file: "Figure 29.png",
+
+                title:
+                    "Figure 29: Country Mentions",
+
+                caption:
+                    "Distribution of country mentions across event categories, showing the proportion of references to each country within the discourse."
+            },
+
+
+            /* ========================================================
+               CHAPTER 4
+               ======================================================== */
+
+
+            {
+                id: 30,
+                chapter: 4,
+                page: 147,
+                file: "Figure 30.png",
+
+                title:
+                    "Figure 30: Frequency of “Marido”",
+
+                caption:
+                    "Screenshot from HTML tool showing the normalized frequency of the word marido from 2010 to 2022."
+            },
+
+
+            {
+                id: 31,
+                chapter: 4,
+                page: 148,
+                file: "Figure 31.png",
+
+                title:
+                    "Figure 31: Frequency of “Sororidad”",
+
+                caption:
+                    "Screenshot from HTML tool showing the normalized frequency of the word sororidad from 2010 to 2022."
+            },
+
+
+            {
+                id: 32,
+                chapter: 4,
+                page: 153,
+                file: "Figure 32.png",
+
+                title:
+                    "Figure 32: Inclusive Language",
+
+                caption:
+                    "Normalized usage of each form of inclusive language from 2009 to 2022."
+            },
+
+
+            {
+                id: 33,
+                chapter: 4,
+                page: 168,
+                file: "Figure 33.png",
+
+                title:
+                    "Figure 33: Repeated Images",
+
+                caption:
+                    "Examples of images that were uploaded by over 80 users."
+            },
+
+
+            {
+                id: 34,
+                chapter: 4,
+                page: 171,
+                file: "Figure 34.png",
+
+                title:
+                    "Figure 34: #abortolegal",
+
+                caption:
+                    "Image uploaded with the hashtag #abortolegal."
+            },
+
+
+            {
+                id: 35,
+                chapter: 4,
+                page: 182,
+                file: "Figure 35.png",
+
+                title:
+                    "Figure 35: Textual Emoticons",
+
+                caption:
+                    "Evolution of textual emoticons over time."
+            },
+
+
+            {
+                id: 36,
+                chapter: 4,
+                page: 184,
+                file: "Figure 36.png",
+
+                title:
+                    "Figure 36: Media Use",
+
+                caption:
+                    "Normalized frequency of tweets that included media throughout the dataset."
+            },
+
+
+            {
+                id: 37,
+                chapter: 4,
+                page: 185,
+                file: "Figure 37.png",
+
+                title:
+                    "Figure 37: Image Description Labels",
+
+                caption:
+                    "Evolution of images catalogued under the top 10 image description labels."
+            },
+
+
+            {
+                id: 38,
+                chapter: 4,
+                page: 188,
+                file: "Figure 38 and 39.png",
+
+                title:
+                    "Figure 38: Colour Analysis Timeline",
+
+                caption:
+                    "Colour Analysis Timeline displaying a pixel per image in the dataset with the most representative colour of each image."
+            },
+
+
+            {
+                id: 39,
+                chapter: 4,
+                page: 189,
+                file: "Figure 38 and 39.png",
+
+                title:
+                    "Figure 39: Colour Analysis Timeline, Zoom",
+
+                caption:
+                    "Zoom in to the Colour Analysis Timeline."
+            },
+
+
+            /* ========================================================
+               CHAPTER 5
+               ======================================================== */
+
+
+            {
+                id: 40,
+                chapter: 5,
+                page: 208,
+                file: "Figure 40.png",
+
+                title:
+                    "Figure 40: Cultural Network",
+
+                caption:
+                    "Cultural Network of users and the domains they added to their tweets throughout the entire dataset."
+            },
+
+
+            {
+                id: 41,
+                chapter: 5,
+                page: 209,
+                file: "Figure 41.png",
+
+                title:
+                    "Figure 41: Spanish News Cluster",
+
+                caption:
+                    "Zoom in on the green cluster where Spanish news domains are found."
+            },
+
+
+            {
+                id: 42,
+                chapter: 5,
+                page: 209,
+                file: "Figure 42.png",
+
+                title:
+                    "Figure 42: Argentinian News Cluster",
+
+                caption:
+                    "Zoom in on the light pink cluster where Argentinian news domains are found. A group of users from the YouTube cluster, connecting to the Instagram cluster, is visible."
+            },
+
+
+            {
+                id: 43,
+                chapter: 5,
+                page: 225,
+
+                variants: [
+                    {
+                        name: "Figure 43",
+                        url: "Figure 43, 44 an 45.html"
+                    },
+                    {
+                        name: "Figure 44",
+                        url: "Figure 43, 44 an 45.html"
+                    },
+                    {
+                        name: "Figure 45",
+                        url: "Figure 43, 44 an 45.html"
+                    }
+                ],
+
+                title:
+                    "Figure 43: News-Hashtag Network",
+
+                caption:
+                    "Screenshot of interactive News-Hashtag Network where nodes are news sites and edges indicate the hashtags they were tweeted with. The colours represent the countries the news site is from."
+            },
+
+
+            {
+                id: 44,
+                chapter: 5,
+                page: 227,
+
+                variants: [
+                    {
+                        name: "Figure 43",
+                        url: "Figure 43, 44 an 45.html"
+                    },
+                    {
+                        name: "Figure 44",
+                        url: "Figure 43, 44 an 45.html"
+                    },
+                    {
+                        name: "Figure 45",
+                        url: "Figure 43, 44 an 45.html"
+                    }
+                ],
+
+                title:
+                    "Figure 44: News-Hashtag Network, Labelled Zoom",
+
+                caption:
+                    "Labelled zoom in on the center of the Hashtag News Network from Figure 43."
+            },
+
+
+            {
+                id: 45,
+                chapter: 5,
+                page: 229,
+
+                variants: [
+                    {
+                        name: "Figure 43",
+                        url: "Figure 43, 44 an 45.html"
+                    },
+                    {
+                        name: "Figure 44",
+                        url: "Figure 43, 44 an 45.html"
+                    },
+                    {
+                        name: "Figure 45",
+                        url: "Figure 43, 44 an 45.html"
+                    }
+                ],
+
+                title:
+                    "Figure 45: Regional Hashtag News Networks",
+
+                caption:
+                    "Hashtag News Networks for Argentinian, Mexican and Spanish news domains."
+            },
+
+
+            {
+                id: 46,
+                chapter: 5,
+                page: 230,
+                file: "Figure 46.html",
+
+                title:
+                    "Figure 46: News-Hashtag Network Over Time",
+
+                caption:
+                    "Snapshots of the News-Hashtag Network in 2012, 2016 and 2022."
+            },
+
+
+            {
+                id: 47,
+                chapter: 5,
+                page: 231,
+                file: "Figure 47.html",
+
+                title:
+                    "Figure 47: User-News Network",
+
+                caption:
+                    "User-News Network where the nodes are news domains and the edges represent a unique user tweeting two different domains."
+            },
+
+
+            {
+                id: 48,
+                chapter: 5,
+                page: 233,
+                file: "Figure 48.html",
+
+                title:
+                    "Figure 48: UMAP of News Domains",
+
+                caption:
+                    "UMAP visualization of news domains by textual similarity of tweets that include them."
+            },
+
+
+            {
+                id: 49,
+                chapter: 5,
+                page: 245,
+                file: "Figure 49.png",
+
+                title:
+                    "Figure 49: Bipartite Cultural Network",
+
+                caption:
+                    "Bipartite cultural network where nodes in pink represent channels that appear in various years after 2015, and nodes in green represent channels that have appeared in various years before and after 2015. User nodes are black."
+            },
+
+
+            {
+                id: 50,
+                chapter: 5,
+                page: 246,
+                file: "Figure 50.png",
+
+                title:
+                    "Figure 50: Anti-Feminist Channels",
+
+                caption:
+                    "Zoom in of the bottom-right corner of Figure 48 where anti-feminist channels can be found."
+            }
+
+        ];
+
+
+
+        /* ============================================================
+           FIND THE HTML ELEMENTS WE NEED TO CONTROL
+           ============================================================ */
+
+        const container =
+            document.getElementById(
+                'buttons-container'
+            );
+
+
+        const viewer =
+            document.getElementById(
+                'viewer'
+            );
+
+
+        const titleLabel =
+            document.getElementById(
+                'fig-title'
+            );
+
+
+        const metaLabel =
+            document.getElementById(
+                'fig-meta'
+            );
+
+
+        const captionLabel =
+            document.getElementById(
+                'fig-caption'
+            );
+
+
+        const tabsContainer =
+            document.getElementById(
+                'variant-tabs'
+            );
+
+
+
+        /* ============================================================
+           LOAD A FILE INTO THE VIEWER
+
+           Images are wrapped inside a small HTML document so that
+           they automatically scale to fit the viewer.
+
+           HTML files are loaded directly into the iframe.
+           ============================================================ */
+
+        function setViewerContent(url) {
+
+
+            /* Determine whether the file is an image */
+
+            const isImage =
+                /\.(jpeg|jpg|gif|png|svg|webp)$/i.test(
+                    url
+                );
+
+
+            if (isImage) {
+
+
+                /*
+                    Remove any previous src attribute.
+                */
+
+                viewer.removeAttribute(
+                    'src'
+                );
+
+
+                /*
+                    Create a small HTML document around the image.
+
+                    max-width and max-height prevent the image from
+                    being cropped.
+                */
+
+                viewer.srcdoc = `
+
+                    <!DOCTYPE html>
+
+                    <html>
+
+                    <body
+                        style="
+                            margin:0;
+                            padding:0;
+                            height:100vh;
+                            display:flex;
+                            justify-content:center;
+                            align-items:center;
+                            background:#ffffff;
+                            overflow:hidden;
+                        "
+                    >
+
+                        <img
+                            src="${url}"
+                            style="
+                                max-width:100%;
+                                max-height:100%;
+                                object-fit:contain;
+                            "
+                        >
+
+                    </body>
+
+                    </html>
+
+                `;
+
+            }
+
+
+            else {
+
+
+                /*
+                    HTML visualization.
+
+                    Remove the image wrapper and load the HTML
+                    visualization directly.
+                */
+
+                viewer.removeAttribute(
+                    'srcdoc'
+                );
+
+
+                viewer.src =
+                    url;
+            }
+
+        }
+
+
+
+        /* ============================================================
+           CREATE CHAPTER HEADER
+           ============================================================ */
+
+        function createChapterHeader(
+            chapterNumber
+        ) {
+
+
+            const header =
+                document.createElement(
+                    'div'
+                );
+
+
+            header.className =
+                `chapter-header chapter-${chapterNumber}`;
+
+
+            header.innerText =
+                `Chapter ${chapterNumber}`;
+
+
+            container.appendChild(
+                header
+            );
+
+        }
+
+
+
+        /* ============================================================
+           BUILD THE SIDEBAR
+           
+           The figure list is already in numerical order.
+
+           Whenever the chapter changes, a non-clickable chapter
+           header is inserted.
+           ============================================================ */
+
+        let currentChapter = null;
+
+
+        figures.forEach(
+            (fig, index) => {
+
+
+                /*
+                    Add a chapter header when we reach a new chapter.
+                */
+
+                if (
+                    fig.chapter !==
+                    currentChapter
+                ) {
+
+                    currentChapter =
+                        fig.chapter;
+
+
+                    createChapterHeader(
+                        currentChapter
+                    );
+                }
+
+
+                /*
+                    Create the figure button.
+                */
+
+                const btn =
+                    document.createElement(
+                        'button'
+                    );
+
+
+                /*
+                    Add the chapter class so that the button receives
+                    the appropriate colour.
+                */
+
+                btn.className =
+                    `nav-btn chapter${fig.chapter}`;
+
+
+                /*
+                    Display the figure number and a short title.
+                */
+
+                btn.innerText =
+                    fig.title;
+
+
+                /*
+                    Clicking the button loads the figure.
+                */
+
+                btn.onclick =
+                    () =>
+                        loadFigure(
+                            index,
+                            btn
+                        );
+
+
+                /*
+                    Add button to sidebar.
+                */
+
+                container.appendChild(
+                    btn
+                );
+
+
+                /*
+                    Automatically open Figure 1 when the site loads.
+                */
+
+                if (index === 0) {
+
+                    btn.click();
+                }
+
+            }
+        );
+
+
+
+        /* ============================================================
+           LOAD A FIGURE
+           ============================================================ */
+
+        function loadFigure(
+            index,
+            btnElement
+        ) {
+
+
+            const data =
+                figures[index];
+
+
+            /* --------------------------------------------------------
+               Update figure title
+               -------------------------------------------------------- */
+
+            titleLabel.innerText =
+                data.title;
+
+
+            /* --------------------------------------------------------
+               Update chapter and page
+               -------------------------------------------------------- */
+
+            metaLabel.innerText =
+                `Chapter ${data.chapter}  |  Thesis page ${data.page}`;
+
+
+            /* --------------------------------------------------------
+               Update figure description
+               -------------------------------------------------------- */
+
+            captionLabel.innerText =
+                data.caption;
+
+
+            /* --------------------------------------------------------
+               Clear any old variant tabs
+               -------------------------------------------------------- */
+
+            tabsContainer.innerHTML =
+                '';
+
+
+            tabsContainer.style.display =
+                'none';
+
+
+
+            /* --------------------------------------------------------
+               Handle figures with multiple variants
+               -------------------------------------------------------- */
+
+            if (
+                data.variants
+            ) {
+
+
+                /*
+                    Show the tabs.
+                */
+
+                tabsContainer.style.display =
+                    'flex';
+
+
+                /*
+                    Create one tab for each variant.
+                */
+
+                data.variants.forEach(
+                    (
+                        variant,
+                        variantIndex
+                    ) => {
+
+
+                        const tabBtn =
+                            document.createElement(
+                                'button'
+                            );
+
+
+                        tabBtn.className =
+                            'variant-btn';
+
+
+                        tabBtn.innerText =
+                            variant.name;
+
+
+                        /*
+                            Clicking a tab loads the corresponding
+                            HTML file.
+                        */
+
+                        tabBtn.onclick =
+                            () => {
+
+
+                                setViewerContent(
+                                    variant.url
+                                );
+
+
+                                /*
+                                    Remove active state from all
+                                    variant tabs.
+                                */
+
+                                document
+                                    .querySelectorAll(
+                                        '.variant-btn'
+                                    )
+                                    .forEach(
+                                        button =>
+                                            button.classList.remove(
+                                                'active-variant'
+                                            )
+                                    );
+
+
+                                /*
+                                    Highlight selected tab.
+                                */
+
+                                tabBtn.classList.add(
+                                    'active-variant'
+                                );
+
+                            };
+
+
+                        /*
+                            Add the tab to the information panel.
+                        */
+
+                        tabsContainer.appendChild(
+                            tabBtn
+                        );
+
+
+                        /*
+                            Automatically select the first
+                            variant.
+                        */
+
+                        if (
+                            variantIndex === 0
+                        ) {
+
+                            tabBtn.click();
+                        }
+
+                    }
+                );
+
+            }
+
+
+            /* --------------------------------------------------------
+               Handle ordinary single-file figures
+               -------------------------------------------------------- */
+
+            else {
+
+
+                setViewerContent(
+                    data.file
+                );
+
+            }
+
+
+
+            /* --------------------------------------------------------
+               Update active sidebar button
+               -------------------------------------------------------- */
+
+            document
+                .querySelectorAll(
+                    '.nav-btn'
+                )
+                .forEach(
+                    button =>
+                        button.classList.remove(
+                            'active'
+                        )
+                );
+
+
+            btnElement.classList.add(
+                'active'
+            );
+
+        }
+
+    </script>
+
+</body>
+
+</html>
