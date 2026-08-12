@@ -183,7 +183,6 @@
 
         /* ============================================================
            CHAPTER HEADERS
-           These are deliberately NOT clickable.
            ============================================================ */
 
         .chapter-header {
@@ -710,7 +709,13 @@
                 </iframe>
 
                 <div id="image-viewer">
-                    <img id="display-image" src="" alt="">
+
+                    <img
+                        id="display-image"
+                        src=""
+                        alt=""
+                    >
+
                 </div>
 
                 <div id="zoom-controls">
@@ -758,7 +763,9 @@
                     Pilar del Carmen Rodríguez Mata
                 </span>
 
-                <button id="back-to-title" onclick="returnToTitle()">
+                <button
+                    id="back-to-title"
+                    onclick="returnToTitle()">
                     ← Thesis information
                 </button>
 
@@ -774,24 +781,23 @@
 
         /* ============================================================
            FIGURE DATA
-           
-           Chapter divisions:
-           
-           Chapter 3 = Figures 1-29
-           Chapter 4 = Figures 30-39
-           Chapter 5 = Figures 40-50
 
-           Consecutive figures are grouped only when requested:
-           
-           6 + 7
-           8 + 9
-           27 + 28
-           43 + 44 + 45
+           The figure data itself is unchanged.
 
-           Figures 10 and 11 have internal A/B tabs.
+           Direct links are handled separately below, so individual
+           figures can have their own URL even when several figures
+           share the same underlying HTML file.
 
-           Figure 18 remains a separate index item even though its
-           underlying HTML file is shared with Figures 8, 9 and 17.
+           Example URLs:
+
+               index.html#figure-1
+               index.html#figure-18
+               index.html#figure-25
+               index.html#figure-10
+               index.html#figure-10-25n
+               index.html#figure-11-8m
+
+           Grouped figures can therefore still have individual links.
            ============================================================ */
 
         const figures = [
@@ -1293,16 +1299,6 @@
 
         /* ============================================================
            ZOOM STATE
-
-           Images begin at 100%.
-
-           Zooming OUT can go below 100%, unlike the previous version.
-           The minimum is 25%.
-
-           Zooming IN goes up to 400%.
-
-           The zoom is controlled exclusively through the buttons,
-           not through mouse movement.
            ============================================================ */
 
         let currentZoom = 1.0;
@@ -1313,23 +1309,146 @@
 
 
         /* ============================================================
+           DIRECT FIGURE LINK SYSTEM
+
+           This is the important part.
+
+           Every figure gets a stable URL identifier based on its
+           actual figure number.
+
+           For example:
+
+               #figure-1
+               #figure-18
+               #figure-25
+               #figure-50
+
+           Grouped figures can still be individually addressed.
+
+           For example:
+
+               #figure-6
+               #figure-7
+
+           Both open the Figures 6 and 7 viewer.
+
+           Figures 10 and 11 additionally support:
+
+               #figure-10-8m
+               #figure-10-25n
+
+               #figure-11-8m
+               #figure-11-25n
+
+           This allows you to link directly to a particular version
+           of Figures 10 and 11.
+           ============================================================ */
+
+        const figureURLMap = {
+
+            "1": 0,
+            "2": 1,
+            "3": 2,
+            "4": 3,
+            "5": 4,
+
+            "6": 5,
+            "7": 5,
+
+            "8": 6,
+            "9": 6,
+
+            "10": 7,
+            "10-8m": 7,
+            "10-25n": 7,
+
+            "11": 8,
+            "11-8m": 8,
+            "11-25n": 8,
+
+            "12": 9,
+            "13": 10,
+            "14": 11,
+            "15": 12,
+            "16": 13,
+            "17": 14,
+
+            "18": 15,
+
+            "19": 16,
+            "20": 17,
+            "21": 18,
+            "22": 19,
+            "23": 20,
+            "24": 21,
+            "25": 22,
+            "26": 23,
+
+            "27": 24,
+            "28": 24,
+
+            "29": 25,
+
+            "30": 26,
+            "31": 27,
+            "32": 28,
+            "33": 29,
+            "34": 30,
+            "35": 31,
+            "36": 32,
+            "37": 33,
+
+            "38": 34,
+            "39": 34,
+
+            "40": 35,
+            "41": 36,
+            "42": 37,
+
+            "43": 38,
+            "44": 38,
+            "45": 38,
+
+            "46": 39,
+            "47": 40,
+            "48": 41,
+            "49": 42,
+            "50": 43
+
+        };
+
+
+        /* ============================================================
            LANDING PAGE
            ============================================================ */
 
         function enterFigures() {
 
+            /*
+             * Hide the thesis title page.
+             */
             document.getElementById("landing-page").style.display = "none";
+
+            /*
+             * Display the figure application.
+             */
             document.getElementById("app").classList.add("visible");
 
             /*
-             * Automatically load the first figure once the user
-             * enters the figure index.
+             * If the user has entered through the normal button,
+             * rather than through a direct figure URL, load Figure 1.
              */
-            const firstButton = document.querySelector(".nav-btn");
+            if (!window.location.hash) {
 
-            if (firstButton) {
-                firstButton.click();
+                const firstButton =
+                    document.querySelector(".nav-btn");
+
+                if (firstButton) {
+                    firstButton.click();
+                }
+
             }
+
         }
 
 
@@ -1339,8 +1458,32 @@
 
         function returnToTitle() {
 
-            document.getElementById("app").classList.remove("visible");
-            document.getElementById("landing-page").style.display = "flex";
+            /*
+             * Remove the figure application.
+             */
+            document
+                .getElementById("app")
+                .classList.remove("visible");
+
+            /*
+             * Show the landing page.
+             */
+            document
+                .getElementById("landing-page")
+                .style.display = "flex";
+
+            /*
+             * Remove the figure identifier from the URL.
+
+             * history.replaceState prevents the browser from jumping
+             * or creating another history entry.
+             */
+            history.replaceState(
+                null,
+                "",
+                window.location.pathname +
+                window.location.search
+            );
 
         }
 
@@ -1358,11 +1501,17 @@
 
         /* ============================================================
            BUILD SIDEBAR
-           
-           Chapter headers are inserted as non-clickable separators.
            ============================================================ */
 
         let currentChapter = null;
+
+        /*
+         * Keep a direct reference to every navigation button.
+
+         * This makes it possible to activate the correct sidebar
+         * button when someone arrives through a direct URL.
+         */
+        const figureButtons = [];
 
         figures.forEach((figure, index) => {
 
@@ -1373,32 +1522,50 @@
 
                 currentChapter = figure.chapter;
 
-                const chapterHeader = document.createElement("div");
+                const chapterHeader =
+                    document.createElement("div");
 
-                chapterHeader.className = "chapter-header";
+                chapterHeader.className =
+                    "chapter-header";
 
                 chapterHeader.innerText =
                     "Chapter " + figure.chapter;
 
                 container.appendChild(chapterHeader);
+
             }
 
 
             /*
-             * Create the figure button.
+             * Create the figure navigation button.
              */
-            const button = document.createElement("button");
+            const button =
+                document.createElement("button");
 
             button.className =
-                "nav-btn " + getChapterClass(figure.chapter);
+                "nav-btn " +
+                getChapterClass(figure.chapter);
 
-            button.innerText = figure.title;
+            button.innerText =
+                figure.title;
 
+
+            /*
+             * Store the button so it can later be activated by
+             * a direct URL.
+             */
+            figureButtons[index] = button;
+
+
+            /*
+             * Load the figure when the user clicks the button.
+             */
             button.onclick = function() {
 
                 loadFigure(index, button);
 
             };
+
 
             container.appendChild(button);
 
@@ -1406,10 +1573,109 @@
 
 
         /* ============================================================
+           LOAD FIGURE FROM URL
+           
+           Reads the #figure-X portion of the URL.
+
+           This is what allows someone to link directly to an
+           individual figure.
+           ============================================================ */
+
+        function loadFigureFromURL() {
+
+            /*
+             * Remove the # symbol.
+             */
+            const hash =
+                window.location.hash.substring(1);
+
+            /*
+             * If there is no hash, there is no requested figure.
+             */
+            if (!hash) {
+                return false;
+            }
+
+            /*
+             * Only process hashes beginning with "figure-".
+             */
+            if (!hash.startsWith("figure-")) {
+                return false;
+            }
+
+            /*
+             * Extract the figure identifier.
+
+             * Example:
+             *
+             *     figure-25
+             *
+             * becomes:
+             *
+             *     25
+             */
+            const identifier =
+                hash.substring("figure-".length)
+                    .toLowerCase();
+
+
+            /*
+             * Find the corresponding figure index.
+             */
+            const figureIndex =
+                figureURLMap[identifier];
+
+
+            /*
+             * If the identifier does not exist, do nothing.
+             */
+            if (
+                figureIndex === undefined ||
+                !figureButtons[figureIndex]
+            ) {
+                return false;
+            }
+
+
+            /*
+             * Show the figure application immediately.
+
+             * This bypasses the landing page when someone arrives
+             * through a direct figure URL.
+             */
+            document
+                .getElementById("landing-page")
+                .style.display = "none";
+
+            document
+                .getElementById("app")
+                .classList.add("visible");
+
+
+            /*
+             * Load the requested figure.
+             */
+            loadFigure(
+                figureIndex,
+                figureButtons[figureIndex],
+                identifier
+            );
+
+
+            return true;
+
+        }
+
+
+        /* ============================================================
            LOAD FIGURE
            ============================================================ */
 
-        function loadFigure(index, buttonElement) {
+        function loadFigure(
+            index,
+            buttonElement,
+            directIdentifier = null
+        ) {
 
             const data = figures[index];
 
@@ -1418,11 +1684,14 @@
                Update figure metadata
                -------------------------------------------------------- */
 
-            titleLabel.innerText = data.title;
+            titleLabel.innerText =
+                data.title;
 
-            captionLabel.innerText = data.caption;
+            captionLabel.innerText =
+                data.caption;
 
-            figurePage.innerText = data.page;
+            figurePage.innerText =
+                data.page;
 
             chapterLabel.innerText =
                 "Chapter " + data.chapter;
@@ -1447,91 +1716,214 @@
 
 
             /* --------------------------------------------------------
-               Reset the variant tabs
+               Reset variant tabs
                -------------------------------------------------------- */
 
             tabsContainer.innerHTML = "";
 
-            tabsContainer.style.display = "none";
+            tabsContainer.style.display =
+                "none";
 
 
             /* --------------------------------------------------------
-               Reset the viewer
+               Reset viewer
                -------------------------------------------------------- */
 
-            viewer.style.display = "none";
+            viewer.style.display =
+                "none";
 
-            imageViewer.style.display = "none";
+            imageViewer.style.display =
+                "none";
 
-            zoomControls.style.display = "none";
+            zoomControls.style.display =
+                "none";
 
 
             /* --------------------------------------------------------
                Handle figures with A/B variants
-
+               
                Only Figures 10 and 11 use this system.
                -------------------------------------------------------- */
 
             if (data.type === "variants") {
 
-                tabsContainer.style.display = "flex";
+                tabsContainer.style.display =
+                    "flex";
 
 
-                data.variants.forEach(function(variant, variantIndex) {
+                data.variants.forEach(
+                    function(variant, variantIndex) {
 
-                    const tabButton =
-                        document.createElement("button");
+                        const tabButton =
+                            document.createElement("button");
 
-                    tabButton.className = "variant-btn";
+                        tabButton.className =
+                            "variant-btn";
 
-                    tabButton.innerText = variant.name;
+                        tabButton.innerText =
+                            variant.name;
 
 
-                    tabButton.onclick = function() {
+                        tabButton.onclick =
+                            function() {
 
-                        /*
-                         * Remove active state from all variant buttons.
-                         */
-                        document
-                            .querySelectorAll(".variant-btn")
-                            .forEach(function(button) {
+                                /*
+                                 * Remove active state from all
+                                 * variant buttons.
+                                 */
+                                document
+                                    .querySelectorAll(
+                                        ".variant-btn"
+                                    )
+                                    .forEach(
+                                        function(button) {
 
-                                button.classList.remove(
+                                            button.classList.remove(
+                                                "active-variant"
+                                            );
+
+                                        }
+                                    );
+
+
+                                /*
+                                 * Activate this tab.
+                                 */
+                                tabButton.classList.add(
                                     "active-variant"
                                 );
 
-                            });
+
+                                /*
+                                 * Load the appropriate HTML file.
+                                 */
+                                loadHTML(
+                                    variant.file
+                                );
 
 
-                        /*
-                         * Mark this tab as active.
-                         */
-                        tabButton.classList.add(
-                            "active-variant"
+                                /*
+                                 * Update the URL so that the
+                                 * currently selected variant is
+                                 * directly linkable.
+                                 */
+                                let variantHash;
+
+                                if (data.title.startsWith("Figure 10")) {
+
+                                    variantHash =
+                                        variant.name === "8M"
+                                            ? "figure-10-8m"
+                                            : "figure-10-25n";
+
+                                }
+
+                                else if (
+                                    data.title.startsWith("Figure 11")
+                                ) {
+
+                                    variantHash =
+                                        variant.name === "8M"
+                                            ? "figure-11-8m"
+                                            : "figure-11-25n";
+
+                                }
+
+
+                                /*
+                                 * Update the URL without causing
+                                 * the page to reload.
+                                 */
+                                if (variantHash) {
+
+                                    history.replaceState(
+                                        null,
+                                        "",
+                                        "#" + variantHash
+                                    );
+
+                                }
+
+                            };
+
+
+                        tabsContainer.appendChild(
+                            tabButton
                         );
 
 
                         /*
-                         * Load the HTML file.
+                         * Determine which tab should initially
+                         * be selected.
+
+                         * If the user arrived using:
+                         *
+                         *     #figure-10-25n
+                         *
+                         * then 25N is selected.
+
+                         * Otherwise 8M is the default.
                          */
-                        loadHTML(variant.file);
-
-                    };
-
-
-                    tabsContainer.appendChild(tabButton);
+                        let shouldSelect =
+                            variantIndex === 0;
 
 
-                    /*
-                     * Automatically select the first variant.
-                     */
-                    if (variantIndex === 0) {
+                        if (
+                            directIdentifier ===
+                            "10-25n" &&
+                            data.title.startsWith("Figure 10")
+                        ) {
 
-                        tabButton.click();
+                            shouldSelect =
+                                variant.name === "25N";
+
+                        }
+
+
+                        if (
+                            directIdentifier ===
+                            "11-25n" &&
+                            data.title.startsWith("Figure 11")
+                        ) {
+
+                            shouldSelect =
+                                variant.name === "25N";
+
+                        }
+
+
+                        if (
+                            directIdentifier ===
+                            "10-8m" &&
+                            data.title.startsWith("Figure 10")
+                        ) {
+
+                            shouldSelect =
+                                variant.name === "8M";
+
+                        }
+
+
+                        if (
+                            directIdentifier ===
+                            "11-8m" &&
+                            data.title.startsWith("Figure 11")
+                        ) {
+
+                            shouldSelect =
+                                variant.name === "8M";
+
+                        }
+
+
+                        if (shouldSelect) {
+
+                            tabButton.click();
+
+                        }
 
                     }
-
-                });
+                );
 
             }
 
@@ -1542,7 +1934,9 @@
 
             else if (data.type === "html") {
 
-                loadHTML(data.file);
+                loadHTML(
+                    data.file
+                );
 
             }
 
@@ -1553,7 +1947,41 @@
 
             else if (data.type === "image") {
 
-                loadImage(data.file);
+                loadImage(
+                    data.file
+                );
+
+            }
+
+
+            /* --------------------------------------------------------
+               Update URL for ordinary figure navigation
+               
+               If the user clicked Figure 25, for example, the URL
+               becomes:
+               
+                   #figure-25
+               
+               This means the URL can then be copied and shared.
+               -------------------------------------------------------- */
+
+            if (!directIdentifier) {
+
+                const figureNumber =
+                    getPrimaryFigureNumber(
+                        data.title
+                    );
+
+                if (figureNumber) {
+
+                    history.replaceState(
+                        null,
+                        "",
+                        "#figure-" +
+                        figureNumber
+                    );
+
+                }
 
             }
 
@@ -1561,52 +1989,77 @@
 
 
         /* ============================================================
-           LOAD HTML
+           EXTRACT PRIMARY FIGURE NUMBER
            
-           HTML visualizations are loaded directly into the iframe.
-           This preserves their existing functionality.
+           This is used when a sidebar button is clicked.
+
+           Examples:
+
+               "Figure 25: ..."       -> 25
+               "Figures 6 and 7: ..." -> 6
+               "Figures 43, 44..."    -> 43
+           ============================================================ */
+
+        function getPrimaryFigureNumber(title) {
+
+            const match =
+                title.match(
+                    /Figures?\s+(\d+)/
+                );
+
+            if (!match) {
+                return null;
+            }
+
+            return match[1];
+
+        }
+
+
+        /* ============================================================
+           LOAD HTML
            ============================================================ */
 
         function loadHTML(file) {
 
             /*
-             * Hide the image-specific viewer.
+             * Hide image viewer.
              */
-            imageViewer.style.display = "none";
+            imageViewer.style.display =
+                "none";
 
-            zoomControls.style.display = "none";
+            zoomControls.style.display =
+                "none";
 
 
             /*
-             * Show the iframe.
+             * Show iframe.
              */
-            viewer.style.display = "block";
+            viewer.style.display =
+                "block";
 
 
             /*
-             * Clear srcdoc in case an image was previously loaded.
+             * Clear srcdoc.
              */
-            viewer.removeAttribute("srcdoc");
+            viewer.removeAttribute(
+                "srcdoc"
+            );
 
 
             /*
-             * Set the HTML file as the iframe source.
+             * Load the HTML file.
 
-             * encodeURI preserves spaces in filenames while ensuring
-             * the resulting URL is valid for GitHub Pages.
+             * encodeURI safely handles spaces in filenames.
              */
-            viewer.src = encodeURI(file);
+            viewer.src =
+                encodeURI(file);
 
         }
 
 
         /* ============================================================
            LOAD IMAGE
-           
-           Images are placed on a clean white canvas rather than
-           being loaded inside the iframe.
-
-           This gives us proper zoom control.
            ============================================================ */
 
         function loadImage(file) {
@@ -1614,25 +2067,29 @@
             /*
              * Hide iframe.
              */
-            viewer.style.display = "none";
+            viewer.style.display =
+                "none";
 
 
             /*
              * Show image viewer.
              */
-            imageViewer.style.display = "flex";
+            imageViewer.style.display =
+                "flex";
 
 
             /*
              * Show zoom controls.
              */
-            zoomControls.style.display = "flex";
+            zoomControls.style.display =
+                "flex";
 
 
             /*
-             * Reset zoom whenever a new image is selected.
+             * Reset zoom whenever a new image is opened.
              */
-            currentZoom = 1.0;
+            currentZoom =
+                1.0;
 
             updateZoomDisplay();
 
@@ -1640,25 +2097,29 @@
             /*
              * Set image source.
              */
-            displayImage.src = encodeURI(file);
+            displayImage.src =
+                encodeURI(file);
 
 
             /*
-             * Ensure the image starts at 100%.
+             * The image starts at 100%.
              */
-            displayImage.style.width = "100%";
-            displayImage.style.height = "100%";
+            displayImage.style.width =
+                "100%";
+
+            displayImage.style.height =
+                "100%";
 
 
             /*
-             * Once the image has loaded, use its natural dimensions
-             * as the basis for zooming.
+             * Once the image loads, apply the current zoom.
              */
-            displayImage.onload = function() {
+            displayImage.onload =
+                function() {
 
-                applyZoom();
+                    applyZoom();
 
-            };
+                };
 
         }
 
@@ -1670,43 +2131,49 @@
         function applyZoom() {
 
             /*
-             * At 100%, the image is constrained to fit within the
-             * available viewer area.
-
-             * Above or below 100%, we explicitly change its dimensions.
+             * At 100%, fit the image to the viewer.
              */
             if (currentZoom === 1.0) {
 
-                displayImage.style.width = "100%";
-                displayImage.style.height = "100%";
+                displayImage.style.width =
+                    "100%";
 
-                displayImage.style.maxWidth = "100%";
-                displayImage.style.maxHeight = "100%";
+                displayImage.style.height =
+                    "100%";
+
+                displayImage.style.maxWidth =
+                    "100%";
+
+                displayImage.style.maxHeight =
+                    "100%";
 
             }
 
             else {
 
                 /*
-                 * Remove the normal fit constraints.
+                 * Remove the normal fit restrictions.
                  */
-                displayImage.style.maxWidth = "none";
-                displayImage.style.maxHeight = "none";
+                displayImage.style.maxWidth =
+                    "none";
+
+                displayImage.style.maxHeight =
+                    "none";
 
 
                 /*
-                 * Scale relative to the viewer.
-
-                 * The image is allowed to become smaller than the
-                 * viewer when zoomed below 100%.
+                 * Scale the image relative to the viewer.
                  */
                 displayImage.style.width =
-                    (currentZoom * 100) + "%";
+                    (currentZoom * 100) +
+                    "%";
 
                 displayImage.style.height =
-                    (currentZoom * 100) + "%";
+                    (currentZoom * 100) +
+                    "%";
 
             }
+
 
             updateZoomDisplay();
 
@@ -1753,20 +2220,26 @@
 
         function resetZoom() {
 
-            currentZoom = 1.0;
+            currentZoom =
+                1.0;
 
             applyZoom();
 
+
             /*
-             * Return the image viewer scroll position to the centre.
+             * Return the image viewer to its centre.
              */
             imageViewer.scrollLeft =
-                (imageViewer.scrollWidth -
-                 imageViewer.clientWidth) / 2;
+                (
+                    imageViewer.scrollWidth -
+                    imageViewer.clientWidth
+                ) / 2;
 
             imageViewer.scrollTop =
-                (imageViewer.scrollHeight -
-                 imageViewer.clientHeight) / 2;
+                (
+                    imageViewer.scrollHeight -
+                    imageViewer.clientHeight
+                ) / 2;
 
         }
 
@@ -1778,69 +2251,145 @@
         function updateZoomDisplay() {
 
             zoomLevel.innerText =
-                Math.round(currentZoom * 100) + "%";
+                Math.round(
+                    currentZoom * 100
+                ) + "%";
 
         }
 
 
         /* ============================================================
+           HANDLE URL CHANGES
+           
+           This is useful if someone changes the hash manually or
+           uses browser navigation.
+           ============================================================ */
+
+        window.addEventListener(
+            "hashchange",
+            function() {
+
+                loadFigureFromURL();
+
+            }
+        );
+
+
+        /* ============================================================
+           INITIAL PAGE LOAD
+           
+           This is the critical part.
+
+           If the page was opened normally:
+
+               index.html
+
+           the landing page remains visible.
+
+           If it was opened with:
+
+               index.html#figure-25
+
+           the landing page is skipped and Figure 25 is opened
+           immediately.
+           ============================================================ */
+
+        window.addEventListener(
+            "DOMContentLoaded",
+            function() {
+
+                loadFigureFromURL();
+
+            }
+        );
+
+
+        /* ============================================================
            KEYBOARD SHORTCUTS
            
-           These are optional conveniences.
-
            + / =  zoom in
            -    zoom out
            0    reset
-
-           They only affect the image viewer.
+           
+           These only affect image figures.
            ============================================================ */
 
-        document.addEventListener("keydown", function(event) {
+        document.addEventListener(
+            "keydown",
+            function(event) {
 
-            /*
-             * Ignore keyboard shortcuts while typing in an input.
-             */
-            if (
-                event.target.tagName === "INPUT" ||
-                event.target.tagName === "TEXTAREA"
-            ) {
-                return;
-            }
-
-
-            if (event.key === "+" || event.key === "=") {
-
+                /*
+                 * Ignore shortcuts while typing.
+                 */
                 if (
-                    imageViewer.style.display === "flex"
+                    event.target.tagName === "INPUT" ||
+                    event.target.tagName === "TEXTAREA"
                 ) {
-                    zoomIn();
+
+                    return;
+
+                }
+
+
+                /*
+                 * Zoom in.
+                 */
+                if (
+                    event.key === "+" ||
+                    event.key === "="
+                ) {
+
+                    if (
+                        imageViewer.style.display ===
+                        "flex"
+                    ) {
+
+                        zoomIn();
+
+                    }
+
+                }
+
+
+                /*
+                 * Zoom out.
+                 */
+                else if (
+                    event.key === "-"
+                ) {
+
+                    if (
+                        imageViewer.style.display ===
+                        "flex"
+                    ) {
+
+                        zoomOut();
+
+                    }
+
+                }
+
+
+                /*
+                 * Reset zoom.
+                 */
+                else if (
+                    event.key === "0"
+                ) {
+
+                    if (
+                        imageViewer.style.display ===
+                        "flex"
+                    ) {
+
+                        resetZoom();
+
+                    }
+
                 }
 
             }
-
-
-            else if (event.key === "-") {
-
-                if (
-                    imageViewer.style.display === "flex"
-                ) {
-                    zoomOut();
-                }
-
-            }
-
-
-            else if (event.key === "0") {
-
-                if (
-                    imageViewer.style.display === "flex"
-                ) {
-                    resetZoom();
-                }
-
-            }
-
-        });
+        );
 
     </script>
 
