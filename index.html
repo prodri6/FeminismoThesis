@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>#Feminismo | Thesis Supplementary Materials</title>
+    <title>#Feminismo | Thesis Figures</title>
 
     <style>
 
         /* ============================================================
-           GLOBAL
+           GLOBAL STYLING
            ============================================================ */
 
         * {
@@ -22,13 +22,12 @@
             padding: 0;
             width: 100%;
             height: 100%;
-            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-            background: #f4f4f9;
-            color: #2c3e50;
         }
 
         body {
-            overflow: hidden;
+            font-family: "Avenir Next", Avenir, "Segoe UI", Helvetica, Arial, sans-serif;
+            background: #f5f6f8;
+            color: #263238;
         }
 
 
@@ -38,142 +37,104 @@
 
         #landing-page {
             width: 100%;
-            height: 100vh;
-            overflow-y: auto;
-
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-
+            padding: 50px 30px;
             background:
-                radial-gradient(
-                    circle at top right,
-                    rgba(52, 152, 219, 0.10),
-                    transparent 35%
-                ),
-                radial-gradient(
-                    circle at bottom left,
-                    rgba(155, 89, 182, 0.08),
-                    transparent 35%
-                ),
-                #f7f7fa;
-
-            padding: 40px;
+                radial-gradient(circle at top left, rgba(72, 101, 129, 0.10), transparent 35%),
+                radial-gradient(circle at bottom right, rgba(155, 89, 116, 0.08), transparent 35%),
+                #f7f7f6;
         }
 
-        .landing-card {
+        .title-page {
             width: min(900px, 100%);
-            background: white;
-
-            padding: 65px 75px;
-
-            border-radius: 18px;
-
-            box-shadow:
-                0 20px 60px rgba(0, 0, 0, 0.08),
-                0 2px 8px rgba(0, 0, 0, 0.04);
-
             text-align: center;
-
-            border: 1px solid rgba(44, 62, 80, 0.08);
+            padding: 65px 60px;
+            background: rgba(255, 255, 255, 0.94);
+            border: 1px solid #e4e5e7;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
         }
 
-        .landing-label {
+        .title-page .discipline {
+            margin-bottom: 35px;
+            font-size: 0.78rem;
+            letter-spacing: 0.22em;
             text-transform: uppercase;
-            letter-spacing: 3px;
-            font-size: 0.72rem;
-            color: #7f8c8d;
-            margin-bottom: 25px;
+            color: #68727b;
+        }
+
+        .title-page h1 {
+            margin: 0 auto 28px;
+            max-width: 780px;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            font-weight: 400;
+            line-height: 1.2;
+            color: #273746;
+        }
+
+        .title-page .author {
+            margin: 0 0 45px;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 1.15rem;
+            color: #53616c;
+        }
+
+        .title-page .details {
+            margin: 0 auto;
+            max-width: 650px;
+            color: #59636b;
+            font-size: 0.92rem;
+            line-height: 1.85;
+        }
+
+        .title-page .details strong {
+            color: #34444f;
             font-weight: 600;
         }
 
-        .landing-title {
-            margin: 0 auto 22px auto;
-
-            max-width: 750px;
-
-            font-family: Georgia, "Times New Roman", serif;
-
-            font-size: clamp(2rem, 4vw, 3.1rem);
-
-            line-height: 1.15;
-
-            font-weight: 500;
-
-            color: #243746;
-        }
-
-        .landing-author {
-            font-size: 1.15rem;
-            margin-bottom: 35px;
-            color: #34495e;
-        }
-
-        .landing-divider {
-            width: 70px;
-            height: 2px;
-            margin: 0 auto 35px auto;
-            background: #3498db;
-            border: none;
-        }
-
-        .landing-details {
-            color: #66727c;
-            font-size: 0.92rem;
-            line-height: 1.8;
-        }
-
-        .landing-details strong {
-            color: #34495e;
-        }
-
-        .copyright {
-            margin-top: 30px;
+        .title-page .copyright {
+            margin-top: 40px;
             font-size: 0.75rem;
-            color: #9aa3a8;
+            color: #8a9196;
         }
 
         .enter-button {
-            margin-top: 40px;
-
-            padding: 13px 30px;
-
-            border: none;
-            border-radius: 7px;
-
-            background: #2c3e50;
+            margin-top: 45px;
+            padding: 13px 28px;
+            border: 1px solid #354b5c;
+            background: #354b5c;
             color: white;
-
-            font-size: 0.9rem;
-            font-weight: 600;
-
+            font-family: inherit;
+            font-size: 0.78rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
             cursor: pointer;
-
-            transition:
-                background 0.2s ease,
-                transform 0.2s ease,
-                box-shadow 0.2s ease;
+            transition: all 0.25s ease;
         }
 
         .enter-button:hover {
-            background: #3498db;
-
-            transform: translateY(-2px);
-
-            box-shadow:
-                0 7px 18px rgba(52, 152, 219, 0.25);
+            background: #253746;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
         }
 
 
         /* ============================================================
-           MAIN APPLICATION
+           MAIN FIGURE APPLICATION
            ============================================================ */
 
         #app {
             display: none;
-
             width: 100%;
             height: 100vh;
+            overflow: hidden;
+        }
+
+        #app.visible {
+            display: flex;
         }
 
 
@@ -182,90 +143,61 @@
            ============================================================ */
 
         #sidebar {
-            width: 315px;
+            width: 310px;
+            min-width: 310px;
             height: 100vh;
-
-            background: #263746;
-            color: white;
-
             overflow-y: auto;
-
+            background: #273746;
+            color: white;
+            border-right: 1px solid #d9dde0;
             display: flex;
             flex-direction: column;
-
-            flex-shrink: 0;
-
-            border-right: 1px solid rgba(255,255,255,0.08);
         }
 
         #sidebar-header {
-            padding: 22px 20px;
-
-            background: #1d2a35;
-
-            position: sticky;
-            top: 0;
-
-            z-index: 10;
-
+            padding: 24px 22px 20px;
+            background: #202f3b;
             border-bottom: 1px solid rgba(255,255,255,0.08);
         }
 
         #sidebar-header h2 {
             margin: 0;
-
             font-family: Georgia, "Times New Roman", serif;
-
             font-size: 1.35rem;
-            font-weight: 500;
-
-            letter-spacing: 0.2px;
+            font-weight: 400;
+            letter-spacing: 0.01em;
         }
 
         #sidebar-header p {
-            margin: 7px 0 0 0;
-
-            font-size: 0.7rem;
-
-            color: #9eabb4;
-
+            margin: 7px 0 0;
+            color: #aeb9c1;
+            font-size: 0.72rem;
+            letter-spacing: 0.08em;
             text-transform: uppercase;
+        }
 
-            letter-spacing: 1.5px;
+        #buttons-container {
+            padding-bottom: 20px;
         }
 
 
         /* ============================================================
-           CHAPTER SEPARATORS
-           These are intentionally NOT clickable.
+           CHAPTER HEADERS
+           These are deliberately NOT clickable.
            ============================================================ */
 
         .chapter-header {
-            padding: 14px 18px 10px 18px;
-
+            padding: 18px 20px 9px;
             font-size: 0.68rem;
-
             font-weight: 700;
-
+            letter-spacing: 0.18em;
             text-transform: uppercase;
-
-            letter-spacing: 2px;
-
-            color: white;
-
+            color: rgba(255,255,255,0.72);
             cursor: default;
         }
 
-        .chapter-header.chapter-3 {
-            background: #3478a8;
-        }
-
-        .chapter-header.chapter-4 {
-            background: #7d5aa6;
-        }
-
-        .chapter-header.chapter-5 {
-            background: #4e8767;
+        .chapter-header:first-child {
+            padding-top: 22px;
         }
 
 
@@ -275,58 +207,48 @@
 
         .nav-btn {
             width: 100%;
-
+            padding: 10px 18px 10px 22px;
             border: none;
-
-            border-bottom: 1px solid rgba(255,255,255,0.06);
-
+            border-left: 4px solid transparent;
             background: transparent;
-
-            color: #e5eaed;
-
-            padding: 11px 17px;
-
+            color: #e7ebee;
             text-align: left;
-
             cursor: pointer;
-
             font-family: inherit;
-
-            font-size: 0.82rem;
-
+            font-size: 0.78rem;
             line-height: 1.35;
-
             transition:
-                background 0.15s ease,
-                padding-left 0.15s ease;
+                background-color 0.18s ease,
+                border-color 0.18s ease,
+                color 0.18s ease;
         }
 
         .nav-btn:hover {
             background: rgba(255,255,255,0.07);
-
-            padding-left: 21px;
         }
 
         .nav-btn.active {
             color: white;
-
+            background: rgba(255,255,255,0.12);
             font-weight: 600;
-
-            padding-left: 21px;
         }
 
-        /* Chapter-specific active colours */
-
-        .nav-btn.chapter-3.active {
-            background: #3478a8;
+        /* Chapter 3 colour */
+        .nav-btn.chapter-3.active,
+        .nav-btn.chapter-3:hover {
+            border-left-color: #8e6f9e;
         }
 
-        .nav-btn.chapter-4.active {
-            background: #7d5aa6;
+        /* Chapter 4 colour */
+        .nav-btn.chapter-4.active,
+        .nav-btn.chapter-4:hover {
+            border-left-color: #628c91;
         }
 
-        .nav-btn.chapter-5.active {
-            background: #4e8767;
+        /* Chapter 5 colour */
+        .nav-btn.chapter-5.active,
+        .nav-btn.chapter-5:hover {
+            border-left-color: #b0835d;
         }
 
 
@@ -336,152 +258,110 @@
 
         #main-content {
             flex: 1;
-
-            height: 100vh;
-
             min-width: 0;
-
+            height: 100vh;
             display: flex;
-
             flex-direction: column;
-
-            background: #f4f4f9;
+            background: #f3f4f5;
         }
 
 
         /* ============================================================
-           FIGURE INFORMATION
+           FIGURE INFORMATION PANEL
            ============================================================ */
 
         #figure-info {
-            background: white;
-
-            margin: 18px 18px 12px 18px;
-
-            padding: 17px 21px;
-
-            border-radius: 10px;
-
-            box-shadow:
-                0 2px 8px rgba(0,0,0,0.045);
-
-            border: 1px solid rgba(44,62,80,0.06);
-
             flex-shrink: 0;
+            padding: 19px 28px 17px;
+            background: white;
+            border-bottom: 1px solid #dfe2e5;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
         }
 
         #figure-meta {
             display: flex;
-
             align-items: center;
-
             gap: 10px;
-
             margin-bottom: 7px;
-
-            font-size: 0.72rem;
-
-            text-transform: uppercase;
-
-            letter-spacing: 1.2px;
-
-            font-weight: 700;
         }
 
         #chapter-label {
+            display: inline-block;
             padding: 4px 9px;
-
-            border-radius: 4px;
-
+            font-size: 0.64rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
             color: white;
+            border-radius: 3px;
         }
 
         #chapter-label.chapter-3 {
-            background: #3478a8;
+            background: #8e6f9e;
         }
 
         #chapter-label.chapter-4 {
-            background: #7d5aa6;
+            background: #628c91;
         }
 
         #chapter-label.chapter-5 {
-            background: #4e8767;
+            background: #b0835d;
         }
 
-        #page-label {
-            color: #8a969e;
+        #figure-page {
+            color: #8a9298;
+            font-size: 0.74rem;
         }
 
         #fig-title {
-            margin: 0 0 7px 0;
-
+            margin: 0 0 6px;
             font-family: Georgia, "Times New Roman", serif;
-
             font-size: 1.25rem;
-
+            font-weight: 400;
             line-height: 1.3;
-
-            color: #263746;
+            color: #2d3e4a;
         }
 
         #fig-caption {
             margin: 0;
-
-            color: #69757d;
-
-            font-size: 0.87rem;
-
+            max-width: 1200px;
+            color: #68737b;
+            font-size: 0.82rem;
             line-height: 1.55;
         }
 
 
         /* ============================================================
            VARIANT TABS
-           Used only by Figures 10 and 11.
+           ONLY FIGURES 10 AND 11 USE THESE
            ============================================================ */
 
         #variant-tabs {
-            margin-top: 12px;
-
             display: none;
-
-            gap: 7px;
-
-            flex-wrap: wrap;
+            margin-top: 13px;
+            gap: 6px;
         }
 
         .variant-btn {
-            background: #edf0f2;
-
-            border: 1px solid #d5dade;
-
-            color: #46545e;
-
-            padding: 6px 13px;
-
-            border-radius: 5px;
-
-            cursor: pointer;
-
+            padding: 7px 15px;
+            border: 1px solid #cbd1d5;
+            border-radius: 3px;
+            background: #f1f3f4;
+            color: #53616b;
             font-family: inherit;
-
-            font-size: 0.78rem;
-
-            transition:
-                background 0.15s ease,
-                color 0.15s ease;
+            font-size: 0.72rem;
+            cursor: pointer;
+            transition: all 0.18s ease;
         }
 
         .variant-btn:hover {
-            background: #dfe4e7;
+            background: #e6e9eb;
         }
 
         .variant-btn.active-variant {
-            background: #2c3e50;
-
+            background: #354b5c;
+            border-color: #354b5c;
             color: white;
-
-            border-color: #2c3e50;
         }
 
 
@@ -490,35 +370,64 @@
            ============================================================ */
 
         #viewer-container {
-            flex: 1;
-
-            min-height: 0;
-
-            margin: 0 18px 18px 18px;
-
-            background: white;
-
-            border: 1px solid #e1e4e7;
-
-            border-radius: 10px;
-
-            overflow: hidden;
-
-            box-shadow:
-                0 3px 10px rgba(0,0,0,0.04);
-
             position: relative;
+            flex: 1;
+            min-height: 0;
+            margin: 16px;
+            overflow: hidden;
+            background: white;
+            border: 1px solid #dfe2e5;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
         }
 
-        iframe {
+        #viewer {
             width: 100%;
             height: 100%;
-
             border: none;
-
             display: block;
-
             background: white;
+        }
+
+
+        /* ============================================================
+           IMAGE ZOOM CONTROLS
+           ============================================================ */
+
+        #zoom-controls {
+            position: absolute;
+            right: 16px;
+            bottom: 16px;
+            display: none;
+            align-items: center;
+            gap: 4px;
+            padding: 5px;
+            background: rgba(255,255,255,0.96);
+            border: 1px solid #d8dde0;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.10);
+            z-index: 10;
+        }
+
+        .zoom-btn {
+            width: 32px;
+            height: 30px;
+            border: none;
+            background: transparent;
+            color: #354b5c;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.15s ease;
+        }
+
+        .zoom-btn:hover {
+            background: #eef0f2;
+        }
+
+        #zoom-level {
+            min-width: 48px;
+            text-align: center;
+            color: #64717a;
+            font-size: 0.68rem;
+            font-weight: 600;
         }
 
 
@@ -529,210 +438,137 @@
         #image-viewer {
             width: 100%;
             height: 100%;
-
-            background: white;
-
             display: none;
-
-            position: relative;
-
-            overflow: hidden;
-        }
-
-        #image-stage {
-            width: 100%;
-            height: 100%;
-
-            display: flex;
-
             align-items: center;
             justify-content: center;
-
-            overflow: hidden;
-
+            overflow: auto;
             background: white;
         }
 
-        #figure-image {
-            max-width: 94%;
-            max-height: 90%;
-
-            width: auto;
-            height: auto;
-
+        #image-viewer img {
+            display: block;
+            max-width: none;
+            max-height: none;
             object-fit: contain;
-
             transform-origin: center center;
-
-            user-select: none;
-
-            transition: transform 0.18s ease;
         }
 
 
         /* ============================================================
-           ZOOM CONTROLS
+           FOOTER
            ============================================================ */
 
-        #zoom-controls {
-            position: absolute;
-
-            bottom: 16px;
-            right: 16px;
-
-            display: none;
-
-            align-items: center;
-
-            gap: 5px;
-
-            background: rgba(255,255,255,0.96);
-
-            border: 1px solid #d9dee2;
-
-            border-radius: 7px;
-
-            padding: 5px;
-
-            box-shadow:
-                0 3px 12px rgba(0,0,0,0.10);
-
-            z-index: 20;
-        }
-
-        .zoom-btn {
-            width: 31px;
-            height: 31px;
-
-            border: none;
-
-            border-radius: 4px;
-
-            background: #eef1f3;
-
-            color: #34495e;
-
-            font-size: 1rem;
-
-            cursor: pointer;
-
+        #footer {
+            flex-shrink: 0;
+            height: 34px;
+            padding: 0 22px;
             display: flex;
-
             align-items: center;
-            justify-content: center;
-
-            transition:
-                background 0.15s ease,
-                color 0.15s ease;
+            justify-content: space-between;
+            background: #273746;
+            color: #aeb9c1;
+            font-size: 0.67rem;
         }
 
-        .zoom-btn:hover {
-            background: #2c3e50;
+        #footer strong {
+            color: #e0e5e8;
+            font-weight: 500;
+        }
+
+        #back-to-title {
+            border: none;
+            background: none;
+            color: #aeb9c1;
+            font-family: inherit;
+            font-size: 0.67rem;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        #back-to-title:hover {
             color: white;
         }
 
-        #zoom-level {
-            min-width: 48px;
-
-            text-align: center;
-
-            font-size: 0.72rem;
-
-            color: #5e6b74;
-
-            font-weight: 600;
-        }
-
 
         /* ============================================================
-           SMALL FOOTER
-           ============================================================ */
-
-        #site-footer {
-            height: 34px;
-
-            flex-shrink: 0;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            gap: 7px;
-
-            color: #8b969d;
-
-            font-size: 0.68rem;
-
-            letter-spacing: 0.3px;
-        }
-
-        #site-footer strong {
-            color: #68747b;
-
-            font-weight: 600;
-        }
-
-
-        /* ============================================================
-           BACK BUTTON
-           ============================================================ */
-
-        #back-button {
-            position: fixed;
-
-            left: 16px;
-            bottom: 14px;
-
-            z-index: 100;
-
-            border: none;
-
-            background: rgba(255,255,255,0.9);
-
-            color: #61707a;
-
-            padding: 7px 11px;
-
-            border-radius: 5px;
-
-            font-size: 0.7rem;
-
-            cursor: pointer;
-
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-
-            display: none;
-        }
-
-        #back-button:hover {
-            background: white;
-            color: #2c3e50;
-        }
-
-
-        /* ============================================================
-           MOBILE
+           RESPONSIVE DESIGN
            ============================================================ */
 
         @media (max-width: 800px) {
 
             #sidebar {
-                width: 245px;
+                width: 235px;
+                min-width: 235px;
             }
 
             #figure-info {
-                margin: 10px 10px 8px 10px;
-                padding: 13px 15px;
+                padding: 15px 18px;
             }
 
             #viewer-container {
-                margin: 0 10px 10px 10px;
+                margin: 10px;
             }
 
-            .landing-card {
+            .title-page {
                 padding: 45px 30px;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            #app {
+                flex-direction: column;
+            }
+
+            #sidebar {
+                width: 100%;
+                min-width: 0;
+                height: 220px;
+            }
+
+            #sidebar-header {
+                padding: 14px 18px;
+            }
+
+            #buttons-container {
+                display: flex;
+                overflow-x: auto;
+                padding-bottom: 5px;
+            }
+
+            .chapter-header {
+                min-width: 110px;
+                padding: 14px 10px;
+            }
+
+            .nav-btn {
+                min-width: 150px;
+                border-left: none;
+                border-bottom: 3px solid transparent;
+            }
+
+            .nav-btn.chapter-3.active {
+                border-bottom-color: #8e6f9e;
+            }
+
+            .nav-btn.chapter-4.active {
+                border-bottom-color: #628c91;
+            }
+
+            .nav-btn.chapter-5.active {
+                border-bottom-color: #b0835d;
+            }
+
+            #main-content {
+                height: calc(100vh - 220px);
+            }
+
+            #fig-title {
+                font-size: 1.05rem;
+            }
+
+            #fig-caption {
+                font-size: 0.76rem;
             }
         }
 
@@ -743,157 +579,139 @@
 <body>
 
 
-<!-- ================================================================
-     LANDING PAGE
-     ================================================================ -->
-
-<div id="landing-page">
-
-    <div class="landing-card">
-
-        <div class="landing-label">
-            Doctoral Thesis · Supplementary Materials
-        </div>
-
-        <h1 class="landing-title">
-            #Feminismo: An exploration of Hispanic Cyberfeminism from 2009 to 2022
-        </h1>
-
-        <div class="landing-author">
-            Pilar del Carmen Rodríguez Mata
-        </div>
-
-        <hr class="landing-divider">
-
-        <div class="landing-details">
-
-            <strong>Supervisor:</strong> Juan Luis Suárez<br>
-
-            <strong>Graduate Program in Hispanic Studies</strong><br>
-
-            A thesis submitted in partial fulfillment of the requirements
-            for the degree of Doctor of Philosophy<br>
-
-            The School of Graduate and Postdoctoral Studies<br>
-
-            The University of Western Ontario<br>
-
-            London, Ontario, Canada<br>
-
-            August 2026
-
-        </div>
-
-        <div class="copyright">
-            © Pilar Rodríguez Mata 2026
-        </div>
-
-        <button class="enter-button" onclick="openIndex()">
-            Explore Figures
-        </button>
-
-    </div>
-
-</div>
-
-
-
-<!-- ================================================================
-     MAIN APPLICATION
-     ================================================================ -->
-
-<div id="app">
-
-
     <!-- ============================================================
-         SIDEBAR
+         LANDING PAGE
          ============================================================ -->
 
-    <aside id="sidebar">
+    <section id="landing-page">
 
-        <div id="sidebar-header">
+        <div class="title-page">
 
-            <h2>Figure Index</h2>
+            <div class="discipline">
+                Graduate Program in Hispanic Studies
+            </div>
 
-            <p>Thesis Supplementary Materials</p>
+            <h1>
+                #Feminismo: An exploration of Hispanic Cyberfeminism from 2009 to 2022
+            </h1>
 
-        </div>
+            <p class="author">
+                Pilar del Carmen Rodríguez Mata
+            </p>
 
-        <div id="buttons-container"></div>
+            <div class="details">
 
-    </aside>
+                <div>
+                    <strong>Supervisor:</strong> Juan Luis Suárez
+                </div>
 
+                <div>
+                    A thesis submitted in partial fulfillment of the requirements
+                    for the degree of Doctor of Philosophy
+                </div>
 
-
-    <!-- ============================================================
-         MAIN CONTENT
-         ============================================================ -->
-
-    <main id="main-content">
-
-
-        <!-- ========================================================
-             FIGURE INFORMATION
-             ======================================================== -->
-
-        <section id="figure-info">
-
-            <div id="figure-meta">
-
-                <span id="chapter-label">
-                    Chapter
-                </span>
-
-                <span id="page-label">
-                    Page
-                </span>
+                <div>
+                    The School of Graduate and Postdoctoral Studies<br>
+                    The University of Western Ontario<br>
+                    London, Ontario, Canada<br>
+                    August 2026
+                </div>
 
             </div>
 
-            <h3 id="fig-title">
-                Select a Figure
-            </h3>
+            <div class="copyright">
+                © Pilar Rodríguez Mata 2026
+            </div>
 
-            <p id="fig-caption">
-                Select a figure from the index to explore the supplementary materials.
-            </p>
+            <button class="enter-button" onclick="enterFigures()">
+                Explore thesis figures
+            </button>
 
-            <div id="variant-tabs"></div>
+        </div>
 
-        </section>
+    </section>
+
+
+
+    <!-- ============================================================
+         MAIN APPLICATION
+         ============================================================ -->
+
+    <div id="app">
+
+
+        <!-- ========================================================
+             SIDEBAR
+             ======================================================== -->
+
+        <aside id="sidebar">
+
+            <div id="sidebar-header">
+                <h2>Figure Index</h2>
+                <p>Interactive thesis materials</p>
+            </div>
+
+            <div id="buttons-container"></div>
+
+        </aside>
 
 
 
         <!-- ========================================================
-             VIEWER
+             MAIN CONTENT
              ======================================================== -->
 
-        <div id="viewer-container">
+        <main id="main-content">
 
 
-            <!-- HTML FILE VIEWER -->
+            <!-- ====================================================
+                 FIGURE INFORMATION
+                 ==================================================== -->
 
-            <iframe
-                id="viewer"
-                src="about:blank">
-            </iframe>
+            <section id="figure-info">
 
+                <div id="figure-meta">
 
-            <!-- IMAGE VIEWER -->
+                    <span id="chapter-label">
+                        Chapter 3
+                    </span>
 
-            <div id="image-viewer">
-
-                <div id="image-stage">
-
-                    <img
-                        id="figure-image"
-                        src=""
-                        alt="Thesis figure">
+                    <span id="figure-page">
+                        p. 51
+                    </span>
 
                 </div>
 
+                <h2 id="fig-title">
+                    Select a figure
+                </h2>
 
-                <!-- ZOOM CONTROLS -->
+                <p id="fig-caption">
+                    Select a figure from the index to view the corresponding
+                    visualization or image.
+                </p>
+
+                <div id="variant-tabs"></div>
+
+            </section>
+
+
+
+            <!-- ====================================================
+                 VIEWER
+                 ==================================================== -->
+
+            <section id="viewer-container">
+
+                <iframe
+                    id="viewer"
+                    src="about:blank"
+                    title="Interactive thesis figure viewer">
+                </iframe>
+
+                <div id="image-viewer">
+                    <img id="display-image" src="" alt="">
+                </div>
 
                 <div id="zoom-controls">
 
@@ -924,962 +742,1107 @@
 
                 </div>
 
-            </div>
-
-        </div>
-
-
-        <!-- ========================================================
-             SMALL FOOTER
-             ======================================================== -->
-
-        <footer id="site-footer">
-
-            <strong>#Feminismo</strong>
-
-            <span>·</span>
-
-            <span>Pilar del Carmen Rodríguez Mata</span>
-
-            <span>·</span>
-
-            <span>2026</span>
-
-        </footer>
-
-    </main>
-
-</div>
-
-
-<!-- ================================================================
-     BACK TO THESIS INFORMATION
-     ================================================================ -->
-
-<button
-    id="back-button"
-    onclick="returnToLanding()">
-
-    ← Thesis information
-
-</button>
+            </section>
 
 
 
-<script>
+            <!-- ====================================================
+                 FOOTER
+                 ==================================================== -->
+
+            <footer id="footer">
+
+                <span>
+                    <strong>#Feminismo</strong>
+                    &nbsp; | &nbsp;
+                    Pilar del Carmen Rodríguez Mata
+                </span>
+
+                <button id="back-to-title" onclick="returnToTitle()">
+                    ← Thesis information
+                </button>
+
+            </footer>
+
+        </main>
+
+    </div>
 
 
-/* =================================================================
-   FIGURE DATA
 
-   Chapter divisions are based on the actual thesis pagination:
+    <script>
 
-   Chapter 3:
-       Figures 1-29
-       Chapter ends at approximately page 123.
+        /* ============================================================
+           FIGURE DATA
+           
+           Chapter divisions:
+           
+           Chapter 3 = Figures 1-29
+           Chapter 4 = Figures 30-39
+           Chapter 5 = Figures 40-50
 
-   Chapter 4:
-       Figures 30-39
-       Chapter ends at approximately page 195.
+           Consecutive figures are grouped only when requested:
+           
+           6 + 7
+           8 + 9
+           27 + 28
+           43 + 44 + 45
 
-   Chapter 5:
-       Figures 40-50
-       Continues through the end of the thesis.
+           Figures 10 and 11 have internal A/B tabs.
 
-   IMPORTANT:
-   The filenames below exactly match the files uploaded to GitHub.
-   Existing HTML files are NOT altered.
-   ================================================================= */
+           Figure 18 remains a separate index item even though its
+           underlying HTML file is shared with Figures 8, 9 and 17.
+           ============================================================ */
 
+        const figures = [
 
-const figures = [
+            /* ========================================================
+               CHAPTER 3
+               ======================================================== */
 
-    /* ============================================================
-       CHAPTER 3
-       ============================================================ */
-
-    {
-        id: 1,
-        chapter: 3,
-        page: 51,
-        file: "Figure 1.png",
-        title: "Figure 1",
-        caption: "Daily share of yearly tweet volume (%) in the original #Feminismo dataset, highlighting event peaks across time."
-    },
-
-    {
-        id: 2,
-        chapter: 3,
-        page: 51,
-        file: "Figure 2.png",
-        title: "Figure 2",
-        caption: "Daily share of yearly tweet volume (%) in the full corpus dataset, highlighting event peaks across time."
-    },
-
-    {
-        id: 3,
-        chapter: 3,
-        page: 61,
-        file: "Figure 3.png",
-        title: "Figure 3",
-        caption: "Comparison of the most frequent n-grams in the March 8th (8M) (left) and November 25th (25N) (right) datasets."
-    },
-
-    {
-        id: 4,
-        chapter: 3,
-        page: 62,
-        file: "Figure 4.png",
-        title: "Figure 4",
-        caption: "Temporal evolution of the top 10 verified unigrams in the March 8th (8M) dataset from 2010 to 2022."
-    },
-
-    {
-        id: 5,
-        chapter: 3,
-        page: 63,
-        file: "Figure 5.png",
-        title: "Figure 5",
-        caption: "Temporal evolution of the top 10 verified unigrams in the November 25th (25N) dataset from 2010 to 2022."
-    },
-
-    {
-        id: "6-7",
-        chapter: 3,
-        page: "64-65",
-        file: "Figure 6 and 7.html",
-        title: "Figures 6-7",
-        caption: "Interactive visualization showing the evolution of normalized frequency (per 10,000 tokens) of the lemmas \"feliz\" (happy) and \"libre\" (free) in tweets published on March 8 (8M) and November 25 (25N) between 2010 and 2022."
-    },
-
-    {
-        id: "8-9-18",
-        chapter: 3,
-        page: "67-79",
-        file: "Figure 8 and 9 and 17.html",
-        title: "Figures 8, 9 and 18",
-        caption: "Interactive visualization showing the evolution of normalized hashtag frequency (per 1,000 tweets) for selected hashtags, including #Feminismo, #NiUnaMenos and #NosotrasParamos, in tweets published on March 8 (8M) and November 25 (25N) between 2010 and 2022."
-    },
-
-    {
-        id: 10,
-        chapter: 3,
-        page: 69,
-        variants: [
             {
-                name: "8M",
-                url: "Figure 10a.html"
+                chapter: 3,
+                page: "p. 51",
+                title: "Figure 1: Daily Share of Yearly Tweet Volume",
+                caption:
+                    "Daily share of yearly tweet volume (%) in the original #Feminismo dataset, highlighting event peaks across time.",
+                type: "image",
+                file: "Figure 1.png"
             },
-            {
-                name: "25N",
-                url: "Figure 10b.html"
-            }
-        ],
-        title: "Figure 10",
-        caption: "Screenshots of the time-series visualization of the most prominent topics, as generated by BERTopic and manually annotated by the author, within the #Feminismo discourse on March 8th (8M) and November 25th (25N) for the years 2013 and 2018. Bubble size indicates the relative share of voice for each topic within the top 20 identified themes, excluding Topic -1, for that specific year."
-    },
 
-    {
-        id: 11,
-        chapter: 3,
-        page: 70,
-        variants: [
             {
-                name: "8M",
-                url: "Figure 11a.html"
+                chapter: 3,
+                page: "p. 51",
+                title: "Figure 2: Daily Share of Yearly Tweet Volume",
+                caption:
+                    "Daily share of yearly tweet volume (%) in the full corpus dataset, highlighting event peaks across time.",
+                type: "image",
+                file: "Figure 2.png"
             },
+
             {
-                name: "25N",
-                url: "Figure 11b.html"
+                chapter: 3,
+                page: "p. 61",
+                title: "Figure 3: Frequent N-Grams",
+                caption:
+                    "Comparison of the most frequent n-grams in the March 8th (8M) (left) and November 25th (25N) (right) datasets.",
+                type: "image",
+                file: "Figure 3.png"
+            },
+
+            {
+                chapter: 3,
+                page: "p. 62",
+                title: "Figure 4: Top 10 Unigrams, 8M",
+                caption:
+                    "Temporal evolution of the top 10 verified unigrams in the March 8th (8M) dataset from 2010 to 2022.",
+                type: "image",
+                file: "Figure 4.png"
+            },
+
+            {
+                chapter: 3,
+                page: "p. 63",
+                title: "Figure 5: Top 10 Unigrams, 25N",
+                caption:
+                    "Temporal evolution of the top 10 verified unigrams in the November 25th (25N) dataset from 2010 to 2022.",
+                type: "image",
+                file: "Figure 5.png"
+            },
+
+            {
+                chapter: 3,
+                page: "pp. 64-65",
+                title: "Figures 6 and 7: Normalized Lemma Frequency",
+                caption:
+                    'Figure 6, example screenshot from the interactive HTML visualization tool showing the evolution of the normalized frequency (per 10,000 tokens) of the lemma "feliz" (happy) in tweets published on March 8 (8M) and November 25 (25N) between 2010 and 2022. Figure 7, corresponding visualization for the lemma "libre" (free).',
+                type: "html",
+                file: "Figure 6 and 7.html"
+            },
+
+            {
+                chapter: 3,
+                page: "p. 67",
+                title: "Figures 8 and 9: Hashtag Evolution",
+                caption:
+                    "Figure 8, evolution of the normalized frequency (per 1000 tweets) of #Feminismo in tweets published on March 8 (8M) and November 25 (25N) between 2010 and 2022. Figure 9, corresponding visualization of #NiUnaMenos.",
+                type: "html",
+                file: "Figure 8 and 9 and 17.html"
+            },
+
+            {
+                chapter: 3,
+                page: "p. 69",
+                title: "Figure 10: Prominent Topics Time-Series",
+                caption:
+                    "Screenshots of the time-series visualization of the most prominent topics, as generated by BERTopic and manually annotated by the author, within the #Feminismo discourse on March 8th (8M) and November 25th (25N) for the years 2013 and 2018. Bubble size indicates the relative share of voice for each topic within the top 20 identified themes, excluding Topic -1, for that specific year.",
+                type: "variants",
+                variants: [
+                    {
+                        name: "8M",
+                        file: "Figure 10a.html"
+                    },
+                    {
+                        name: "25N",
+                        file: "Figure 10b.html"
+                    }
+                ]
+            },
+
+            {
+                chapter: 3,
+                page: "p. 70",
+                title: "Figure 11: Topic Explorer",
+                caption:
+                    "Screenshot of HTML topic explorer that presents sample tweets catalogued by BERTopic automatically.",
+                type: "variants",
+                variants: [
+                    {
+                        name: "8M",
+                        file: "Figure 11a.html"
+                    },
+                    {
+                        name: "25N",
+                        file: "Figure 11b.html"
+                    }
+                ]
+            },
+
+            {
+                chapter: 3,
+                page: "p. 71",
+                title: "Figure 12: Discourse Similarity Matrix",
+                caption:
+                    "Temporal evolution of discourse similarity (2010–2022). A cosine similarity matrix comparing text content from March 8 (8M) and November 25 (25N) across twelve years. Values represent the percentage of similarity based on normalized TF-IDF representations of the textual data.",
+                type: "image",
+                file: "Figure 12.png"
+            },
+
+            {
+                chapter: 3,
+                page: "p. 72",
+                title: "Figure 13: Rolling Cohesion, 8M",
+                caption:
+                    'Rolling Cohesion Analysis for the March 8th (8M) Dataset (± 2 Years). The plot contrasts Local Similarity, calculated within a five-year rolling window, against Global Similarity across the remaining dataset. The green shaded region indicates the "High Cohesion Zone" where local consistency exceeds the global baseline.',
+                type: "image",
+                file: "Figure 13.png"
+            },
+
+            {
+                chapter: 3,
+                page: "p. 72",
+                title: "Figure 14: Rolling Cohesion, 25N",
+                caption:
+                    'Rolling Cohesion Analysis for the November 25th (25N) Dataset (± 2 Years). The plot contrasts Local Similarity, calculated within a five-year rolling window, against Global Similarity across the remaining dataset. The green shaded region indicates the "High Cohesion Zone" where local consistency exceeds the global baseline.',
+                type: "image",
+                file: "Figure 14.png"
+            },
+
+            {
+                chapter: 3,
+                page: "p. 73",
+                title: "Figure 15: Weighted Topic Similarity",
+                caption:
+                    "Temporal evolution of Weighted Average Topic Similarity (2010–2022). The plot compares the internal semantic cohesion of 25N and 8M topics, as regenerated by BERTopic, over time. Values represent the weighted average cosine similarity, where higher scores indicate greater vocabulary overlap within the event's topics for that year.",
+                type: "image",
+                file: "Figure 15.png"
+            },
+
+            {
+                chapter: 3,
+                page: "p. 74",
+                title: "Figure 16: Positive Sentiment Trend",
+                caption:
+                    "Trend of Positive Sentiment Over Years (2010–2022). Temporal evolution of Positive Sentiment for March 8th (8M) and November 25th (25N). Solid lines represent linear regression trends, indicating the direction of change over the twelve-year period.",
+                type: "image",
+                file: "Figure 16.png"
+            },
+
+            {
+                chapter: 3,
+                page: "p. 75",
+                title: "Figure 17: Net Sentiment Trend",
+                caption:
+                    "Trend of Net Sentiment Over Years (2010–2022). Net sentiment is calculated as the difference between positive and negative sentiment scores. Solid lines represent linear regression trends, indicating the direction of change over the twelve-year period.",
+                type: "image",
+                file: "Figure 17.png"
+            },
+
+            {
+                chapter: 3,
+                page: "p. 79",
+                title: "Figure 18: #NosotrasParamos Evolution",
+                caption:
+                    "Example screenshot from the interactive HTML visualization tool showing the evolution of the normalized frequency (per 1000 tweets) of #NosotrasParamos in tweets published on March 8 (8M) and November 25 (25N) between 2010 and 2022.",
+                type: "html",
+                file: "Figure 8 and 9 and 17.html"
+            },
+
+            {
+                chapter: 3,
+                page: "p. 97",
+                title: "Figure 19: #NiUnaMenos Hashtag Peak",
+                caption:
+                    "Screenshot of the HTML tool displaying the top ten hashtags and their use during the peak connected to the hashtag #niunomenos, which coincides with Eileen Moreno's denunciation of intimate partner violence in her relationship.",
+                type: "html",
+                file: "Figure 19.html"
+            },
+
+            {
+                chapter: 3,
+                page: "p. 99",
+                title: "Figure 20: Event Embedding UMAP",
+                caption:
+                    "Screenshot of an interactive tool displaying a 2D UMAP projection of high-dimensional embeddings, where distances reflect cosine similarity. The interactive tool lists all events that are in each cluster.",
+                type: "html",
+                file: "Figure 20.html"
+            },
+
+            {
+                chapter: 3,
+                page: "p. 99",
+                title: "Figure 21: Non-Ritual Event Embedding UMAP",
+                caption:
+                    "Screenshot of an interactive tool displaying a 2D UMAP projection of high-dimensional embeddings that were not March 8th or November 25th events. Distances reflect cosine similarity. The interactive tool lists all events that are in each cluster.",
+                type: "html",
+                file: "Figure 21.html"
+            },
+
+            {
+                chapter: 3,
+                page: "p. 100",
+                title: "Figure 22: Sentiment by Activist Category",
+                caption:
+                    "Distribution of sentiment (negative, neutral, positive) across activist-related categories, ordered by decreasing proportion of negative discourse.",
+                type: "image",
+                file: "Figure 22.png"
+            },
+
+            {
+                chapter: 3,
+                page: "p. 101",
+                title: "Figure 23: Net Sentiment by Event",
+                caption:
+                    "Distribution of net sentiment scores, positive minus negative, for individual events across categories, with the dashed line marking neutrality (0).",
+                type: "html",
+                file: "Figure 23a.html"
+            },
+
+            {
+                chapter: 3,
+                page: "p. 101",
+                title: "Figure 24: Net Sentiment Over Time",
+                caption:
+                    "Net sentiment over time (2010–2023), distinguishing between ritual events and sporadic events. The horizontal line at zero marks the neutral threshold, allowing direct assessment of shifts in tone.",
+                type: "image",
+                file: "Figure 24.png"
+            },
+
+            {
+                chapter: 3,
+                page: "p. 102",
+                title: "Figure 25: Temporal Activity Patterns",
+                caption:
+                    "Box plots comparing temporal activity patterns between ritual and sporadic events, showing anticipation, tweets before peak, peak concentration, tweets at peak, and post-peak discussion.",
+                type: "image",
+                file: "Figure 25.png"
+            },
+
+            {
+                chapter: 3,
+                page: "p. 103",
+                title: "Figure 26: Connected Participation",
+                caption:
+                    "Scatter plot of connected participation across events, showing the share of participants engaged in mention interactions over time for ritual and sporadic events.",
+                type: "html",
+                file: "Figure 26.html"
+            },
+
+            {
+                chapter: 3,
+                page: "pp. 105-106",
+                title: "Figures 27 and 28: Event Network Maps",
+                caption:
+                    "Screenshots from the network mapping tool. Figure 27 shows April 2nd, 2019, anti-feminist sentiment following the suicide of Armando Vega Gil after being accused of sexual abuse, and December 30th, 2020, when abortion law was approved in Argentina. Figure 28 shows March 8th, 2020, International Women's Day, and December 30th, 2020, the abortion movement in Spain.",
+                type: "html",
+                file: "Figure 27 and 28.html"
+            },
+
+            {
+                chapter: 3,
+                page: "p. 120",
+                title: "Figure 29: Country Mentions by Event Category",
+                caption:
+                    "Distribution of country mentions across event categories, showing the proportion of references to each country within the discourse.",
+                type: "image",
+                file: "Figure 29.png"
+            },
+
+
+            /* ========================================================
+               CHAPTER 4
+               ======================================================== */
+
+            {
+                chapter: 4,
+                page: "p. 147",
+                title: "Figure 30: Frequency of \"Marido\"",
+                caption:
+                    "Screenshot from the HTML tool showing the normalized frequency of the word \"Marido\" from 2010 to 2022.",
+                type: "html",
+                file: "Figure 30.html"
+            },
+
+            {
+                chapter: 4,
+                page: "p. 148",
+                title: "Figure 31: Frequency of \"Sororidad\"",
+                caption:
+                    "Screenshot from the HTML tool showing the normalized frequency of the word \"Sororidad\" from 2010 to 2022.",
+                type: "html",
+                file: "Figure 31.html"
+            },
+
+            {
+                chapter: 4,
+                page: "p. 153",
+                title: "Figure 32: Inclusive Language",
+                caption:
+                    "Normalized usage of each form of inclusive language from 2009 to 2022.",
+                type: "html",
+                file: "Figure 32.html"
+            },
+
+            {
+                chapter: 4,
+                page: "p. 168",
+                title: "Figure 33: Frequently Uploaded Images",
+                caption:
+                    "Examples of images that were uploaded by over 80 users.",
+                type: "image",
+                file: "Figure 33.png"
+            },
+
+            {
+                chapter: 4,
+                page: "p. 171",
+                title: "Figure 34: #abortolegal",
+                caption:
+                    "Image uploaded with the hashtag #abortolegal.",
+                type: "image",
+                file: "Figure 34.png"
+            },
+
+            {
+                chapter: 4,
+                page: "p. 182",
+                title: "Figure 35: Textual Emoticons",
+                caption:
+                    "Evolution of textual emoticons over time.",
+                type: "image",
+                file: "Figure 35.png"
+            },
+
+            {
+                chapter: 4,
+                page: "p. 184",
+                title: "Figure 36: Tweets Including Media",
+                caption:
+                    "Normalized frequency of tweets that included media throughout the dataset.",
+                type: "image",
+                file: "Figure 36.png"
+            },
+
+            {
+                chapter: 4,
+                page: "p. 185",
+                title: "Figure 37: Image Description Labels",
+                caption:
+                    "Evolution of images catalogued under the top 10 image description labels.",
+                type: "image",
+                file: "Figure 37.png"
+            },
+
+            {
+                chapter: 4,
+                page: "pp. 188-189",
+                title: "Figures 38 and 39: Colour Analysis Timeline",
+                caption:
+                    "Figure 38, Colour Analysis Timeline displaying a pixel per image in the dataset with the most representative colour of each image. Figure 39, zoom in to the Colour Analysis Timeline.",
+                type: "image",
+                file: "Figure 38 and 39.png"
+            },
+
+
+            /* ========================================================
+               CHAPTER 5
+               ======================================================== */
+
+            {
+                chapter: 5,
+                page: "p. 208",
+                title: "Figure 40: Cultural Network",
+                caption:
+                    "Cultural Network of users and the domains they added to their tweets throughout the entire dataset.",
+                type: "image",
+                file: "Figure 40.png"
+            },
+
+            {
+                chapter: 5,
+                page: "p. 209",
+                title: "Figure 41: Spanish News Cluster",
+                caption:
+                    "Zoom in on the green cluster where Spanish news domains are found.",
+                type: "image",
+                file: "Figure 41.png"
+            },
+
+            {
+                chapter: 5,
+                page: "p. 209",
+                title: "Figure 42: Argentinian News Cluster",
+                caption:
+                    "Zoom in on the light pink cluster where Argentinian news domains are found. A group of users from the YouTube cluster, connecting to the Instagram cluster, is visible.",
+                type: "image",
+                file: "Figure 42.png"
+            },
+
+            {
+                chapter: 5,
+                page: "pp. 225-229",
+                title: "Figures 43, 44 and 45: Hashtag News Network",
+                caption:
+                    "Figure 43, screenshot of the interactive News-Hashtag Network where nodes are news sites and edges indicate the hashtags they were tweeted with. Figure 44, labelled zoom in on the centre of the Hashtag News Network. Figure 45, Hashtag News Networks for Argentinian, Mexican and Spanish news domains.",
+                type: "html",
+                file: "Figure 43, 44 an 45.html"
+            },
+
+            {
+                chapter: 5,
+                page: "p. 230",
+                title: "Figure 46: News-Hashtag Network Over Time",
+                caption:
+                    "Snapshots of the News-Hashtag Network in 2012, 2016 and 2022.",
+                type: "html",
+                file: "Figure 46.html"
+            },
+
+            {
+                chapter: 5,
+                page: "p. 231",
+                title: "Figure 47: User-News Network",
+                caption:
+                    "User-News Network where the nodes are news domains and the edges represent a unique user tweeting two different domains.",
+                type: "html",
+                file: "Figure 47.html"
+            },
+
+            {
+                chapter: 5,
+                page: "p. 233",
+                title: "Figure 48: News Domain UMAP",
+                caption:
+                    "UMAP visualization of news domains by textual similarity of tweets that include them.",
+                type: "html",
+                file: "Figure 48.html"
+            },
+
+            {
+                chapter: 5,
+                page: "p. 245",
+                title: "Figure 49: Bipartite Cultural Network",
+                caption:
+                    "Bipartite cultural network where nodes in pink represent channels that appear in various years after 2015, and nodes in green represent channels that have appeared in various years before and after 2015. User nodes are black.",
+                type: "image",
+                file: "Figure 49.png"
+            },
+
+            {
+                chapter: 5,
+                page: "p. 246",
+                title: "Figure 50: Anti-Feminist Channels",
+                caption:
+                    "Zoom in of the bottom-right corner of Figure 48 where anti-feminist channels can be found.",
+                type: "image",
+                file: "Figure 50.png"
             }
-        ],
-        title: "Figure 11",
-        caption: "Screenshot of the HTML topic explorer that presents sample tweets catalogued by BERTopic automatically."
-    },
-
-    {
-        id: 12,
-        chapter: 3,
-        page: 71,
-        file: "Figure 12.png",
-        title: "Figure 12",
-        caption: "Temporal evolution of discourse similarity (2010-2022). A cosine similarity matrix comparing text content from March 8 (8M) and November 25 (25N) across twelve years. Values represent the percentage of similarity based on normalized TF-IDF representations of the textual data."
-    },
-
-    {
-        id: 13,
-        chapter: 3,
-        page: 72,
-        file: "Figure 13.png",
-        title: "Figure 13",
-        caption: "Rolling Cohesion Analysis for the March 8th (8M) Dataset (± 2 Years). The plot contrasts Local Similarity, calculated within a five-year rolling window, against Global Similarity across the remaining dataset. The green shaded region indicates the \"High Cohesion Zone\" where local consistency exceeds the global baseline."
-    },
-
-    {
-        id: 14,
-        chapter: 3,
-        page: 72,
-        file: "Figure 14.png",
-        title: "Figure 14",
-        caption: "Rolling Cohesion Analysis for the November 25th (25N) Dataset (± 2 Years). The plot contrasts Local Similarity, calculated within a five-year rolling window, against Global Similarity across the remaining dataset. The green shaded region indicates the \"High Cohesion Zone\" where local consistency exceeds the global baseline."
-    },
-
-    {
-        id: 15,
-        chapter: 3,
-        page: 73,
-        file: "Figure 15.png",
-        title: "Figure 15",
-        caption: "Temporal evolution of Weighted Average Topic Similarity (2010-2022). The plot compares the internal semantic cohesion of 25N and 8M topics, as regenerated by BERTopic, over time. Values represent the weighted average cosine similarity, where higher scores indicate greater vocabulary overlap within the event's topics for that year."
-    },
-
-    {
-        id: 16,
-        chapter: 3,
-        page: 74,
-        file: "Figure 16.png",
-        title: "Figure 16",
-        caption: "Trend of Positive Sentiment Over Years (2010-2022). Temporal evolution of Positive Sentiment for March 8th (8M) and November 25th (25N). Solid lines represent linear regression trends, indicating the direction of change over the twelve-year period."
-    },
-
-    {
-        id: 17,
-        chapter: 3,
-        page: 75,
-        file: "Figure 17.png",
-        title: "Figure 17",
-        caption: "Trend of Net Sentiment Over Years (2010-2022). Net sentiment is calculated as the difference between positive and negative sentiment scores. Solid lines represent linear regression trends, indicating the direction of change over the twelve-year period."
-    },
-
-    {
-        id: 19,
-        chapter: 3,
-        page: 97,
-        file: "Figure 19.html",
-        title: "Figure 19",
-        caption: "Screenshot of HTML tool displaying the top ten hashtags and their use during the peak connected to the hashtag #niunomenos, which coincides with Eileen Moreno's denunciation of intimate partner violence in her relationship."
-    },
-
-    {
-        id: 20,
-        chapter: 3,
-        page: 99,
-        file: "Figure 20.html",
-        title: "Figure 20",
-        caption: "Screenshot of interactive tool displaying a 2D UMAP projection of high-dimensional embeddings, where distances reflect cosine similarity. The interactive tool lists all events that are in each cluster."
-    },
-
-    {
-        id: 21,
-        chapter: 3,
-        page: 99,
-        file: "Figure 21.html",
-        title: "Figure 21",
-        caption: "Screenshot of interactive tool displaying a 2D UMAP projection of high-dimensional embeddings that were not March 8th or November 25th events. Distances reflect cosine similarity. The interactive tool lists all events that are in each cluster."
-    },
-
-    {
-        id: 22,
-        chapter: 3,
-        page: 100,
-        file: "Figure 22.png",
-        title: "Figure 22",
-        caption: "Distribution of sentiment, negative, neutral, and positive, across activist-related categories, ordered by decreasing proportion of negative discourse."
-    },
-
-    {
-        id: 23,
-        chapter: 3,
-        page: 101,
-        file: "Figure 23a.html",
-        title: "Figure 23",
-        caption: "Distribution of net sentiment scores, positive minus negative, for individual events across categories, with the dashed line marking neutrality at 0."
-    },
-
-    {
-        id: 24,
-        chapter: 3,
-        page: 101,
-        file: "Figure 24.png",
-        title: "Figure 24",
-        caption: "Net sentiment over time (2010-2023), distinguishing between ritual events and sporadic events. The horizontal line at zero marks the neutral threshold, allowing direct assessment of shifts in tone."
-    },
-
-    {
-        id: 25,
-        chapter: 3,
-        page: 102,
-        file: "Figure 25.png",
-        title: "Figure 25",
-        caption: "Box plots comparing temporal activity patterns between ritual and sporadic events, showing anticipation, peak concentration, and post-peak discussion."
-    },
-
-    {
-        id: 26,
-        chapter: 3,
-        page: 103,
-        file: "Figure 26.html",
-        title: "Figure 26",
-        caption: "Scatter plot of connected participation across events, showing the share of participants engaged in mention interactions over time for ritual and sporadic events."
-    },
-
-    {
-        id: "27-28",
-        chapter: 3,
-        page: "105-106",
-        file: "Figure 27 and 28.html",
-        title: "Figures 27-28",
-        caption: "Screenshots from the network mapping tool showing April 2nd, 2019, an anti-feminist sentiment event following the suicide of Armando Vega Gil after allegations of sexual abuse, December 30th, 2020, when abortion law was approved in Argentina, March 8th, 2020, International Women's Day, and December 30th, 2020, an abortion movement in Spain."
-    },
-
-    {
-        id: 29,
-        chapter: 3,
-        page: 120,
-        file: "Figure 29.png",
-        title: "Figure 29",
-        caption: "Distribution of country mentions across event categories, showing the proportion of references to each country within the discourse."
-    },
-
-
-    /* ============================================================
-       CHAPTER 4
-       ============================================================ */
-
-    {
-        id: 30,
-        chapter: 4,
-        page: 147,
-        file: "Figure 30.html",
-        title: "Figure 30",
-        caption: "Screenshot of HTML tool showing the normalized frequency of the word \"Marido\" from 2010 to 2022."
-    },
-
-    {
-        id: 31,
-        chapter: 4,
-        page: 148,
-        file: "Figure 31.html",
-        title: "Figure 31",
-        caption: "Screenshot of HTML tool showing the normalized frequency of the word \"Sororidad\" from 2010 to 2022."
-    },
-
-    {
-        id: 32,
-        chapter: 4,
-        page: 153,
-        file: "Figure 32.html",
-        title: "Figure 32",
-        caption: "Normalized usage of each form of inclusive language from 2009 to 2022."
-    },
-
-    {
-        id: 33,
-        chapter: 4,
-        page: 168,
-        file: "Figure 33.png",
-        title: "Figure 33",
-        caption: "Examples of images that were uploaded by over 80 users."
-    },
-
-    {
-        id: 34,
-        chapter: 4,
-        page: 171,
-        file: "Figure 34.png",
-        title: "Figure 34",
-        caption: "Image uploaded with the hashtag #abortolegal."
-    },
-
-    {
-        id: 35,
-        chapter: 4,
-        page: 182,
-        file: "Figure 35.png",
-        title: "Figure 35",
-        caption: "Evolution of textual emoticons over time."
-    },
-
-    {
-        id: 36,
-        chapter: 4,
-        page: 184,
-        file: "Figure 36.png",
-        title: "Figure 36",
-        caption: "Normalized frequency of tweets that included media throughout the dataset."
-    },
-
-    {
-        id: 37,
-        chapter: 4,
-        page: 185,
-        file: "Figure 37.png",
-        title: "Figure 37",
-        caption: "Evolution of images catalogued under the top 10 image description labels."
-    },
-
-    {
-        id: "38-39",
-        chapter: 4,
-        page: "188-189",
-        file: "Figure 38 and 39.png",
-        title: "Figures 38-39",
-        caption: "Colour Analysis Timeline displaying a pixel per image in the dataset with the most representative colour of each image, followed by a zoomed-in view of the timeline."
-    },
-
-
-    /* ============================================================
-       CHAPTER 5
-       ============================================================ */
-
-    {
-        id: 40,
-        chapter: 5,
-        page: 208,
-        file: "Figure 40.png",
-        title: "Figure 40",
-        caption: "Cultural Network of users and the domains they added to their tweets throughout the entire dataset."
-    },
-
-    {
-        id: 41,
-        chapter: 5,
-        page: 209,
-        file: "Figure 41.png",
-        title: "Figure 41",
-        caption: "Zoom in on the green cluster where Spanish news domains are found."
-    },
-
-    {
-        id: 42,
-        chapter: 5,
-        page: 209,
-        file: "Figure 42.png",
-        title: "Figure 42",
-        caption: "Zoom in on the light pink cluster where Argentinian news domains are found. A group of users from the YouTube cluster, connecting to the Instagram cluster, is visible."
-    },
-
-    {
-        id: "43-45",
-        chapter: 5,
-        page: "225-229",
-        file: "Figure 43, 44 an 45.html",
-        title: "Figures 43-45",
-        caption: "Interactive News-Hashtag Network. Figure 43 shows the network where nodes are news sites and edges indicate the hashtags they were tweeted with. Figure 44 provides a labelled zoom in on the centre of the network. Figure 45 shows hashtag news networks for Argentinian, Mexican, and Spanish news domains."
-    },
-
-    {
-        id: 46,
-        chapter: 5,
-        page: 230,
-        file: "Figure 46.html",
-        title: "Figure 46",
-        caption: "Snapshots of the News-Hashtag Network in 2012, 2016, and 2022."
-    },
-
-    {
-        id: 47,
-        chapter: 5,
-        page: 231,
-        file: "Figure 47.html",
-        title: "Figure 47",
-        caption: "User-News Network where the nodes are news domains and the edges represent a unique user tweeting two different domains."
-    },
-
-    {
-        id: 48,
-        chapter: 5,
-        page: 233,
-        file: "Figure 48.html",
-        title: "Figure 48",
-        caption: "UMAP visualization of news domains by textual similarity of tweets that include them."
-    },
-
-    {
-        id: 49,
-        chapter: 5,
-        page: 245,
-        file: "Figure 49.png",
-        title: "Figure 49",
-        caption: "Bipartite cultural network where nodes in pink represent channels that appear in various years after 2015, and nodes in green represent channels that have appeared in various years before and after 2015. User nodes are black."
-    },
-
-    {
-        id: 50,
-        chapter: 5,
-        page: 246,
-        file: "Figure 50.png",
-        title: "Figure 50",
-        caption: "Zoom in of the bottom-right corner of Figure 48 where anti-feminist channels can be found."
-    }
-
-];
-
-
-/* =================================================================
-   UI ELEMENT REFERENCES
-   ================================================================= */
-
-const landingPage = document.getElementById("landing-page");
-const app = document.getElementById("app");
-
-const container = document.getElementById("buttons-container");
-
-const viewer = document.getElementById("viewer");
-
-const imageViewer = document.getElementById("image-viewer");
-const figureImage = document.getElementById("figure-image");
-
-const zoomControls = document.getElementById("zoom-controls");
-const zoomLevel = document.getElementById("zoom-level");
-
-const titleLabel = document.getElementById("fig-title");
-const captionLabel = document.getElementById("fig-caption");
-
-const chapterLabel = document.getElementById("chapter-label");
-const pageLabel = document.getElementById("page-label");
-
-const tabsContainer = document.getElementById("variant-tabs");
-
-const backButton = document.getElementById("back-button");
-
-
-/* =================================================================
-   ZOOM STATE
-
-   The image begins at 100%.
-
-   Unlike the previous implementation, zooming OUT can actually
-   decrease below 100%.
-
-   We allow:
-       50%
-       60%
-       70%
-       80%
-       90%
-       100%
-       110%
-       ...
-       300%
-
-   The image's natural fit-to-viewer size is controlled separately
-   by CSS. The zoom percentage applies on top of that fitted size.
-   ================================================================= */
-
-let currentZoom = 100;
-
-const MIN_ZOOM = 50;
-const MAX_ZOOM = 300;
-const ZOOM_STEP = 10;
-
-
-/* =================================================================
-   OPEN THE INDEX
-   ================================================================= */
-
-function openIndex() {
-
-    landingPage.style.display = "none";
-
-    app.style.display = "flex";
-
-    backButton.style.display = "block";
-
-}
-
-
-/* =================================================================
-   RETURN TO LANDING PAGE
-   ================================================================= */
-
-function returnToLanding() {
-
-    app.style.display = "none";
-
-    landingPage.style.display = "flex";
-
-    backButton.style.display = "none";
-
-}
-
-
-/* =================================================================
-   GET CHAPTER CLASS
-   ================================================================= */
 
-function getChapterClass(chapter) {
+        ];
 
-    return `chapter-${chapter}`;
 
-}
+        /* ============================================================
+           DOM ELEMENTS
+           ============================================================ */
 
+        const container = document.getElementById("buttons-container");
+        const viewer = document.getElementById("viewer");
+        const imageViewer = document.getElementById("image-viewer");
+        const displayImage = document.getElementById("display-image");
 
-/* =================================================================
-   SET IMAGE ZOOM
-   ================================================================= */
+        const titleLabel = document.getElementById("fig-title");
+        const captionLabel = document.getElementById("fig-caption");
 
-function applyZoom() {
+        const chapterLabel = document.getElementById("chapter-label");
+        const figurePage = document.getElementById("figure-page");
 
-    figureImage.style.transform =
-        `scale(${currentZoom / 100})`;
+        const tabsContainer = document.getElementById("variant-tabs");
+        const zoomControls = document.getElementById("zoom-controls");
+        const zoomLevel = document.getElementById("zoom-level");
 
-    zoomLevel.innerText =
-        `${currentZoom}%`;
 
-}
+        /* ============================================================
+           ZOOM STATE
 
+           Images begin at 100%.
 
-/* =================================================================
-   ZOOM IN
-   ================================================================= */
+           Zooming OUT can go below 100%, unlike the previous version.
+           The minimum is 25%.
 
-function zoomIn() {
+           Zooming IN goes up to 400%.
 
-    currentZoom =
-        Math.min(
-            MAX_ZOOM,
-            currentZoom + ZOOM_STEP
-        );
+           The zoom is controlled exclusively through the buttons,
+           not through mouse movement.
+           ============================================================ */
 
-    applyZoom();
+        let currentZoom = 1.0;
 
-}
+        const MIN_ZOOM = 0.25;
+        const MAX_ZOOM = 4.0;
+        const ZOOM_STEP = 0.25;
 
 
-/* =================================================================
-   ZOOM OUT
-   ================================================================= */
+        /* ============================================================
+           LANDING PAGE
+           ============================================================ */
 
-function zoomOut() {
+        function enterFigures() {
 
-    currentZoom =
-        Math.max(
-            MIN_ZOOM,
-            currentZoom - ZOOM_STEP
-        );
+            document.getElementById("landing-page").style.display = "none";
+            document.getElementById("app").classList.add("visible");
 
-    applyZoom();
+            /*
+             * Automatically load the first figure once the user
+             * enters the figure index.
+             */
+            const firstButton = document.querySelector(".nav-btn");
 
-}
+            if (firstButton) {
+                firstButton.click();
+            }
+        }
 
 
-/* =================================================================
-   RESET ZOOM
-   ================================================================= */
+        /* ============================================================
+           RETURN TO TITLE PAGE
+           ============================================================ */
 
-function resetZoom() {
+        function returnToTitle() {
 
-    currentZoom = 100;
+            document.getElementById("app").classList.remove("visible");
+            document.getElementById("landing-page").style.display = "flex";
 
-    applyZoom();
+        }
 
-}
 
+        /* ============================================================
+           CHAPTER COLOUR HELPER
+           ============================================================ */
 
-/* =================================================================
-   LOAD IMAGE
+        function getChapterClass(chapter) {
 
-   Images use the dedicated image viewer rather than an iframe.
+            return "chapter-" + chapter;
 
-   This gives us:
-   - clean white background
-   - proper contain behaviour
-   - button-controlled zoom
-   - no grey iframe appearance
-   ================================================================= */
+        }
 
-function loadImage(url) {
 
-    viewer.style.display = "none";
+        /* ============================================================
+           BUILD SIDEBAR
+           
+           Chapter headers are inserted as non-clickable separators.
+           ============================================================ */
 
-    imageViewer.style.display = "block";
+        let currentChapter = null;
 
-    zoomControls.style.display = "flex";
+        figures.forEach((figure, index) => {
 
-    figureImage.src = url;
+            /*
+             * Insert a chapter separator whenever the chapter changes.
+             */
+            if (figure.chapter !== currentChapter) {
 
-    currentZoom = 100;
+                currentChapter = figure.chapter;
 
-    applyZoom();
+                const chapterHeader = document.createElement("div");
 
-}
+                chapterHeader.className = "chapter-header";
 
+                chapterHeader.innerText =
+                    "Chapter " + figure.chapter;
 
-/* =================================================================
-   LOAD HTML
+                container.appendChild(chapterHeader);
+            }
 
-   HTML files continue to load exactly as before, using the iframe.
 
-   No changes are made to the uploaded HTML files themselves.
-   ================================================================= */
+            /*
+             * Create the figure button.
+             */
+            const button = document.createElement("button");
 
-function loadHTML(url) {
+            button.className =
+                "nav-btn " + getChapterClass(figure.chapter);
 
-    imageViewer.style.display = "none";
+            button.innerText = figure.title;
 
-    zoomControls.style.display = "none";
+            button.onclick = function() {
 
-    viewer.style.display = "block";
-
-    viewer.srcdoc = "";
-
-    viewer.src = url;
-
-}
-
-
-/* =================================================================
-   SMART VIEWER
-
-   Automatically determines whether the file is an image or HTML.
-   ================================================================= */
-
-function setViewerContent(url) {
-
-    const isImage =
-        /\.(jpeg|jpg|gif|png|webp|svg)$/i.test(url);
-
-    if (isImage) {
-
-        loadImage(url);
-
-    } else {
-
-        loadHTML(url);
-
-    }
-
-}
-
-
-/* =================================================================
-   BUILD SIDEBAR
-
-   The sidebar is generated from the figure data.
-
-   Chapter headers are inserted automatically when the chapter
-   changes.
-
-   IMPORTANT:
-   Chapter membership is explicitly stored in each figure object,
-   so it cannot accidentally be inferred from the figure number.
-   ================================================================= */
-
-let currentChapter = null;
-
-figures.forEach((fig, index) => {
-
-    /* ------------------------------------------------------------
-       Add chapter separator whenever the chapter changes.
-       ------------------------------------------------------------ */
-
-    if (fig.chapter !== currentChapter) {
-
-        currentChapter = fig.chapter;
-
-        const chapterHeader =
-            document.createElement("div");
-
-        chapterHeader.className =
-            `chapter-header ${getChapterClass(fig.chapter)}`;
-
-        chapterHeader.innerText =
-            `Chapter ${fig.chapter}`;
-
-        container.appendChild(chapterHeader);
-
-    }
-
-
-    /* ------------------------------------------------------------
-       Create figure button.
-       ------------------------------------------------------------ */
-
-    const btn =
-        document.createElement("button");
-
-    btn.className =
-        `nav-btn ${getChapterClass(fig.chapter)}`;
-
-    btn.innerText =
-        fig.title;
-
-    btn.onclick = () =>
-        loadFigure(index, btn);
-
-    container.appendChild(btn);
-
-});
-
-
-/* =================================================================
-   LOAD FIGURE
-   ================================================================= */
-
-function loadFigure(index, btnElement) {
-
-    const data = figures[index];
-
-
-    /* ------------------------------------------------------------
-       Update chapter information.
-       ------------------------------------------------------------ */
-
-    chapterLabel.innerText =
-        `Chapter ${data.chapter}`;
-
-    chapterLabel.className =
-        getChapterClass(data.chapter);
-
-
-    /* ------------------------------------------------------------
-       Update page information.
-       ------------------------------------------------------------ */
-
-    pageLabel.innerText =
-        `Page ${data.page}`;
-
-
-    /* ------------------------------------------------------------
-       Update title and description.
-       ------------------------------------------------------------ */
-
-    titleLabel.innerText =
-        data.title;
-
-    captionLabel.innerText =
-        data.caption;
-
-
-    /* ------------------------------------------------------------
-       Reset variant tabs.
-       ------------------------------------------------------------ */
-
-    tabsContainer.innerHTML = "";
-
-    tabsContainer.style.display = "none";
-
-
-    /* ------------------------------------------------------------
-       Handle figures with A/B HTML variants.
-
-       At present, only Figures 10 and 11 use this mechanism.
-       ------------------------------------------------------------ */
-
-    if (data.variants) {
-
-        tabsContainer.style.display = "flex";
-
-        data.variants.forEach((variant, vIndex) => {
-
-            const tabBtn =
-                document.createElement("button");
-
-            tabBtn.className =
-                "variant-btn";
-
-            tabBtn.innerText =
-                variant.name;
-
-            tabBtn.onclick = () => {
-
-                setViewerContent(
-                    variant.url
-                );
-
-                document
-                    .querySelectorAll(".variant-btn")
-                    .forEach(button =>
-                        button.classList.remove(
-                            "active-variant"
-                        )
-                    );
-
-                tabBtn.classList.add(
-                    "active-variant"
-                );
+                loadFigure(index, button);
 
             };
 
-            tabsContainer.appendChild(tabBtn);
+            container.appendChild(button);
+
+        });
 
 
-            /* Automatically display first variant. */
+        /* ============================================================
+           LOAD FIGURE
+           ============================================================ */
 
-            if (vIndex === 0) {
+        function loadFigure(index, buttonElement) {
 
-                tabBtn.click();
+            const data = figures[index];
+
+
+            /* --------------------------------------------------------
+               Update figure metadata
+               -------------------------------------------------------- */
+
+            titleLabel.innerText = data.title;
+
+            captionLabel.innerText = data.caption;
+
+            figurePage.innerText = data.page;
+
+            chapterLabel.innerText =
+                "Chapter " + data.chapter;
+
+            chapterLabel.className =
+                getChapterClass(data.chapter);
+
+
+            /* --------------------------------------------------------
+               Remove active state from all sidebar buttons
+               -------------------------------------------------------- */
+
+            document
+                .querySelectorAll(".nav-btn")
+                .forEach(function(button) {
+
+                    button.classList.remove("active");
+
+                });
+
+            buttonElement.classList.add("active");
+
+
+            /* --------------------------------------------------------
+               Reset the variant tabs
+               -------------------------------------------------------- */
+
+            tabsContainer.innerHTML = "";
+
+            tabsContainer.style.display = "none";
+
+
+            /* --------------------------------------------------------
+               Reset the viewer
+               -------------------------------------------------------- */
+
+            viewer.style.display = "none";
+
+            imageViewer.style.display = "none";
+
+            zoomControls.style.display = "none";
+
+
+            /* --------------------------------------------------------
+               Handle figures with A/B variants
+
+               Only Figures 10 and 11 use this system.
+               -------------------------------------------------------- */
+
+            if (data.type === "variants") {
+
+                tabsContainer.style.display = "flex";
+
+
+                data.variants.forEach(function(variant, variantIndex) {
+
+                    const tabButton =
+                        document.createElement("button");
+
+                    tabButton.className = "variant-btn";
+
+                    tabButton.innerText = variant.name;
+
+
+                    tabButton.onclick = function() {
+
+                        /*
+                         * Remove active state from all variant buttons.
+                         */
+                        document
+                            .querySelectorAll(".variant-btn")
+                            .forEach(function(button) {
+
+                                button.classList.remove(
+                                    "active-variant"
+                                );
+
+                            });
+
+
+                        /*
+                         * Mark this tab as active.
+                         */
+                        tabButton.classList.add(
+                            "active-variant"
+                        );
+
+
+                        /*
+                         * Load the HTML file.
+                         */
+                        loadHTML(variant.file);
+
+                    };
+
+
+                    tabsContainer.appendChild(tabButton);
+
+
+                    /*
+                     * Automatically select the first variant.
+                     */
+                    if (variantIndex === 0) {
+
+                        tabButton.click();
+
+                    }
+
+                });
+
+            }
+
+
+            /* --------------------------------------------------------
+               Handle ordinary HTML figures
+               -------------------------------------------------------- */
+
+            else if (data.type === "html") {
+
+                loadHTML(data.file);
+
+            }
+
+
+            /* --------------------------------------------------------
+               Handle image figures
+               -------------------------------------------------------- */
+
+            else if (data.type === "image") {
+
+                loadImage(data.file);
+
+            }
+
+        }
+
+
+        /* ============================================================
+           LOAD HTML
+           
+           HTML visualizations are loaded directly into the iframe.
+           This preserves their existing functionality.
+           ============================================================ */
+
+        function loadHTML(file) {
+
+            /*
+             * Hide the image-specific viewer.
+             */
+            imageViewer.style.display = "none";
+
+            zoomControls.style.display = "none";
+
+
+            /*
+             * Show the iframe.
+             */
+            viewer.style.display = "block";
+
+
+            /*
+             * Clear srcdoc in case an image was previously loaded.
+             */
+            viewer.removeAttribute("srcdoc");
+
+
+            /*
+             * Set the HTML file as the iframe source.
+
+             * encodeURI preserves spaces in filenames while ensuring
+             * the resulting URL is valid for GitHub Pages.
+             */
+            viewer.src = encodeURI(file);
+
+        }
+
+
+        /* ============================================================
+           LOAD IMAGE
+           
+           Images are placed on a clean white canvas rather than
+           being loaded inside the iframe.
+
+           This gives us proper zoom control.
+           ============================================================ */
+
+        function loadImage(file) {
+
+            /*
+             * Hide iframe.
+             */
+            viewer.style.display = "none";
+
+
+            /*
+             * Show image viewer.
+             */
+            imageViewer.style.display = "flex";
+
+
+            /*
+             * Show zoom controls.
+             */
+            zoomControls.style.display = "flex";
+
+
+            /*
+             * Reset zoom whenever a new image is selected.
+             */
+            currentZoom = 1.0;
+
+            updateZoomDisplay();
+
+
+            /*
+             * Set image source.
+             */
+            displayImage.src = encodeURI(file);
+
+
+            /*
+             * Ensure the image starts at 100%.
+             */
+            displayImage.style.width = "100%";
+            displayImage.style.height = "100%";
+
+
+            /*
+             * Once the image has loaded, use its natural dimensions
+             * as the basis for zooming.
+             */
+            displayImage.onload = function() {
+
+                applyZoom();
+
+            };
+
+        }
+
+
+        /* ============================================================
+           APPLY ZOOM
+           ============================================================ */
+
+        function applyZoom() {
+
+            /*
+             * At 100%, the image is constrained to fit within the
+             * available viewer area.
+
+             * Above or below 100%, we explicitly change its dimensions.
+             */
+            if (currentZoom === 1.0) {
+
+                displayImage.style.width = "100%";
+                displayImage.style.height = "100%";
+
+                displayImage.style.maxWidth = "100%";
+                displayImage.style.maxHeight = "100%";
+
+            }
+
+            else {
+
+                /*
+                 * Remove the normal fit constraints.
+                 */
+                displayImage.style.maxWidth = "none";
+                displayImage.style.maxHeight = "none";
+
+
+                /*
+                 * Scale relative to the viewer.
+
+                 * The image is allowed to become smaller than the
+                 * viewer when zoomed below 100%.
+                 */
+                displayImage.style.width =
+                    (currentZoom * 100) + "%";
+
+                displayImage.style.height =
+                    (currentZoom * 100) + "%";
+
+            }
+
+            updateZoomDisplay();
+
+        }
+
+
+        /* ============================================================
+           ZOOM IN
+           ============================================================ */
+
+        function zoomIn() {
+
+            currentZoom =
+                Math.min(
+                    MAX_ZOOM,
+                    currentZoom + ZOOM_STEP
+                );
+
+            applyZoom();
+
+        }
+
+
+        /* ============================================================
+           ZOOM OUT
+           ============================================================ */
+
+        function zoomOut() {
+
+            currentZoom =
+                Math.max(
+                    MIN_ZOOM,
+                    currentZoom - ZOOM_STEP
+                );
+
+            applyZoom();
+
+        }
+
+
+        /* ============================================================
+           RESET ZOOM
+           ============================================================ */
+
+        function resetZoom() {
+
+            currentZoom = 1.0;
+
+            applyZoom();
+
+            /*
+             * Return the image viewer scroll position to the centre.
+             */
+            imageViewer.scrollLeft =
+                (imageViewer.scrollWidth -
+                 imageViewer.clientWidth) / 2;
+
+            imageViewer.scrollTop =
+                (imageViewer.scrollHeight -
+                 imageViewer.clientHeight) / 2;
+
+        }
+
+
+        /* ============================================================
+           UPDATE ZOOM LABEL
+           ============================================================ */
+
+        function updateZoomDisplay() {
+
+            zoomLevel.innerText =
+                Math.round(currentZoom * 100) + "%";
+
+        }
+
+
+        /* ============================================================
+           KEYBOARD SHORTCUTS
+           
+           These are optional conveniences.
+
+           + / =  zoom in
+           -    zoom out
+           0    reset
+
+           They only affect the image viewer.
+           ============================================================ */
+
+        document.addEventListener("keydown", function(event) {
+
+            /*
+             * Ignore keyboard shortcuts while typing in an input.
+             */
+            if (
+                event.target.tagName === "INPUT" ||
+                event.target.tagName === "TEXTAREA"
+            ) {
+                return;
+            }
+
+
+            if (event.key === "+" || event.key === "=") {
+
+                if (
+                    imageViewer.style.display === "flex"
+                ) {
+                    zoomIn();
+                }
+
+            }
+
+
+            else if (event.key === "-") {
+
+                if (
+                    imageViewer.style.display === "flex"
+                ) {
+                    zoomOut();
+                }
+
+            }
+
+
+            else if (event.key === "0") {
+
+                if (
+                    imageViewer.style.display === "flex"
+                ) {
+                    resetZoom();
+                }
 
             }
 
         });
 
-    } else {
-
-        /* --------------------------------------------------------
-           Standard single-file figure.
-           -------------------------------------------------------- */
-
-        setViewerContent(data.file);
-
-    }
-
-
-    /* ------------------------------------------------------------
-       Update active sidebar button.
-       ------------------------------------------------------------ */
-
-    document
-        .querySelectorAll(".nav-btn")
-        .forEach(button =>
-            button.classList.remove("active")
-        );
-
-    btnElement.classList.add("active");
-
-}
-
-
-/* =================================================================
-   KEYBOARD ACCESSIBILITY
-
-   Zoom can also be controlled with:
-       +  Zoom in
-       -  Zoom out
-       0  Reset zoom
-
-   This does NOT use mouse-wheel zoom, as requested.
-   ================================================================= */
-
-document.addEventListener("keydown", function(event) {
-
-    if (app.style.display !== "flex") {
-        return;
-    }
-
-    if (event.key === "+" || event.key === "=") {
-
-        zoomIn();
-
-    }
-
-    else if (event.key === "-" || event.key === "_") {
-
-        zoomOut();
-
-    }
-
-    else if (event.key === "0") {
-
-        resetZoom();
-
-    }
-
-});
-
-
-</script>
+    </script>
 
 </body>
 </html>
