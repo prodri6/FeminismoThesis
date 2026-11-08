@@ -1,3 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>#Feminismo | Thesis Figures</title>
+
+    <style>
+
+        /* ============================================================
+           GLOBAL STYLING
+           ============================================================ */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            font-family: "Avenir Next", Avenir, "Segoe UI", Helvetica, Arial, sans-serif;
+            background: #f5f6f8;
+            color: #263238;
+        }
+
+
+        /* ============================================================
+           LANDING PAGE
+           ============================================================ */
+
+        #landing-page {
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 50px 30px;
+            background:
+                radial-gradient(circle at top left, rgba(72, 101, 129, 0.10), transparent 35%),
+                radial-gradient(circle at bottom right, rgba(155, 89, 116, 0.08), transparent 35%),
+                #f7f7f6;
+        }
+
+        .title-page {
+            width: min(900px, 100%);
+            text-align: center;
+            padding: 65px 60px;
+            background: rgba(255, 255, 255, 0.94);
+            border: 1px solid #e4e5e7;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+        }
+
+        .title-page .discipline {
+            margin-bottom: 35px;
+            font-size: 0.78rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: #68727b;
+        }
+
+        .title-page h1 {
+            margin: 0 auto 28px;
+            max-width: 780px;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            font-weight: 400;
+            line-height: 1.2;
+            color: #273746;
+        }
+
+        .title-page .author {
+            margin: 0 0 45px;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 1.15rem;
+            color: #53616c;
+        }
+
+        .title-page .details {
+            margin: 0 auto;
+            max-width: 650px;
+            color: #59636b;
+            font-size: 0.92rem;
+            line-height: 1.85;
+        }
+
+        .title-page .details strong {
+            color: #34444f;
+            font-weight: 600;
+        }
+
+        .title-page .copyright {
+            margin-top: 40px;
+            font-size: 0.75rem;
+            color: #8a9196;
+        }
+
+        .enter-button {
+            margin-top: 45px;
+            padding: 13px 28px;
+            border: 1px solid #354b5c;
+            background: #354b5c;
+            color: white;
+            font-family: inherit;
+            font-size: 0.78rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .enter-button:hover {
+            background: #253746;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+        }
+
+
+        /* ============================================================
+           MAIN FIGURE APPLICATION
+           ============================================================ */
+
+        #app {
+            display: none;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        #app.visible {
+            display: flex;
+        }
+
+
+        /* ============================================================
+           SIDEBAR
+           ============================================================ */
+
+        #sidebar {
+            width: 310px;
+            min-width: 310px;
+            height: 100vh;
+            overflow-y: auto;
+            background: #273746;
+            color: white;
+            border-right: 1px solid #d9dde0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #sidebar-header {
+            padding: 24px 22px 20px;
+            background: #202f3b;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        #sidebar-header h2 {
+            margin: 0;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 1.35rem;
+            font-weight: 400;
+            letter-spacing: 0.01em;
+        }
+
+        #sidebar-header p {
+            margin: 7px 0 0;
+            color: #aeb9c1;
+            font-size: 0.72rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        #buttons-container {
+            padding-bottom: 20px;
+        }
+
+
+        /* ============================================================
+           CHAPTER HEADERS
+           ============================================================ */
+
+        .chapter-header {
+            padding: 18px 20px 9px;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.72);
+            cursor: default;
+        }
+
+        .chapter-header:first-child {
+            padding-top: 22px;
+        }
+
+
+        /* ============================================================
+           FIGURE NAVIGATION BUTTONS
+           ============================================================ */
+
+        .nav-btn {
+            width: 100%;
+            padding: 10px 18px 10px 22px;
+            border: none;
+            border-left: 4px solid transparent;
+            background: transparent;
+            color: #e7ebee;
+            text-align: left;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 0.78rem;
+            line-height: 1.35;
+            transition:
+                background-color 0.18s ease,
+                border-color 0.18s ease,
+                color 0.18s ease;
+        }
+
+        .nav-btn:hover {
+            background: rgba(255,255,255,0.07);
+        }
+
+        .nav-btn.active {
+            color: white;
+            background: rgba(255,255,255,0.12);
+            font-weight: 600;
+        }
+
+        /* Chapter 3 colour */
+        .nav-btn.chapter-3.active,
+        .nav-btn.chapter-3:hover {
+            border-left-color: #8e6f9e;
+        }
+
+        /* Chapter 4 colour */
+        .nav-btn.chapter-4.active,
+        .nav-btn.chapter-4:hover {
+            border-left-color: #628c91;
+        }
+
+        /* Chapter 5 colour */
+        .nav-btn.chapter-5.active,
+        .nav-btn.chapter-5:hover {
+            border-left-color: #b0835d;
+        }
+
+
+        /* ============================================================
+           MAIN CONTENT
+           ============================================================ */
+
+        #main-content {
+            flex: 1;
+            min-width: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background: #f3f4f5;
+        }
+
+
+        /* ============================================================
+           FIGURE INFORMATION PANEL
+           ============================================================ */
+
+        #figure-info {
+            flex-shrink: 0;
+            padding: 19px 28px 17px;
+            background: white;
+            border-bottom: 1px solid #dfe2e5;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+
+        #figure-meta {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 7px;
+        }
+
+        #chapter-label {
+            display: inline-block;
+            padding: 4px 9px;
+            font-size: 0.64rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: white;
+            border-radius: 3px;
+        }
+
+        #chapter-label.chapter-3 {
+            background: #8e6f9e;
+        }
+
+        #chapter-label.chapter-4 {
+            background: #628c91;
+        }
+
+        #chapter-label.chapter-5 {
+            background: #b0835d;
+        }
+
+        #figure-page {
+            color: #8a9298;
+            font-size: 0.74rem;
+        }
+
+        #fig-title {
+            margin: 0 0 6px;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 1.25rem;
+            font-weight: 400;
+            line-height: 1.3;
+            color: #2d3e4a;
+        }
+
+        #fig-caption {
+            margin: 0;
+            max-width: 1200px;
+            color: #68737b;
+            font-size: 0.82rem;
+            line-height: 1.55;
+        }
+
+
+        /* ============================================================
+           VARIANT TABS
+           ONLY FIGURES 10 AND 11 USE THESE
+           ============================================================ */
+
+        #variant-tabs {
+            display: none;
+            margin-top: 13px;
+            gap: 6px;
+        }
+
+        .variant-btn {
+            padding: 7px 15px;
+            border: 1px solid #cbd1d5;
+            border-radius: 3px;
+            background: #f1f3f4;
+            color: #53616b;
+            font-family: inherit;
+            font-size: 0.72rem;
+            cursor: pointer;
+            transition: all 0.18s ease;
+        }
+
+        .variant-btn:hover {
+            background: #e6e9eb;
+        }
+
+        .variant-btn.active-variant {
+            background: #354b5c;
+            border-color: #354b5c;
+            color: white;
+        }
+
+
+        /* ============================================================
+           VIEWER
+           ============================================================ */
+
+        #viewer-container {
+            position: relative;
+            flex: 1;
+            min-height: 0;
+            margin: 16px;
+            overflow: hidden;
+            background: white;
+            border: 1px solid #dfe2e5;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+        }
+
+        #viewer {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+            background: white;
+        }
+
+
+        /* ============================================================
+           IMAGE ZOOM CONTROLS
+           ============================================================ */
+
+        #zoom-controls {
+            position: absolute;
+            right: 16px;
+            bottom: 16px;
+            display: none;
+            align-items: center;
+            gap: 4px;
+            padding: 5px;
+            background: rgba(255,255,255,0.96);
+            border: 1px solid #d8dde0;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.10);
+            z-index: 10;
+        }
+
+        .zoom-btn {
+            width: 32px;
+            height: 30px;
+            border: none;
+            background: transparent;
+            color: #354b5c;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.15s ease;
+        }
+
+        .zoom-btn:hover {
+            background: #eef0f2;
+        }
+
+        #zoom-level {
+            min-width: 48px;
+            text-align: center;
+            color: #64717a;
+            font-size: 0.68rem;
+            font-weight: 600;
+        }
+
+
+        /* ============================================================
+           IMAGE VIEWER
+           ============================================================ */
+
+        #image-viewer {
+            width: 100%;
+            height: 100%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            overflow: auto;
+            background: white;
+        }
+
+        #image-viewer img {
+            display: block;
+            max-width: none;
+            max-height: none;
+            object-fit: contain;
+            transform-origin: center center;
+        }
+
+
+        /* ============================================================
+           FOOTER
+           ============================================================ */
+
+        #footer {
+            flex-shrink: 0;
+            height: 34px;
+            padding: 0 22px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #273746;
+            color: #aeb9c1;
+            font-size: 0.67rem;
+        }
+
+        #footer strong {
+            color: #e0e5e8;
+            font-weight: 500;
+        }
+
+        #back-to-title {
+            border: none;
+            background: none;
+            color: #aeb9c1;
+            font-family: inherit;
+            font-size: 0.67rem;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        #back-to-title:hover {
+            color: white;
+        }
+
+
+        /* ============================================================
+           RESPONSIVE DESIGN
+           ============================================================ */
+
+        @media (max-width: 800px) {
+
+            #sidebar {
+                width: 235px;
+                min-width: 235px;
+            }
+
+            #figure-info {
+                padding: 15px 18px;
+            }
+
+            #viewer-container {
+                margin: 10px;
+            }
+
+            .title-page {
+                padding: 45px 30px;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            #app {
+                flex-direction: column;
+            }
+
+            #sidebar {
+                width: 100%;
+                min-width: 0;
+                height: 220px;
+            }
+
+            #sidebar-header {
+                padding: 14px 18px;
+            }
+
+            #buttons-container {
+                display: flex;
+                overflow-x: auto;
+                padding-bottom: 5px;
+            }
+
+            .chapter-header {
+                min-width: 110px;
+                padding: 14px 10px;
+            }
+
+            .nav-btn {
+                min-width: 150px;
+                border-left: none;
+                border-bottom: 3px solid transparent;
+            }
+
+            .nav-btn.chapter-3.active {
+                border-bottom-color: #8e6f9e;
+            }
+
+            .nav-btn.chapter-4.active {
+                border-bottom-color: #628c91;
+            }
+
+            .nav-btn.chapter-5.active {
+                border-bottom-color: #b0835d;
+            }
+
+            #main-content {
+                height: calc(100vh - 220px);
+            }
+
+            #fig-title {
+                font-size: 1.05rem;
+            }
+
+            #fig-caption {
+                font-size: 0.76rem;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- ============================================================
+         LANDING PAGE
+         ============================================================ -->
+
+    <section id="landing-page">
+
+        <div class="title-page">
+
+            <div class="discipline">
+                Graduate Program in Hispanic Studies
+            </div>
+
+            <h1>
+                #Feminismo: An exploration of Cyberfeminism in the Digital Hispanosphere
+            </h1>
+
+            <p class="author">
+                Pilar del Carmen Rodríguez Mata
+            </p>
+
+            <div class="details">
+
+                <div>
+                    <strong>Supervisor:</strong> Juan Luis Suárez
+                </div>
+
+                <div>
+                    A thesis submitted in partial fulfillment of the requirements
+                    for the degree of Doctor of Philosophy
+                </div>
+
+                <div>
+                    The School of Graduate and Postdoctoral Studies<br>
+                    The University of Western Ontario<br>
+                    London, Ontario, Canada<br>
+                    August 2026
+                </div>
+
+            </div>
+
+            <div class="copyright">
+                © Pilar Rodríguez Mata 2026
+            </div>
+
+            <button class="enter-button" onclick="enterFigures()">
+                Explore thesis figures
+            </button>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ============================================================
+         MAIN APPLICATION
+         ============================================================ -->
+
+    <div id="app">
+
+
+        <!-- ========================================================
+             SIDEBAR
+             ======================================================== -->
+
+        <aside id="sidebar">
+
+            <div id="sidebar-header">
+                <h2>Figure Index</h2>
+                <p>Interactive thesis materials</p>
+            </div>
+
+            <div id="buttons-container"></div>
+
+        </aside>
+
+
+
+        <!-- ========================================================
+             MAIN CONTENT
+             ======================================================== -->
+
+        <main id="main-content">
+
+
+            <!-- ====================================================
+                 FIGURE INFORMATION
+                 ==================================================== -->
+
+            <section id="figure-info">
+
+                <div id="figure-meta">
+
+                    <span id="chapter-label">
+                        Chapter 3
+                    </span>
+
+                    <span id="figure-page">
+                        p. 51
+                    </span>
+
+                </div>
+
+                <h2 id="fig-title">
+                    Select a figure
+                </h2>
+
+                <p id="fig-caption">
+                    Select a figure from the index to view the corresponding
+                    visualization or image.
+                </p>
+
+                <div id="variant-tabs"></div>
+
+            </section>
+
+
+
+            <!-- ====================================================
+                 VIEWER
+                 ==================================================== -->
+
+            <section id="viewer-container">
+
+                <iframe
+                    id="viewer"
+                    src="about:blank"
+                    title="Interactive thesis figure viewer">
+                </iframe>
+
+                <div id="image-viewer">
+
+                    <img
+                        id="display-image"
+                        src=""
+                        alt=""
+                    >
+
+                </div>
+
+                <div id="zoom-controls">
+
+                    <button
+                        class="zoom-btn"
+                        onclick="zoomOut()"
+                        title="Zoom out">
+                        −
+                    </button>
+
+                    <span id="zoom-level">
+                        100%
+                    </span>
+
+                    <button
+                        class="zoom-btn"
+                        onclick="zoomIn()"
+                        title="Zoom in">
+                        +
+                    </button>
+
+                    <button
+                        class="zoom-btn"
+                        onclick="resetZoom()"
+                        title="Reset zoom">
+                        ↺
+                    </button>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- ====================================================
+                 FOOTER
+                 ==================================================== -->
+
+            <footer id="footer">
+
+                <span>
+                    <strong>#Feminismo</strong>
+                    &nbsp; | &nbsp;
+                    Pilar del Carmen Rodríguez Mata
+                </span>
+
+                <button
+                    id="back-to-title"
+                    onclick="returnToTitle()">
+                    ← Thesis information
+                </button>
+
+            </footer>
+
+        </main>
+
+    </div>
+
+
+
+    <script>
+
+        /* ============================================================
+           FIGURE DATA
+
+           The figure data itself is unchanged.
+
+           Direct links are handled separately below, so individual
+           figures can have their own URL even when several figures
+           share the same underlying HTML file.
+
+           Example URLs:
+
+               index.html#figure-1
+               index.html#figure-18
+               index.html#figure-25
+               index.html#figure-10
+               index.html#figure-10-25n
+               index.html#figure-11-8m
+
+           Grouped figures can therefore still have individual links.
+           ============================================================ */
+
         const figures = [
 
             /* ========================================================
@@ -473,3 +1275,1123 @@
             }
 
         ];
+
+
+        /* ============================================================
+           DOM ELEMENTS
+           ============================================================ */
+
+        const container = document.getElementById("buttons-container");
+        const viewer = document.getElementById("viewer");
+        const imageViewer = document.getElementById("image-viewer");
+        const displayImage = document.getElementById("display-image");
+
+        const titleLabel = document.getElementById("fig-title");
+        const captionLabel = document.getElementById("fig-caption");
+
+        const chapterLabel = document.getElementById("chapter-label");
+        const figurePage = document.getElementById("figure-page");
+
+        const tabsContainer = document.getElementById("variant-tabs");
+        const zoomControls = document.getElementById("zoom-controls");
+        const zoomLevel = document.getElementById("zoom-level");
+
+
+        /* ============================================================
+           ZOOM STATE
+           ============================================================ */
+
+        let currentZoom = 1.0;
+
+        const MIN_ZOOM = 0.25;
+        const MAX_ZOOM = 4.0;
+        const ZOOM_STEP = 0.25;
+
+
+        /* ============================================================
+           DIRECT FIGURE LINK SYSTEM
+
+           This is the important part.
+
+           Every figure gets a stable URL identifier based on its
+           actual figure number.
+
+           For example:
+
+               #figure-1
+               #figure-18
+               #figure-25
+               #figure-50
+
+           Grouped figures can still be individually addressed.
+
+           For example:
+
+               #figure-6
+               #figure-7
+
+           Both open the Figures 6 and 7 viewer.
+
+           Figures 10 and 11 additionally support:
+
+               #figure-10-8m
+               #figure-10-25n
+
+               #figure-11-8m
+               #figure-11-25n
+
+           This allows you to link directly to a particular version
+           of Figures 10 and 11.
+           ============================================================ */
+
+        const figureURLMap = {
+
+            "1": 0,
+            "2": 1,
+            "3": 2,
+            "4": 3,
+            "5": 4,
+
+            "6": 5,
+            "7": 5,
+
+            "8": 6,
+            "9": 6,
+
+            "10": 7,
+            "10-8m": 7,
+            "10-25n": 7,
+
+            "11": 8,
+            "11-8m": 8,
+            "11-25n": 8,
+
+            "12": 9,
+            "13": 10,
+            "14": 11,
+            "15": 12,
+            "16": 13,
+            "17": 14,
+
+            "18": 15,
+
+            "19": 16,
+            "20": 17,
+            "21": 18,
+            "22": 19,
+            "23": 20,
+            "24": 21,
+            "25": 22,
+            "26": 23,
+
+            "27": 24,
+            "28": 24,
+
+            "29": 25,
+
+            "30": 26,
+            "31": 27,
+            "32": 28,
+            "33": 29,
+            "34": 30,
+            "35": 31,
+            "36": 32,
+            "37": 33,
+
+            "38": 34,
+            "39": 34,
+
+            "40": 35,
+            "41": 36,
+            "42": 37,
+
+            "43": 38,
+            "44": 38,
+            "45": 38,
+
+            "46": 39,
+            "47": 40,
+            "48": 41,
+            "49": 42,
+            "50": 43
+
+        };
+
+
+        /* ============================================================
+           LANDING PAGE
+           ============================================================ */
+
+        function enterFigures() {
+
+            /*
+             * Hide the thesis title page.
+             */
+            document.getElementById("landing-page").style.display = "none";
+
+            /*
+             * Display the figure application.
+             */
+            document.getElementById("app").classList.add("visible");
+
+            /*
+             * If the user has entered through the normal button,
+             * rather than through a direct figure URL, load Figure 1.
+             */
+            if (!window.location.hash) {
+
+                const firstButton =
+                    document.querySelector(".nav-btn");
+
+                if (firstButton) {
+                    firstButton.click();
+                }
+
+            }
+
+        }
+
+
+        /* ============================================================
+           RETURN TO TITLE PAGE
+           ============================================================ */
+
+        function returnToTitle() {
+
+            /*
+             * Remove the figure application.
+             */
+            document
+                .getElementById("app")
+                .classList.remove("visible");
+
+            /*
+             * Show the landing page.
+             */
+            document
+                .getElementById("landing-page")
+                .style.display = "flex";
+
+            /*
+             * Remove the figure identifier from the URL.
+
+             * history.replaceState prevents the browser from jumping
+             * or creating another history entry.
+             */
+            history.replaceState(
+                null,
+                "",
+                window.location.pathname +
+                window.location.search
+            );
+
+        }
+
+
+        /* ============================================================
+           CHAPTER COLOUR HELPER
+           ============================================================ */
+
+        function getChapterClass(chapter) {
+
+            return "chapter-" + chapter;
+
+        }
+
+
+        /* ============================================================
+           BUILD SIDEBAR
+           ============================================================ */
+
+        let currentChapter = null;
+
+        /*
+         * Keep a direct reference to every navigation button.
+
+         * This makes it possible to activate the correct sidebar
+         * button when someone arrives through a direct URL.
+         */
+        const figureButtons = [];
+
+        figures.forEach((figure, index) => {
+
+            /*
+             * Insert a chapter separator whenever the chapter changes.
+             */
+            if (figure.chapter !== currentChapter) {
+
+                currentChapter = figure.chapter;
+
+                const chapterHeader =
+                    document.createElement("div");
+
+                chapterHeader.className =
+                    "chapter-header";
+
+                chapterHeader.innerText =
+                    "Chapter " + figure.chapter;
+
+                container.appendChild(chapterHeader);
+
+            }
+
+
+            /*
+             * Create the figure navigation button.
+             */
+            const button =
+                document.createElement("button");
+
+            button.className =
+                "nav-btn " +
+                getChapterClass(figure.chapter);
+
+            button.innerText =
+                figure.title;
+
+
+            /*
+             * Store the button so it can later be activated by
+             * a direct URL.
+             */
+            figureButtons[index] = button;
+
+
+            /*
+             * Load the figure when the user clicks the button.
+             */
+            button.onclick = function() {
+
+                loadFigure(index, button);
+
+            };
+
+
+            container.appendChild(button);
+
+        });
+
+
+        /* ============================================================
+           LOAD FIGURE FROM URL
+           
+           Reads the #figure-X portion of the URL.
+
+           This is what allows someone to link directly to an
+           individual figure.
+           ============================================================ */
+
+        function loadFigureFromURL() {
+
+            /*
+             * Remove the # symbol.
+             */
+            const hash =
+                window.location.hash.substring(1);
+
+            /*
+             * If there is no hash, there is no requested figure.
+             */
+            if (!hash) {
+                return false;
+            }
+
+            /*
+             * Only process hashes beginning with "figure-".
+             */
+            if (!hash.startsWith("figure-")) {
+                return false;
+            }
+
+            /*
+             * Extract the figure identifier.
+
+             * Example:
+             *
+             *     figure-25
+             *
+             * becomes:
+             *
+             *     25
+             */
+            const identifier =
+                hash.substring("figure-".length)
+                    .toLowerCase();
+
+
+            /*
+             * Find the corresponding figure index.
+             */
+            const figureIndex =
+                figureURLMap[identifier];
+
+
+            /*
+             * If the identifier does not exist, do nothing.
+             */
+            if (
+                figureIndex === undefined ||
+                !figureButtons[figureIndex]
+            ) {
+                return false;
+            }
+
+
+            /*
+             * Show the figure application immediately.
+
+             * This bypasses the landing page when someone arrives
+             * through a direct figure URL.
+             */
+            document
+                .getElementById("landing-page")
+                .style.display = "none";
+
+            document
+                .getElementById("app")
+                .classList.add("visible");
+
+
+            /*
+             * Load the requested figure.
+             */
+            loadFigure(
+                figureIndex,
+                figureButtons[figureIndex],
+                identifier
+            );
+
+
+            return true;
+
+        }
+
+
+        /* ============================================================
+           LOAD FIGURE
+           ============================================================ */
+
+        function loadFigure(
+            index,
+            buttonElement,
+            directIdentifier = null
+        ) {
+
+            const data = figures[index];
+
+
+            /* --------------------------------------------------------
+               Update figure metadata
+               -------------------------------------------------------- */
+
+            titleLabel.innerText =
+                data.title;
+
+            captionLabel.innerText =
+                data.caption;
+
+            figurePage.innerText =
+                data.page;
+
+            chapterLabel.innerText =
+                "Chapter " + data.chapter;
+
+            chapterLabel.className =
+                getChapterClass(data.chapter);
+
+
+            /* --------------------------------------------------------
+               Remove active state from all sidebar buttons
+               -------------------------------------------------------- */
+
+            document
+                .querySelectorAll(".nav-btn")
+                .forEach(function(button) {
+
+                    button.classList.remove("active");
+
+                });
+
+            buttonElement.classList.add("active");
+
+
+            /* --------------------------------------------------------
+               Reset variant tabs
+               -------------------------------------------------------- */
+
+            tabsContainer.innerHTML = "";
+
+            tabsContainer.style.display =
+                "none";
+
+
+            /* --------------------------------------------------------
+               Reset viewer
+               -------------------------------------------------------- */
+
+            viewer.style.display =
+                "none";
+
+            imageViewer.style.display =
+                "none";
+
+            zoomControls.style.display =
+                "none";
+
+
+            /* --------------------------------------------------------
+               Handle figures with A/B variants
+               
+               Only Figures 10 and 11 use this system.
+               -------------------------------------------------------- */
+
+            if (data.type === "variants") {
+
+                tabsContainer.style.display =
+                    "flex";
+
+
+                data.variants.forEach(
+                    function(variant, variantIndex) {
+
+                        const tabButton =
+                            document.createElement("button");
+
+                        tabButton.className =
+                            "variant-btn";
+
+                        tabButton.innerText =
+                            variant.name;
+
+
+                        tabButton.onclick =
+                            function() {
+
+                                /*
+                                 * Remove active state from all
+                                 * variant buttons.
+                                 */
+                                document
+                                    .querySelectorAll(
+                                        ".variant-btn"
+                                    )
+                                    .forEach(
+                                        function(button) {
+
+                                            button.classList.remove(
+                                                "active-variant"
+                                            );
+
+                                        }
+                                    );
+
+
+                                /*
+                                 * Activate this tab.
+                                 */
+                                tabButton.classList.add(
+                                    "active-variant"
+                                );
+
+
+                                /*
+                                 * Load the appropriate HTML file.
+                                 */
+                                loadHTML(
+                                    variant.file
+                                );
+
+
+                                /*
+                                 * Update the URL so that the
+                                 * currently selected variant is
+                                 * directly linkable.
+                                 */
+                                let variantHash;
+
+                                if (data.title.startsWith("Figure 10")) {
+
+                                    variantHash =
+                                        variant.name === "8M"
+                                            ? "figure-10-8m"
+                                            : "figure-10-25n";
+
+                                }
+
+                                else if (
+                                    data.title.startsWith("Figure 11")
+                                ) {
+
+                                    variantHash =
+                                        variant.name === "8M"
+                                            ? "figure-11-8m"
+                                            : "figure-11-25n";
+
+                                }
+
+
+                                /*
+                                 * Update the URL without causing
+                                 * the page to reload.
+                                 */
+                                if (variantHash) {
+
+                                    history.replaceState(
+                                        null,
+                                        "",
+                                        "#" + variantHash
+                                    );
+
+                                }
+
+                            };
+
+
+                        tabsContainer.appendChild(
+                            tabButton
+                        );
+
+
+                        /*
+                         * Determine which tab should initially
+                         * be selected.
+
+                         * If the user arrived using:
+                         *
+                         *     #figure-10-25n
+                         *
+                         * then 25N is selected.
+
+                         * Otherwise 8M is the default.
+                         */
+                        let shouldSelect =
+                            variantIndex === 0;
+
+
+                        if (
+                            directIdentifier ===
+                            "10-25n" &&
+                            data.title.startsWith("Figure 10")
+                        ) {
+
+                            shouldSelect =
+                                variant.name === "25N";
+
+                        }
+
+
+                        if (
+                            directIdentifier ===
+                            "11-25n" &&
+                            data.title.startsWith("Figure 11")
+                        ) {
+
+                            shouldSelect =
+                                variant.name === "25N";
+
+                        }
+
+
+                        if (
+                            directIdentifier ===
+                            "10-8m" &&
+                            data.title.startsWith("Figure 10")
+                        ) {
+
+                            shouldSelect =
+                                variant.name === "8M";
+
+                        }
+
+
+                        if (
+                            directIdentifier ===
+                            "11-8m" &&
+                            data.title.startsWith("Figure 11")
+                        ) {
+
+                            shouldSelect =
+                                variant.name === "8M";
+
+                        }
+
+
+                        if (shouldSelect) {
+
+                            tabButton.click();
+
+                        }
+
+                    }
+                );
+
+            }
+
+
+            /* --------------------------------------------------------
+               Handle ordinary HTML figures
+               -------------------------------------------------------- */
+
+            else if (data.type === "html") {
+
+                loadHTML(
+                    data.file
+                );
+
+            }
+
+
+            /* --------------------------------------------------------
+               Handle image figures
+               -------------------------------------------------------- */
+
+            else if (data.type === "image") {
+
+                loadImage(
+                    data.file
+                );
+
+            }
+
+
+            /* --------------------------------------------------------
+               Update URL for ordinary figure navigation
+               
+               If the user clicked Figure 25, for example, the URL
+               becomes:
+               
+                   #figure-25
+               
+               This means the URL can then be copied and shared.
+               -------------------------------------------------------- */
+
+            if (!directIdentifier) {
+
+                const figureNumber =
+                    getPrimaryFigureNumber(
+                        data.title
+                    );
+
+                if (figureNumber) {
+
+                    history.replaceState(
+                        null,
+                        "",
+                        "#figure-" +
+                        figureNumber
+                    );
+
+                }
+
+            }
+
+        }
+
+
+        /* ============================================================
+           EXTRACT PRIMARY FIGURE NUMBER
+           
+           This is used when a sidebar button is clicked.
+
+           Examples:
+
+               "Figure 25: ..."       -> 25
+               "Figures 6 and 7: ..." -> 6
+               "Figures 43, 44..."    -> 43
+           ============================================================ */
+
+        function getPrimaryFigureNumber(title) {
+
+            const match =
+                title.match(
+                    /Figures?\s+(\d+)/
+                );
+
+            if (!match) {
+                return null;
+            }
+
+            return match[1];
+
+        }
+
+
+        /* ============================================================
+           LOAD HTML
+           ============================================================ */
+
+        function loadHTML(file) {
+
+            /*
+             * Hide image viewer.
+             */
+            imageViewer.style.display =
+                "none";
+
+            zoomControls.style.display =
+                "none";
+
+
+            /*
+             * Show iframe.
+             */
+            viewer.style.display =
+                "block";
+
+
+            /*
+             * Clear srcdoc.
+             */
+            viewer.removeAttribute(
+                "srcdoc"
+            );
+
+
+            /*
+             * Load the HTML file.
+
+             * encodeURI safely handles spaces in filenames.
+             */
+            viewer.src =
+                encodeURI(file);
+
+        }
+
+
+        /* ============================================================
+           LOAD IMAGE
+           ============================================================ */
+
+        function loadImage(file) {
+
+            /*
+             * Hide iframe.
+             */
+            viewer.style.display =
+                "none";
+
+
+            /*
+             * Show image viewer.
+             */
+            imageViewer.style.display =
+                "flex";
+
+
+            /*
+             * Show zoom controls.
+             */
+            zoomControls.style.display =
+                "flex";
+
+
+            /*
+             * Reset zoom whenever a new image is opened.
+             */
+            currentZoom =
+                1.0;
+
+            updateZoomDisplay();
+
+
+            /*
+             * Set image source.
+             */
+            displayImage.src =
+                encodeURI(file);
+
+
+            /*
+             * The image starts at 100%.
+             */
+            displayImage.style.width =
+                "100%";
+
+            displayImage.style.height =
+                "100%";
+
+
+            /*
+             * Once the image loads, apply the current zoom.
+             */
+            displayImage.onload =
+                function() {
+
+                    applyZoom();
+
+                };
+
+        }
+
+
+        /* ============================================================
+           APPLY ZOOM
+           ============================================================ */
+
+        function applyZoom() {
+
+            /*
+             * At 100%, fit the image to the viewer.
+             */
+            if (currentZoom === 1.0) {
+
+                displayImage.style.width =
+                    "100%";
+
+                displayImage.style.height =
+                    "100%";
+
+                displayImage.style.maxWidth =
+                    "100%";
+
+                displayImage.style.maxHeight =
+                    "100%";
+
+            }
+
+            else {
+
+                /*
+                 * Remove the normal fit restrictions.
+                 */
+                displayImage.style.maxWidth =
+                    "none";
+
+                displayImage.style.maxHeight =
+                    "none";
+
+
+                /*
+                 * Scale the image relative to the viewer.
+                 */
+                displayImage.style.width =
+                    (currentZoom * 100) +
+                    "%";
+
+                displayImage.style.height =
+                    (currentZoom * 100) +
+                    "%";
+
+            }
+
+
+            updateZoomDisplay();
+
+        }
+
+
+        /* ============================================================
+           ZOOM IN
+           ============================================================ */
+
+        function zoomIn() {
+
+            currentZoom =
+                Math.min(
+                    MAX_ZOOM,
+                    currentZoom + ZOOM_STEP
+                );
+
+            applyZoom();
+
+        }
+
+
+        /* ============================================================
+           ZOOM OUT
+           ============================================================ */
+
+        function zoomOut() {
+
+            currentZoom =
+                Math.max(
+                    MIN_ZOOM,
+                    currentZoom - ZOOM_STEP
+                );
+
+            applyZoom();
+
+        }
+
+
+        /* ============================================================
+           RESET ZOOM
+           ============================================================ */
+
+        function resetZoom() {
+
+            currentZoom =
+                1.0;
+
+            applyZoom();
+
+
+            /*
+             * Return the image viewer to its centre.
+             */
+            imageViewer.scrollLeft =
+                (
+                    imageViewer.scrollWidth -
+                    imageViewer.clientWidth
+                ) / 2;
+
+            imageViewer.scrollTop =
+                (
+                    imageViewer.scrollHeight -
+                    imageViewer.clientHeight
+                ) / 2;
+
+        }
+
+
+        /* ============================================================
+           UPDATE ZOOM LABEL
+           ============================================================ */
+
+        function updateZoomDisplay() {
+
+            zoomLevel.innerText =
+                Math.round(
+                    currentZoom * 100
+                ) + "%";
+
+        }
+
+
+        /* ============================================================
+           HANDLE URL CHANGES
+           
+           This is useful if someone changes the hash manually or
+           uses browser navigation.
+           ============================================================ */
+
+        window.addEventListener(
+            "hashchange",
+            function() {
+
+                loadFigureFromURL();
+
+            }
+        );
+
+
+        /* ============================================================
+           INITIAL PAGE LOAD
+           
+           This is the critical part.
+
+           If the page was opened normally:
+
+               index.html
+
+           the landing page remains visible.
+
+           If it was opened with:
+
+               index.html#figure-25
+
+           the landing page is skipped and Figure 25 is opened
+           immediately.
+           ============================================================ */
+
+        window.addEventListener(
+            "DOMContentLoaded",
+            function() {
+
+                loadFigureFromURL();
+
+            }
+        );
+
+
+        /* ============================================================
+           KEYBOARD SHORTCUTS
+           
+           + / =  zoom in
+           -    zoom out
+           0    reset
+           
+           These only affect image figures.
+           ============================================================ */
+
+        document.addEventListener(
+            "keydown",
+            function(event) {
+
+                /*
+                 * Ignore shortcuts while typing.
+                 */
+                if (
+                    event.target.tagName === "INPUT" ||
+                    event.target.tagName === "TEXTAREA"
+                ) {
+
+                    return;
+
+                }
+
+
+                /*
+                 * Zoom in.
+                 */
+                if (
+                    event.key === "+" ||
+                    event.key === "="
+                ) {
+
+                    if (
+                        imageViewer.style.display ===
+                        "flex"
+                    ) {
+
+                        zoomIn();
+
+                    }
+
+                }
+
+
+                /*
+                 * Zoom out.
+                 */
+                else if (
+                    event.key === "-"
+                ) {
+
+                    if (
+                        imageViewer.style.display ===
+                        "flex"
+                    ) {
+
+                        zoomOut();
+
+                    }
+
+                }
+
+
+                /*
+                 * Reset zoom.
+                 */
+                else if (
+                    event.key === "0"
+                ) {
+
+                    if (
+                        imageViewer.style.display ===
+                        "flex"
+                    ) {
+
+                        resetZoom();
+
+                    }
+
+                }
+
+            }
+        );
+
+    </script>
+
+</body>
+</html>
