@@ -1,599 +1,475 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>#Feminismo | Thesis Figures</title>
-
-    <style>
-
-        /* ============================================================
-           GLOBAL STYLING
-           ============================================================ */
-
-        * {
-            box-sizing: border-box;
-        }
-
-        html,
-        body {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-        }
-
-        body {
-            font-family: "Avenir Next", Avenir, "Segoe UI", Helvetica, Arial, sans-serif;
-            background: #f5f6f8;
-            color: #263238;
-        }
-
-
-        /* ============================================================
-           LANDING PAGE
-           ============================================================ */
-
-        #landing-page {
-            width: 100%;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 50px 30px;
-            background:
-                radial-gradient(circle at top left, rgba(72, 101, 129, 0.10), transparent 35%),
-                radial-gradient(circle at bottom right, rgba(155, 89, 116, 0.08), transparent 35%),
-                #f7f7f6;
-        }
-
-        .title-page {
-            width: min(900px, 100%);
-            text-align: center;
-            padding: 65px 60px;
-            background: rgba(255, 255, 255, 0.94);
-            border: 1px solid #e4e5e7;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
-        }
-
-        .title-page .discipline {
-            margin-bottom: 35px;
-            font-size: 0.78rem;
-            letter-spacing: 0.22em;
-            text-transform: uppercase;
-            color: #68727b;
-        }
-
-        .title-page h1 {
-            margin: 0 auto 28px;
-            max-width: 780px;
-            font-family: Georgia, "Times New Roman", serif;
-            font-size: clamp(2rem, 4vw, 3.2rem);
-            font-weight: 400;
-            line-height: 1.2;
-            color: #273746;
-        }
-
-        .title-page .author {
-            margin: 0 0 45px;
-            font-family: Georgia, "Times New Roman", serif;
-            font-size: 1.15rem;
-            color: #53616c;
-        }
-
-        .title-page .details {
-            margin: 0 auto;
-            max-width: 650px;
-            color: #59636b;
-            font-size: 0.92rem;
-            line-height: 1.85;
-        }
-
-        .title-page .details strong {
-            color: #34444f;
-            font-weight: 600;
-        }
-
-        .title-page .copyright {
-            margin-top: 40px;
-            font-size: 0.75rem;
-            color: #8a9196;
-        }
-
-        .enter-button {
-            margin-top: 45px;
-            padding: 13px 28px;
-            border: 1px solid #354b5c;
-            background: #354b5c;
-            color: white;
-            font-family: inherit;
-            font-size: 0.78rem;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.25s ease;
-        }
-
-        .enter-button:hover {
-            background: #253746;
-            transform: translateY(-1px);
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
-        }
-
-
-        /* ============================================================
-           MAIN FIGURE APPLICATION
-           ============================================================ */
-
-        #app {
-            display: none;
-            width: 100%;
-            height: 100vh;
-            overflow: hidden;
-        }
-
-        #app.visible {
-            display: flex;
-        }
-
-
-        /* ============================================================
-           SIDEBAR
-           ============================================================ */
-
-        #sidebar {
-            width: 310px;
-            min-width: 310px;
-            height: 100vh;
-            overflow-y: auto;
-            background: #273746;
-            color: white;
-            border-right: 1px solid #d9dde0;
-            display: flex;
-            flex-direction: column;
-        }
-
-        #sidebar-header {
-            padding: 24px 22px 20px;
-            background: #202f3b;
-            border-bottom: 1px solid rgba(255,255,255,0.08);
-        }
-
-        #sidebar-header h2 {
-            margin: 0;
-            font-family: Georgia, "Times New Roman", serif;
-            font-size: 1.35rem;
-            font-weight: 400;
-            letter-spacing: 0.01em;
-        }
-
-        #sidebar-header p {
-            margin: 7px 0 0;
-            color: #aeb9c1;
-            font-size: 0.72rem;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-        }
-
-        #buttons-container {
-            padding-bottom: 20px;
-        }
-
-
-        /* ============================================================
-           CHAPTER HEADERS
-           ============================================================ */
-
-        .chapter-header {
-            padding: 18px 20px 9px;
-            font-size: 0.68rem;
-            font-weight: 700;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            color: rgba(255,255,255,0.72);
-            cursor: default;
-        }
-
-        .chapter-header:first-child {
-            padding-top: 22px;
-        }
-
-
-        /* ============================================================
-           FIGURE NAVIGATION BUTTONS
-           ============================================================ */
-
-        .nav-btn {
-            width: 100%;
-            padding: 10px 18px 10px 22px;
-            border: none;
-            border-left: 4px solid transparent;
-            background: transparent;
-            color: #e7ebee;
-            text-align: left;
-            cursor: pointer;
-            font-family: inherit;
-            font-size: 0.78rem;
-            line-height: 1.35;
-            transition:
-                background-color 0.18s ease,
-                border-color 0.18s ease,
-                color 0.18s ease;
-        }
-
-        .nav-btn:hover {
-            background: rgba(255,255,255,0.07);
-        }
-
-        .nav-btn.active {
-            color: white;
-            background: rgba(255,255,255,0.12);
-            font-weight: 600;
-        }
-
-        /* Chapter 3 colour */
-        .nav-btn.chapter-3.active,
-        .nav-btn.chapter-3:hover {
-            border-left-color: #8e6f9e;
-        }
-
-        /* Chapter 4 colour */
-        .nav-btn.chapter-4.active,
-        .nav-btn.chapter-4:hover {
-            border-left-color: #628c91;
-        }
-
-        /* Chapter 5 colour */
-        .nav-btn.chapter-5.active,
-        .nav-btn.chapter-5:hover {
-            border-left-color: #b0835d;
-        }
-
-
-        /* ============================================================
-           MAIN CONTENT
-           ============================================================ */
-
-        #main-content {
-            flex: 1;
-            min-width: 0;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            background: #f3f4f5;
-        }
-
-
-        /* ============================================================
-           FIGURE INFORMATION PANEL
-           ============================================================ */
-
-        #figure-info {
-            flex-shrink: 0;
-            padding: 19px 28px 17px;
-            background: white;
-            border-bottom: 1px solid #dfe2e5;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-        }
-
-        #figure-meta {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 7px;
-        }
-
-        #chapter-label {
-            display: inline-block;
-            padding: 4px 9px;
-            font-size: 0.64rem;
-            font-weight: 700;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: white;
-            border-radius: 3px;
-        }
-
-        #chapter-label.chapter-3 {
-            background: #8e6f9e;
-        }
-
-        #chapter-label.chapter-4 {
-            background: #628c91;
-        }
-
-        #chapter-label.chapter-5 {
-            background: #b0835d;
-        }
-
-        #figure-page {
-            color: #8a9298;
-            font-size: 0.74rem;
-        }
-
-        #fig-title {
-            margin: 0 0 6px;
-            font-family: Georgia, "Times New Roman", serif;
-            font-size: 1.25rem;
-            font-weight: 400;
-            line-height: 1.3;
-            color: #2d3e4a;
-        }
-
-        #fig-caption {
-            margin: 0;
-            max-width: 1200px;
-            color: #68737b;
-            font-size: 0.82rem;
-            line-height: 1.55;
-        }
-
-
-        /* ============================================================
-           VARIANT TABS
-           ONLY FIGURES 10 AND 11 USE THESE
-           ============================================================ */
-
-        #variant-tabs {
-            display: none;
-            margin-top: 13px;
-            gap: 6px;
-        }
-
-        .variant-btn {
-            padding: 7px 15px;
-            border: 1px solid #cbd1d5;
-            border-radius: 3px;
-            background: #f1f3f4;
-            color: #53616b;
-            font-family: inherit;
-            font-size: 0.72rem;
-            cursor: pointer;
-            transition: all 0.18s ease;
-        }
-
-        .variant-btn:hover {
-            background: #e6e9eb;
-        }
-
-        .variant-btn.active-variant {
-            background: #354b5c;
-            border-color: #354b5c;
-            color: white;
-        }
-
-
-        /* ============================================================
-           VIEWER
-           ============================================================ */
-
-        #viewer-container {
-            position: relative;
-            flex: 1;
-            min-height: 0;
-            margin: 16px;
-            overflow: hidden;
-            background: white;
-            border: 1px solid #dfe2e5;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
-        }
-
-        #viewer {
-            width: 100%;
-            height: 100%;
-            border: none;
-            display: block;
-            background: white;
-        }
-
-
-        /* ============================================================
-           IMAGE ZOOM CONTROLS
-           ============================================================ */
-
-        #zoom-controls {
-            position: absolute;
-            right: 16px;
-            bottom: 16px;
-            display: none;
-            align-items: center;
-            gap: 4px;
-            padding: 5px;
-            background: rgba(255,255,255,0.96);
-            border: 1px solid #d8dde0;
-            box-shadow: 0 3px 12px rgba(0,0,0,0.10);
-            z-index: 10;
-        }
-
-        .zoom-btn {
-            width: 32px;
-            height: 30px;
-            border: none;
-            background: transparent;
-            color: #354b5c;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: background 0.15s ease;
-        }
-
-        .zoom-btn:hover {
-            background: #eef0f2;
-        }
-
-        #zoom-level {
-            min-width: 48px;
-            text-align: center;
-            color: #64717a;
-            font-size: 0.68rem;
-            font-weight: 600;
-        }
-
-
-        /* ============================================================
-           IMAGE VIEWER
-           ============================================================ */
-
-        #image-viewer {
-            width: 100%;
-            height: 100%;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            overflow: auto;
-            background: white;
-        }
-
-        #image-viewer img {
-            display: block;
-            max-width: none;
-            max-height: none;
-            object-fit: contain;
-            transform-origin: center center;
-        }
-
-
-        /* ============================================================
-           FOOTER
-           ============================================================ */
-
-        #footer {
-            flex-shrink: 0;
-            height: 34px;
-            padding: 0 22px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: #273746;
-            color: #aeb9c1;
-            font-size: 0.67rem;
-        }
-
-        #footer strong {
-            color: #e0e5e8;
-            font-weight: 500;
-        }
-
-        #back-to-title {
-            border: none;
-            background: none;
-            color: #aeb9c1;
-            font-family: inherit;
-            font-size: 0.67rem;
-            cursor: pointer;
-            padding: 0;
-        }
-
-        #back-to-title:hover {
-            color: white;
-        }
-
-
-        /* ============================================================
-           RESPONSIVE DESIGN
-           ============================================================ */
-
-        @media (max-width: 800px) {
-
-            #sidebar {
-                width: 235px;
-                min-width: 235px;
+        const figures = [
+
+            /* ========================================================
+               CHAPTER 3
+               ======================================================== */
+
+            {
+                chapter: 3,
+                page: "p. 49",
+                title: "Figure 1: Daily Share of Yearly Tweet Volume",
+                caption:
+                    "Daily share of yearly tweet volume (%) in the original #Feminismo dataset, highlighting event peaks across time.",
+                type: "image",
+                file: "Figure 1.png"
+            },
+
+            {
+                chapter: 3,
+                page: "p. 50",
+                title: "Figure 2: Daily Share of Yearly Tweet Volume",
+                caption:
+                    "Daily share of yearly tweet volume (%) in the full corpus dataset, highlighting event peaks across time.",
+                type: "image",
+                file: "Figure 2.png"
+            },
+
+            {
+                chapter: 3,
+                page: "p. 59",
+                title: "Figure 3: Frequent N-Grams",
+                caption:
+                    "Comparison of the most frequent n-grams in the March 8th (8M) (left) and November 25th (25N) (right) datasets.",
+                type: "image",
+                file: "Figure 3.png"
+            },
+
+            {
+                chapter: 3,
+                page: "p. 60",
+                title: "Figure 4: Top 10 Unigrams, 8M",
+                caption:
+                    "Temporal evolution of the top 10 verified unigrams in the March 8th (8M) dataset from 2010 to 2022.",
+                type: "image",
+                file: "Figure 4.png"
+            },
+
+            {
+                chapter: 3,
+                page: "p. 61",
+                title: "Figure 5: Top 10 Unigrams, 25N",
+                caption:
+                    "Temporal evolution of the top 10 verified unigrams in the November 25th (25N) dataset from 2010 to 2022.",
+                type: "image",
+                file: "Figure 5.png"
+            },
+
+            {
+                chapter: 3,
+                page: "pp. 62-63",
+                title: "Figures 6 and 7: Normalized Lemma Frequency",
+                caption:
+                    'Figure 6, evolution of the normalized frequency (per 10,000 tokens) of the lemma "feliz" (happy) in tweets published on March 8 (8M) and November 25 (25N) between 2010 and 2022. Figure 7, corresponding visualization of the lemma "libre" (free).',
+                type: "html",
+                file: "Figure 6 and 7.html"
+            },
+
+            {
+                chapter: 3,
+                page: "p. 65",
+                title: "Figures 8 and 9: Hashtag Evolution",
+                caption:
+                    "Figure 8, evolution of the normalized hashtags (per 1000 tweets) of #Feminismo in tweets published on March 8 (8M) and November 25 (25N) between 2010 and 2022. Figure 9, corresponding visualization of #NiUnaMenos.",
+                type: "html",
+                file: "Figure 8 and 9 and 17.html"
+            },
+
+            {
+                chapter: 3,
+                page: "p. 67",
+                title: "Figure 10: Prominent Topics Time-Series",
+                caption:
+                    "Time-series visualization of the most prominent topics, as generated by BERTopic and manually annotated by the author, within the #Feminismo discourse on March 8th (8M) and November 25th (25N) for the years 2013 and 2018.",
+                type: "variants",
+                variants: [
+                    {
+                        name: "8M",
+                        file: "Figure 10a.html"
+                    },
+                    {
+                        name: "25N",
+                        file: "Figure 10b.html"
+                    }
+                ]
+            },
+
+            {
+                chapter: 3,
+                page: "p. 68",
+                title: "Figure 11: Topic Explorer",
+                caption:
+                    "Topic explorer that presents sample tweets catalogued automatically by BERTopic.",
+                type: "variants",
+                variants: [
+                    {
+                        name: "8M",
+                        file: "Figure 11a.html"
+                    },
+                    {
+                        name: "25N",
+                        file: "Figure 11b.html"
+                    }
+                ]
+            },
+
+            {
+                chapter: 3,
+                page: "p. 69",
+                title: "Figure 12: Discourse Similarity Matrix",
+                caption:
+                    "Temporal evolution of discourse similarity (2010–2022).",
+                type: "image",
+                file: "Figure 12.png"
+            },
+
+            {
+                chapter: 3,
+                page: "p. 70",
+                title: "Figure 13: Rolling Cohesion, 8M",
+                caption:
+                    "Rolling Cohesion Analysis for the March 8th (8M) Dataset (± 2 Years).",
+                type: "image",
+                file: "Figure 13.png"
+            },
+
+            {
+                chapter: 3,
+                page: "p. 70",
+                title: "Figure 14: Rolling Cohesion, 25N",
+                caption:
+                    "Rolling Cohesion Analysis for the November 25th (25N) Dataset (± 2 Years).",
+                type: "image",
+                file: "Figure 14.png"
+            },
+
+            {
+                chapter: 3,
+                page: "p. 71",
+                title: "Figure 15: Weighted Topic Similarity",
+                caption:
+                    "Temporal evolution of Weighted Average Topic Similarity (2010–2022).",
+                type: "image",
+                file: "Figure 15.png"
+            },
+
+            {
+                chapter: 3,
+                page: "p. 72",
+                title: "Figure 16: Positive Sentiment Trend",
+                caption:
+                    "Trend of Positive Sentiment Over Years (2010–2022).",
+                type: "image",
+                file: "Figure 16.png"
+            },
+
+            {
+                chapter: 3,
+                page: "p. 73",
+                title: "Figure 17: Net Sentiment Trend",
+                caption:
+                    "Trend of Net Sentiment Over Years (2010–2022).",
+                type: "image",
+                file: "Figure 17.png"
+            },
+
+            {
+                chapter: 3,
+                page: "p. 77",
+                title: "Figure 18: #NosotrasParamos Evolution",
+                caption:
+                    "Evolution of the normalized hashtags of #NosotrasParamos in tweets published on March 8 (8M) and November 25 (25N) between 2010 and 2022.",
+                type: "html",
+                file: "Figure 8 and 9 and 17.html"
+            },
+
+            {
+                chapter: 3,
+                page: "p. 95",
+                title: "Figure 19: #NiUnaMenos Hashtag Peak",
+                caption:
+                    "Top ten hashtags and their use during the peak connected to the hashtag #niunomenos, which coincides with Eileen Moreno's denunciation of intimate partner violence in her relationship.",
+                type: "html",
+                file: "Figure 19.html"
+            },
+
+            {
+                chapter: 3,
+                page: "p. 96",
+                title: "Figure 20: Event Embedding UMAP",
+                caption:
+                    "2D UMAP projection of high-dimensional embeddings, where distances reflect cosine similarity. The interactive tool lists all events that are in each cluster.",
+                type: "html",
+                file: "Figure 20.html"
+            },
+
+            {
+                chapter: 3,
+                page: "p. 97",
+                title: "Figure 21: Event Embedding UMAP, Excluding Non-Feminist and Undefined Events",
+                caption:
+                    "2D UMAP projection of high-dimensional embeddings that were not non-feminism or non-defined events.",
+                type: "html",
+                file: "Figure 21.html"
+            },
+
+            {
+                chapter: 3,
+                page: "p. 98",
+                title: "Figure 22: Sentiment by Activist Category",
+                caption:
+                    "Distribution of sentiment (negative, neutral, positive) across activist-related categories, ordered by decreasing proportion of negative discourse.",
+                type: "image",
+                file: "Figure 22.png"
+            },
+
+            {
+                chapter: 3,
+                page: "p. 98",
+                title: "Figure 23: Net Sentiment by Event",
+                caption:
+                    "Distribution of net sentiment scores (positive minus negative) for individual events across categories, with the dashed line marking neutrality (0).",
+                type: "html",
+                file: "Figure 23a.html"
+            },
+
+            {
+                chapter: 3,
+                page: "p. 99",
+                title: "Figure 24: Net Sentiment Over Time",
+                caption:
+                    "Net sentiment over time (2010–2022), distinguishing between ritual events (blue) and sporadic events (red).",
+                type: "image",
+                file: "Figure 24.png"
+            },
+
+            {
+                chapter: 3,
+                page: "p. 100",
+                title: "Figure 25: Temporal Activity Patterns",
+                caption:
+                    "Box plots comparing temporal activity patterns between ritual and sporadic events, showing anticipation (tweets before peak), peak concentration (tweets at peak), and post-peak discussion.",
+                type: "image",
+                file: "Figure 25.png"
+            },
+
+            {
+                chapter: 3,
+                page: "p. 101",
+                title: "Figure 26: Connected Participation",
+                caption:
+                    "Scatter plot of connected participation across events, showing the share of participants engaged in mention interactions over time.",
+                type: "html",
+                file: "Figure 26.html"
+            },
+
+            {
+                chapter: 3,
+                page: "p. 103",
+                title: "Figures 27 and 28: Event Network Maps",
+                caption:
+                    "Figure 27, screenshots from the network mapping tool of April 2nd, 2019 (anti-feminist sentiment due to the suicide of Armando Vega Gil after being accused of sexual abuse) and December 30th, 2020 (abortion law is approved in Argentina). Figure 28, network mapping tool of March 8th, 2020 (International Women's Day) and December 30th, 2020 (abortion movement in Spain, where the vice-president and an NGO were both co-mentioned throughout the event to try to stop the abortion law being proposed).",
+                type: "html",
+                file: "Figure 27 and 28.html"
+            },
+
+            {
+                chapter: 3,
+                page: "p. 118",
+                title: "Figure 29: Country Mentions by Event Category",
+                caption:
+                    "Distribution of country mentions across event categories, showing the proportion of references to each country within the discourse.",
+                type: "image",
+                file: "Figure 29.png"
+            },
+
+
+            /* ========================================================
+               CHAPTER 4
+               ======================================================== */
+
+            {
+                chapter: 4,
+                page: "p. 145",
+                title: "Figure 30: Frequency of \"Marido\"",
+                caption:
+                    "Screenshot from the HTML tool that shows the normalized frequency of the word Marido from 2010 to 2022.",
+                type: "html",
+                file: "Figure 30.html"
+            },
+
+            {
+                chapter: 4,
+                page: "p. 146",
+                title: "Figure 31: Frequency of \"Sororidad\"",
+                caption:
+                    "Screenshot from the HTML tool that shows the normalized frequency of the word Sororidad from 2010 to 2022.",
+                type: "html",
+                file: "Figure 31.html"
+            },
+
+            {
+                chapter: 4,
+                page: "p. 150",
+                title: "Figure 32: Inclusive Language",
+                caption:
+                    "Normalized usage of each form of inclusive language from 2009 to 2022.",
+                type: "html",
+                file: "Figure 32.html"
+            },
+
+            {
+                chapter: 4,
+                page: "p. 165",
+                title: "Figure 33: Frequently Uploaded Images",
+                caption:
+                    "Examples of images that were uploaded by over 80 users.",
+                type: "html",
+                file: "Figure 33.html"
+            },
+
+            {
+                chapter: 4,
+                page: "p. 168",
+                title: "Figure 34: #abortolegal",
+                caption:
+                    "Image uploaded with the hashtag #abortolegal.",
+                type: "image",
+                file: "Figure 34.jpg"
+            },
+
+            {
+                chapter: 4,
+                page: "p. 180",
+                title: "Figure 35: Textual Emoticons",
+                caption:
+                    "Evolution of textual emoticons over time.",
+                type: "image",
+                file: "Figure 35.png"
+            },
+
+            {
+                chapter: 4,
+                page: "p. 182",
+                title: "Figure 36: Tweets Including Media",
+                caption:
+                    "Normalized frequency of tweets that included media throughout the dataset.",
+                type: "image",
+                file: "Figure 36.png"
+            },
+
+            {
+                chapter: 4,
+                page: "p. 182",
+                title: "Figure 37: Image Description Labels",
+                caption:
+                    "Evolution of images catalogued under the top 10 image description labels.",
+                type: "image",
+                file: "Figure 37.png"
+            },
+
+            {
+                chapter: 4,
+                page: "p. 186",
+                title: "Figures 38 and 39: Colour Analysis Timeline",
+                caption:
+                    "Figure 38, Colour Analysis Timeline which displays a pixel per image in the dataset with the most representative colour of each image. Figure 39, zoom in to the Colour Analysis Timeline.",
+                type: "image",
+                file: "Figure 38 and 39.png"
+            },
+
+
+            /* ========================================================
+               CHAPTER 5
+               ======================================================== */
+
+            {
+                chapter: 5,
+                page: "p. 205",
+                title: "Figure 40: Cultural Network",
+                caption:
+                    "Cultural Network of users and the domains they added to their tweets throughout the entire dataset.",
+                type: "image",
+                file: "Figure 40.png"
+            },
+
+            {
+                chapter: 5,
+                page: "p. 206",
+                title: "Figure 41: Spanish News Cluster",
+                caption:
+                    "Zoom in on green cluster where Spanish news domains are found.",
+                type: "image",
+                file: "Figure 41.png"
+            },
+
+            {
+                chapter: 5,
+                page: "p. 206",
+                title: "Figure 42: Argentinian News Cluster",
+                caption:
+                    "Zoom in on light pink cluster where Argentinian news domains are found.",
+                type: "image",
+                file: "Figure 42.png"
+            },
+
+            {
+                chapter: 5,
+                page: "pp. 222, 224, 226",
+                title: "Figures 43, 44 and 45: Hashtag News Network",
+                caption:
+                    "Figure 43, screenshot of the interactive News-Hashtag Network where nodes are news sites and edges indicate the hashtags they were tweeted with. The colours represent the countries the news site is from. Figure 44, labelled zoom in on centre of Hashtag News Network from Figure 43. Figure 45, Hashtag News Networks for Argentinian, Mexican and Spanish news domains.",
+                type: "html",
+                file: "Figure 43, 44 an 45.html"
+            },
+
+            {
+                chapter: 5,
+                page: "p. 227",
+                title: "Figure 46: News-Hashtag Network Over Time",
+                caption:
+                    "Snapshots of the News-Hashtag Network in 2012, 2016 and 2022.",
+                type: "html",
+                file: "Figure 46.html"
+            },
+
+            {
+                chapter: 5,
+                page: "p. 228",
+                title: "Figure 47: User-News Network",
+                caption:
+                    "User-News Network where the nodes are news domains and the edges represent a unique user tweeting two different domains.",
+                type: "html",
+                file: "Figure 47.html"
+            },
+
+            {
+                chapter: 5,
+                page: "p. 230",
+                title: "Figure 48: News Domain UMAP",
+                caption:
+                    "UMAP visualization of news domains by textual similarity of tweets that include them.",
+                type: "html",
+                file: "Figure 48.html"
+            },
+
+            {
+                chapter: 5,
+                page: "p. 242",
+                title: "Figure 49: Bipartite Cultural Network",
+                caption:
+                    "Bipartite cultural network where nodes in pink represent channels that appear in various years after 2015, and nodes in green represent channels that have appeared in various years before and after 2015. User nodes are black.",
+                type: "image",
+                file: "Figure 49.png"
+            },
+
+            {
+                chapter: 5,
+                page: "p. 243",
+                title: "Figure 50: Anti-Feminist Channels",
+                caption:
+                    "Zoom in of bottom-right corner of Figure 48 where anti-feminist channels can be found.",
+                type: "image",
+                file: "Figure 50.png"
             }
 
-            #figure-info {
-                padding: 15px 18px;
-            }
-
-            #viewer-container {
-                margin: 10px;
-            }
-
-            .title-page {
-                padding: 45px 30px;
-            }
-        }
-
-        @media (max-width: 600px) {
-
-            #app {
-                flex-direction: column;
-            }
-
-            #sidebar {
-                width: 100%;
-                min-width: 0;
-                height: 220px;
-            }
-
-            #sidebar-header {
-                padding: 14px 18px;
-            }
-
-            #buttons-container {
-                display: flex;
-                overflow-x: auto;
-                padding-bottom: 5px;
-            }
-
-            .chapter-header {
-                min-width: 110px;
-                padding: 14px 10px;
-            }
-
-            .nav-btn {
-                min-width: 150px;
-                border-left: none;
-                border-bottom: 3px solid transparent;
-            }
-
-            .nav-btn.chapter-3.active {
-                border-bottom-color: #8e6f9e;
-            }
-
-            .nav-btn.chapter-4.active {
-                border-bottom-color: #628c91;
-            }
-
-            .nav-btn.chapter-5.active {
-                border-bottom-color: #b0835d;
-            }
-
-            #main-content {
-                height: calc(100vh - 220px);
-            }
-
-            #fig-title {
-                font-size: 1.05rem;
-            }
-
-            #fig-caption {
-                font-size: 0.76rem;
-            }
-        }
-
-    </style>
-</head>
-
-
-<body>
-
-
-    <!-- ============================================================
-         LANDING PAGE
-         ============================================================ -->
-
-    <section id="landing-page">
-
-        <div class="title-page">
-
-            <div class="discipline">
-                Graduate Program in Hispanic Studies
-            </div>
-
-            <h1>
-                #Feminismo: An exploration of Cyberfeminism in the Digital Hispanosphere
-            </h1>
-
-            <p class="author">
-                Pilar del Carmen Rodríguez Mata
-            </p>
+        ];
